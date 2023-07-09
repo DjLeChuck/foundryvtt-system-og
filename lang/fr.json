@@ -1,0 +1,22 @@
+{
+  "OG.AbilityStr": "Strength",
+  "OG.AbilityCon": "Constitution",
+  "OG.AbilityDex": "Dexterity",
+  "OG.AbilityInt": "Intelligence",
+  "OG.AbilityWis": "Wisdom",
+  "OG.AbilityCha": "Charisma",
+
+  "OG.AbilityStrAbbr": "str",
+  "OG.AbilityConAbbr": "con",
+  "OG.AbilityDexAbbr": "dex",
+  "OG.AbilityIntAbbr": "int",
+  "OG.AbilityWisAbbr": "wis",
+  "OG.AbilityChaAbbr": "cha",
+
+  "OG.EffectCreate": "Create Effect",
+  "OG.EffectToggle": "Toggle Effect",
+  "OG.EffectEdit": "Edit Effect",
+  "OG.EffectDelete": "Delete Effect",
+
+  "OG.Add": "Add"
+}

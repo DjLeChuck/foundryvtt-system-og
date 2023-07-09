@@ -1,0 +1,49 @@
+{
+  "id": "og",
+  "title": "Og",
+  "description": "The Og system for FoundryVTT!",
+  "version": "0.0.1-dev",
+  "compatibility": {
+    "minimum": 11,
+    "verified": "11.305",
+    "maximum": 11
+  },
+  "authors": [
+    {
+      "name": "DjLeChuck",
+      "email": "djlechuck@gmail.com",
+      "url": "https://github.com/djlechuck/",
+      "discord": "DjLeChuck#9015",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "module/og.mjs"
+  ],
+  "styles": [
+    "css/og.css"
+  ],
+  "scripts": [ ],
+  "packs": [ ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power",
+  "url": "https://github.com/DjLeChuck/foundryvtt-system-og",
+  "manifest": "https://raw.githubusercontent.com/DjLeChuck/foundryvtt-system-og/main/system.json",
+  "download": "https://github.com/DjLeChuck/foundryvtt-system-og/archive/0.0.1-dev.zip",
+  "bugs": "https://github.com/DjLeChuck/foundryvtt-system-og/issues",
+  "changelog": "https://github.com/DjLeChuck/foundryvtt-system-og/blob/main/CHANGELOG.md",
+  "license": "./LICENSE",
+  "readme": "./README.md"
+}
