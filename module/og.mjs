@@ -1,9 +1,9 @@
 // Import document classes.
-import { BoilerplateActor } from './documents/actor.mjs';
-import { BoilerplateItem } from './documents/item.mjs';
+import { OgActor } from './documents/actor.mjs';
+import { OgItem } from './documents/item.mjs';
 // Import sheet classes.
-import { BoilerplateActorSheet } from './sheets/actor-sheet.mjs';
-import { BoilerplateItemSheet } from './sheets/item-sheet.mjs';
+import { OgActorSheet } from './sheets/actor-sheet.mjs';
+import { OgItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { OG } from './helpers/config.mjs';
@@ -17,8 +17,8 @@ Hooks.once('init', async function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.og = {
-    BoilerplateActor,
-    BoilerplateItem,
+    OgActor,
+    OgItem,
     rollItemMacro,
   };
 
@@ -30,19 +30,19 @@ Hooks.once('init', async function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
+    formula: '1d6 + @evade',
     decimals: 2,
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = BoilerplateActor;
-  CONFIG.Item.documentClass = BoilerplateItem;
+  CONFIG.Actor.documentClass = OgActor;
+  CONFIG.Item.documentClass = OgItem;
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('og', BoilerplateActorSheet, { makeDefault: true });
+  Actors.registerSheet('og', OgActorSheet, { makeDefault: true });
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('og', BoilerplateItemSheet, { makeDefault: true });
+  Items.registerSheet('og', OgItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

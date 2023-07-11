@@ -1,0 +1,64 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
+      </h1>
+      <h1 class="charname">
+        <input name="system.cavemanName" type="text" value="{{system.cavemanName}}"
+               placeholder="{{localize "OG.NPC.CavemanName"}}" />
+      </h1>
+
+      <div class="resources grid grid-3col">
+        <div class="resource flex-group-center">
+          <label for="system.unggghhPoints" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.unggghhPoints" value="{{system.unggghhPoints}}" data-dtype="Number" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.evade" class="resource-label">{{localize "OG.Global.Evade"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.evade" value="{{system.evade}}" data-dtype="Number" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.evade" class="resource-label">{{localize "OG.NPC.Armor"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.evade" class="resource-label">{{localize "OG.NPC.EatingHabits"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.eatingHabits" value="{{system.eatingHabits}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.evade" class="resource-label">{{localize "OG.NPC.FoodValue"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.foodValue" value="{{system.foodValue}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+    <div class="flexcol">
+      <div>{{localize "OG.NPC.Attacks"}}</div>
+      <div class="grid grid-5col">
+        {{#each words as |attacks key|}}
+          <div class="flexrow flex-group-center">
+            {{attack.name}} ({{attack.accuracy}}, {{attack.damage}})
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+</form>

@@ -1,25 +1,25 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import { onManageActiveEffect, prepareActiveEffectCategories } from '../helpers/effects.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class BoilerplateActorSheet extends ActorSheet {
+export class OgActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["og", "sheet", "actor"],
-      template: "systems/og/templates/actor/actor-sheet.html",
-      width: 600,
+      classes: ['og', 'sheet', 'actor'],
+      template: 'systems/og/templates/actor/actor-sheet.html.hbs',
+      width: 620,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'features' }],
     });
   }
 
   /** @override */
   get template() {
-    return `systems/og/templates/actor/actor-${this.actor.type}-sheet.html`;
+    return `systems/og/templates/actor/actor-${this.actor.type}-sheet.html.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -40,13 +40,13 @@ export class BoilerplateActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
+    if (actorData.type === 'character') {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    if (actorData.type === 'npc') {
       this._prepareItems(context);
     }
 
@@ -67,10 +67,6 @@ export class BoilerplateActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
-    // Handle ability scores.
-    for (let [k, v] of Object.entries(context.system.abilities)) {
-      v.label = game.i18n.localize(CONFIG.OG.abilities[k]) ?? k;
-    }
   }
 
   /**
@@ -81,45 +77,25 @@ export class BoilerplateActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareItems(context) {
-    // Initialize containers.
-    const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
-    };
+    let characterClass = null;
+    const words = [];
+    const abilities = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === 'item') {
-        gear.push(i);
-      }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
+      if (i.type === 'word') {
+        words.push(i);
+      } else if (i.type === 'ability') {
+        abilities.push(i);
+      } else if (i.type === 'characterClass') {
+        characterClass = i;
       }
     }
 
-    // Assign and return
-    context.gear = gear;
-    context.features = features;
-    context.spells = spells;
+    context.words = words;
+    context.abilities = abilities;
+    context.characterClass = characterClass;
   }
 
   /* -------------------------------------------- */
@@ -130,8 +106,8 @@ export class BoilerplateActorSheet extends ActorSheet {
 
     // Render the item sheet for viewing/editing prior to the editable check.
     html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const li = $(ev.currentTarget).parents('.item');
+      const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
     });
 
@@ -144,14 +120,14 @@ export class BoilerplateActorSheet extends ActorSheet {
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const li = $(ev.currentTarget).parents('.item');
+      const item = this.actor.items.get(li.data('itemId'));
       item.delete();
       li.slideUp(200, () => this.render(false));
     });
 
     // Active Effect management
-    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+    html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.actor));
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
@@ -160,11 +136,45 @@ export class BoilerplateActorSheet extends ActorSheet {
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
       html.find('li.item').each((i, li) => {
-        if (li.classList.contains("inventory-header")) return;
-        li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
+        if (li.classList.contains('inventory-header')) return;
+        li.setAttribute('draggable', true);
+        li.addEventListener('dragstart', handler, false);
       });
     }
+  }
+
+  /** @override */
+  async _onDropItemCreate(itemData) {
+    let items = itemData instanceof Array ? itemData : [itemData];
+    const toCreate = [];
+    for (const item of items) {
+      const result = await this._onDropSingleItem(item);
+
+      if (result) {
+        toCreate.push(result);
+      }
+    }
+
+    // Create the owned items as normal
+    return this.actor.createEmbeddedDocuments('Item', toCreate);
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Handles dropping of a single item onto this character sheet.
+   * @param {object} itemData            The item data to create.
+   * @returns {Promise<object|boolean>}  The item data to create after processing, or false if the item should not be
+   *                                     created or creation has been otherwise handled.
+   * @protected
+   */
+  async _onDropSingleItem(itemData) {
+    if (itemData.type === 'characterClass' && null !== this.actor.characterClass) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.AlreadyHasCharacterClass'));
+      return false;
+    }
+
+    return itemData;
   }
 
   /**
@@ -185,13 +195,13 @@ export class BoilerplateActorSheet extends ActorSheet {
     const itemData = {
       name: name,
       type: type,
-      system: data
+      system: data,
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system["type"];
+    delete itemData.system['type'];
 
     // Finally, create the item!
-    return await Item.create(itemData, {parent: this.actor});
+    return await Item.create(itemData, { parent: this.actor });
   }
 
   /**
@@ -206,7 +216,7 @@ export class BoilerplateActorSheet extends ActorSheet {
 
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
+      if (dataset.rollType === 'item') {
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
@@ -225,5 +235,4 @@ export class BoilerplateActorSheet extends ActorSheet {
       return roll;
     }
   }
-
 }

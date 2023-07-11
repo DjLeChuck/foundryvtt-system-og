@@ -2,7 +2,7 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class BoilerplateItemSheet extends ItemSheet {
+export class OgItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -18,11 +18,11 @@ export class BoilerplateItemSheet extends ItemSheet {
   get template() {
     const path = "systems/og/templates/item";
     // Return a single sheet for all item types.
-    // return `${path}/item-sheet.html`;
+    // return `${path}/item-sheet.html.hbs`;
 
     // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.type}-sheet.html`;
+    // unique item sheet by type, like `weapon-sheet.html.hbs`.
+    return `${path}/item-${this.item.type}-sheet.html.hbs`;
   }
 
   /* -------------------------------------------- */

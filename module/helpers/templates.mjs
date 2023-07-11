@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/og/templates/actor/parts/actor-features.html",
-    "systems/og/templates/actor/parts/actor-items.html",
-    "systems/og/templates/actor/parts/actor-spells.html",
-    "systems/og/templates/actor/parts/actor-effects.html",
+    "systems/og/templates/actor/parts/actor-features.html.hbs",
+    "systems/og/templates/actor/parts/actor-items.html.hbs",
+    "systems/og/templates/actor/parts/actor-spells.html.hbs",
+    "systems/og/templates/actor/parts/actor-effects.html.hbs",
   ]);
 };
