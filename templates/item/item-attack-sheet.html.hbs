@@ -1,19 +1,27 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
     <div class="header-fields">
-      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
       <h1 class="charname">
         <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "OG.Global.Name"}}" /></h1>
     </div>
   </header>
 
   <section class="sheet-body">
-    <label for="item-accuracy-{{item._id}}">{{localize "OG.Attack.Accuracy"}}</label>
-    <input name="system.accuracy" type="text" {{checked item.system.accuracy}} placeholder="{{localize "OG.Attack.Accuracy"}}"
-           id="item-accuracy-{{item._id}}" data-dtype="Number" />
+    <div class="grid grid-2col">
+      <div>
+        <label for="item-accuracy-{{item._id}}">{{localize "OG.Attack.Accuracy"}}</label>
+        <input name="system.accuracy" value="{{item.system.accuracy}}" type="number"
+               placeholder="{{localize "OG.Attack.Accuracy"}}" id="item-accuracy-{{item._id}}" data-dtype="Number" />
+      </div>
+      <div>
+        <label for="item-damage-{{item._id}}">{{localize "OG.Global.Damage"}}</label>
+        <input name="system.damage" value="{{item.system.damage}}" type="number"
+               placeholder="{{localize "OG.Global.Damage"}}" id="item-damage-{{item._id}}" data-dtype="Number" />
+      </div>
+    </div>
 
-    <label for="item-damage-{{item._id}}">{{localize "OG.Global.Damage"}}</label>
-    <input name="system.damage" type="text" {{checked item.system.damage}} placeholder="{{localize "OG.Attack.Damage"}}"
-           id="item-damage-{{item._id}}" data-dtype="Number" />
+    <label for="item-description-{{item._id}}">{{localize "OG.Global.Description"}}</label>
+    {{editor item.system.description target="system.description" button=true}}
   </section>
 </form>

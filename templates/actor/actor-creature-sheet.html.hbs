@@ -7,40 +7,40 @@
       </h1>
       <h1 class="charname">
         <input name="system.cavemanName" type="text" value="{{system.cavemanName}}"
-               placeholder="{{localize "OG.NPC.CavemanName"}}" />
+               placeholder="{{localize "OG.Creature.CavemanName"}}" />
       </h1>
 
       <div class="resources grid grid-3col">
         <div class="resource flex-group-center">
           <label for="system.unggghhPoints" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.unggghhPoints" value="{{system.unggghhPoints}}" data-dtype="Number" />
+            {{numberInput system.unggghhPoints name="system.unggghhPoints"}}
           </div>
         </div>
 
         <div class="resource flex-group-center">
           <label for="system.evade" class="resource-label">{{localize "OG.Global.Evade"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.evade" value="{{system.evade}}" data-dtype="Number" />
+            {{numberInput system.evade name="system.evade"}}
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.NPC.Armor"}}</label>
+          <label for="system.evade" class="resource-label">{{localize "OG.Creature.Armor"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
+            {{numberInput system.armor name="system.armor"}}
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.NPC.EatingHabits"}}</label>
+          <label for="system.evade" class="resource-label">{{localize "OG.Creature.EatingHabits"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.eatingHabits" value="{{system.eatingHabits}}" />
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.NPC.FoodValue"}}</label>
+          <label for="system.evade" class="resource-label">{{localize "OG.Creature.FoodValue"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.foodValue" value="{{system.foodValue}}" />
           </div>
@@ -51,11 +51,11 @@
 
   <section class="sheet-body">
     <div class="flexcol">
-      <div>{{localize "OG.NPC.Attacks"}}</div>
+      <div>{{localize "OG.Creature.Attacks"}}</div>
       <div class="grid grid-5col">
-        {{#each words as |attacks key|}}
+        {{#each attacks as |attack key|}}
           <div class="flexrow flex-group-center">
-            {{attack.name}} ({{attack.accuracy}}, {{attack.damage}})
+            {{attack.name}} ({{attack.system.accuracy}}, {{attack.system.damage}})
           </div>
         {{/each}}
       </div>

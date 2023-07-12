@@ -1,10 +1,14 @@
-// Import document classes.
 import { OgActor } from './documents/actor.mjs';
 import { OgItem } from './documents/item.mjs';
-// Import sheet classes.
 import { OgActorSheet } from './sheets/actor-sheet.mjs';
 import { OgItemSheet } from './sheets/item-sheet.mjs';
-// Import helper/utility classes and constants.
+import { CharacterData } from './dataModels/actor/CharacterData.mjs';
+import { CreatureData } from './dataModels/actor/CreatureData.mjs';
+import { AbilityData } from './dataModels/item/AbilityData.mjs';
+import { AttackData } from './dataModels/item/AttackData.mjs';
+import { CharacterClassData } from './dataModels/item/CharacterClassData.mjs';
+import { SkillData } from './dataModels/item/SkillData.mjs';
+import { WordData } from './dataModels/item/WordData.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { OG } from './helpers/config.mjs';
 
@@ -38,6 +42,15 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = OgActor;
   CONFIG.Item.documentClass = OgItem;
 
+  // Register custom Data Model
+  CONFIG.Actor.dataModels.character = CharacterData;
+  CONFIG.Actor.dataModels.creature = CreatureData;
+  CONFIG.Item.dataModels.ability = AbilityData;
+  CONFIG.Item.dataModels.attack = AttackData;
+  CONFIG.Item.dataModels.characterClass = CharacterClassData;
+  CONFIG.Item.dataModels.skill = SkillData;
+  CONFIG.Item.dataModels.word = WordData;
+
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('og', OgActorSheet, { makeDefault: true });
@@ -51,17 +64,6 @@ Hooks.once('init', async function () {
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
-
-// If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function () {
-  var outStr = '';
-  for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
-      outStr += arguments[arg];
-    }
-  }
-  return outStr;
-});
 
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();

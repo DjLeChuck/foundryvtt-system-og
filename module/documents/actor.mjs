@@ -38,10 +38,10 @@ export class OgActor extends Actor {
     const systemData = actorData.system;
     const flags = actorData.flags.og || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
+    // Make separate methods for each Actor type (character, creature, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this._prepareCreatureData(actorData);
   }
 
   /**
@@ -52,10 +52,10 @@ export class OgActor extends Actor {
   }
 
   /**
-   * Prepare NPC type specific data.
+   * Prepare Creature type specific data.
    */
-  _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+  _prepareCreatureData(actorData) {
+    if (actorData.type !== 'creature') return;
   }
 
   /**
@@ -66,7 +66,7 @@ export class OgActor extends Actor {
 
     // Prepare character roll data.
     this._getCharacterRollData(data);
-    this._getNpcRollData(data);
+    this._getCreatureRollData(data);
 
     return data;
   }
@@ -79,9 +79,9 @@ export class OgActor extends Actor {
   }
 
   /**
-   * Prepare NPC roll data.
+   * Prepare creature roll data.
    */
-  _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
+  _getCreatureRollData(data) {
+    if (this.type !== 'creature') return;
   }
 }

@@ -41,13 +41,13 @@ export class OgActorSheet extends ActorSheet {
 
     // Prepare character data and items.
     if (actorData.type === 'character') {
-      this._prepareItems(context);
+      this._prepareCharacterItems(context);
       this._prepareCharacterData(context);
     }
 
-    // Prepare NPC data and items.
-    if (actorData.type === 'npc') {
-      this._prepareItems(context);
+    // Prepare Creature data and items.
+    if (actorData.type === 'creature') {
+      this._prepareCreatureItems(context);
     }
 
     // Add roll data for TinyMCE editors.
@@ -62,7 +62,7 @@ export class OgActorSheet extends ActorSheet {
   /**
    * Organize and classify Items for Character sheets.
    *
-   * @param {Object} actorData The actor to prepare.
+   * @param {Object} context The actor to prepare.
    *
    * @return {undefined}
    */
@@ -72,11 +72,11 @@ export class OgActorSheet extends ActorSheet {
   /**
    * Organize and classify Items for Character sheets.
    *
-   * @param {Object} actorData The actor to prepare.
+   * @param {Object} context The actor to prepare.
    *
    * @return {undefined}
    */
-  _prepareItems(context) {
+  _prepareCharacterItems(context) {
     let characterClass = null;
     const words = [];
     const abilities = [];
@@ -96,6 +96,27 @@ export class OgActorSheet extends ActorSheet {
     context.words = words;
     context.abilities = abilities;
     context.characterClass = characterClass;
+  }
+
+  /**
+   * Organize and classify Items for Creature sheets.
+   *
+   * @param {Object} context The actor to prepare.
+   *
+   * @return {undefined}
+   */
+  _prepareCreatureItems(context) {
+    const attacks = [];
+
+    // Iterate through items, allocating to containers
+    for (let i of context.items) {
+      i.img = i.img || DEFAULT_TOKEN;
+      if (i.type === 'attack') {
+        attacks.push(i);
+      }
+    }
+
+    context.attacks = attacks;
   }
 
   /* -------------------------------------------- */
