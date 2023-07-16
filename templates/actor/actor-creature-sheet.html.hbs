@@ -12,9 +12,13 @@
 
       <div class="resources grid grid-3col">
         <div class="resource flex-group-center">
-          <label for="system.unggghhPoints" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
+          <label for="system.unggghhPoints.value" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            {{numberInput system.unggghhPoints name="system.unggghhPoints"}}
+            <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
+                   data-dtype="Number" />
+            <span> / </span>
+            <input type="number" name="system.unggghhPoints.max" value="{{system.unggghhPoints.max}}"
+                   data-dtype="Number" />
           </div>
         </div>
 
@@ -33,9 +37,11 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.Creature.EatingHabits"}}</label>
+          <label for="system.eatingHabits" class="resource-label">{{localize "OG.Creature.EatingHabits.Label"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.eatingHabits" value="{{system.eatingHabits}}" />
+            <select name="system.eatingHabits">
+              {{selectOptions eatingHabitsChoices selected=system.eatingHabits localize=true}}
+            </select>
           </div>
         </div>
 
@@ -51,6 +57,8 @@
 
   <section class="sheet-body">
     <div class="flexcol">
+      {{editor system.description target="system.description" button=true editable=editable}}
+
       <div>{{localize "OG.Creature.Attacks"}}</div>
       <div class="grid grid-5col">
         {{#each attacks as |attack key|}}

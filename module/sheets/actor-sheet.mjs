@@ -48,6 +48,7 @@ export class OgActorSheet extends ActorSheet {
     // Prepare Creature data and items.
     if (actorData.type === 'creature') {
       this._prepareCreatureItems(context);
+      this._prepareCreatureData(context);
     }
 
     // Add roll data for TinyMCE editors.
@@ -59,14 +60,15 @@ export class OgActorSheet extends ActorSheet {
     return context;
   }
 
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} context The actor to prepare.
-   *
-   * @return {undefined}
-   */
   _prepareCharacterData(context) {
+  }
+
+  _prepareCreatureData(context) {
+    context.eatingHabitsChoices = {
+      carnivorous: 'OG.Creature.EatingHabits.Carnivorous',
+      herbivorous: 'OG.Creature.EatingHabits.Herbivorous',
+      omnivorous: 'OG.Creature.EatingHabits.Omnivorous',
+    };
   }
 
   /**
@@ -153,6 +155,8 @@ export class OgActorSheet extends ActorSheet {
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
 
+    html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
+
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
@@ -223,6 +227,57 @@ export class OgActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
+  }
+
+  async _onConfigurationRoll(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    let roll;
+
+    switch (dataset.type) {
+      case 'unggghhPoints':
+        // 1d6+2 (Eloquent: 1d6+4)
+        roll = new Roll('1d6+2');
+        await roll.evaluate({ async: true });
+
+        ChatMessage.create({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rolls: [roll],
+          content: `${this.actor.name} possède ${roll.total} points d’Unggghh`,
+          sound: CONFIG.sounds.dice,
+          type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        });
+
+        this.actor.update({
+          'system.unggghhPoints.value': roll.total,
+          'system.unggghhPoints.max': roll.total,
+        });
+
+        break;
+      case 'knownWords':
+        // 1d6+3 (Thoug 1d6+6, or to get X+3 from highest score)
+        roll = new Roll('1d6+3');
+        await roll.evaluate({ async: true });
+
+        ChatMessage.create({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rolls: [roll],
+          content: `${this.actor.name} connaît ${roll.total} mots`,
+          sound: CONFIG.sounds.dice,
+          type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        });
+
+        this.actor.update({
+          'system.knownWords': roll.total,
+        });
+
+        break;
+    }
   }
 
   /**

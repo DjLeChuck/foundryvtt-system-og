@@ -30,7 +30,7 @@ function compileScss() {
       cascade: false,
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./assets/css'));
 }
 
 const css = gulp.series(compileScss);

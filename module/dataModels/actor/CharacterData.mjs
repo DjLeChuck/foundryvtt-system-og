@@ -5,6 +5,11 @@ export class CharacterData extends BaseActorData {
     const fields = foundry.data.fields;
 
     return Object.assign({}, super.defineSchema(), {
+      knownWords: new fields.NumberField({
+        required: true,
+        initial: 0,
+        integer: true,
+      }),
       attack: new fields.NumberField({
         required: true,
         initial: 5,

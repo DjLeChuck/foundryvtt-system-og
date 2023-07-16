@@ -11,5 +11,7 @@
     "systems/og/templates/actor/parts/actor-items.html.hbs",
     "systems/og/templates/actor/parts/actor-spells.html.hbs",
     "systems/og/templates/actor/parts/actor-effects.html.hbs",
+    // Item partials.
+    "systems/og/templates/item/parts/item-effects.html.hbs",
   ]);
 };

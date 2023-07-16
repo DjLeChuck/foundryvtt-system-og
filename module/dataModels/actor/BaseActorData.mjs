@@ -3,13 +3,24 @@ export class BaseActorData extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
 
     return {
-      unggghhPoints: new fields.NumberField({
-        required: true,
-        integer: true,
+      unggghhPoints: new fields.SchemaField({
+        value: new fields.NumberField({
+          required: true,
+          initial: 0,
+          integer: true,
+        }),
+        min: new fields.NumberField({
+          required: true,
+          initial: 0,
+          integer: true,
+        }),
+        max: new fields.NumberField({
+          required: true,
+          initial: 0,
+          integer: true,
+        }),
       }),
       evade: new fields.NumberField({
-        required: true,
-        initial: 0,
         integer: true,
       }),
     };

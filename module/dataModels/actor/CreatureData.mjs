@@ -9,7 +9,9 @@ export class CreatureData extends BaseActorData {
       cavemanName: new fields.StringField({
         required: true,
       }),
-      armor: new fields.NumberField(),
+      armor: new fields.NumberField({
+        integer: true,
+      }),
       eatingHabits: new fields.StringField({
         required: true,
         choices: ['carnivorous', 'herbivorous', 'omnivorous'],

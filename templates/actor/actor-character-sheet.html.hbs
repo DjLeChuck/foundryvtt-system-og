@@ -19,9 +19,17 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.unggghhPoints" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
+          <label for="system.unggghhPoints.value" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.unggghhPoints" value="{{system.unggghhPoints}}" data-dtype="Number" />
+            <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
+                   data-dtype="Number" />
+            <span> / </span>
+            <input type="number" value="{{system.unggghhPoints.max}}" disabled readonly />
+            {{#unless system.unggghhPoints.max}}
+              <button type="button" title="Roll Unggghh Points!" data-configuration-roll data-type="unggghhPoints">
+                <i class="far fa-lightbulb"></i>
+              </button>
+            {{/unless}}
           </div>
         </div>
 
@@ -44,7 +52,14 @@
 
   <section class="sheet-body">
     <div class="flexcol">
-      <div>{{localize "OG.Global.Words"}}</div>
+      <div>
+        {{localize "OG.Global.Words"}} ({{length words}} / {{system.knownWords}})
+        {{#unless system.knownWords}}
+          <button type="button" title="Roll known words!" data-configuration-roll data-type="knownWords">
+            <i class="far fa-lightbulb"></i>
+          </button>
+        {{/unless}}
+      </div>
       <div class="grid grid-5col">
         {{#each words as |word key|}}
           <div class="flexrow flex-group-center">

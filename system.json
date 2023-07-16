@@ -21,10 +21,23 @@
     "module/og.mjs"
   ],
   "styles": [
-    "css/og.css"
+    "assets/css/og.css"
   ],
   "scripts": [ ],
-  "packs": [ ],
+  "packs": [
+    {
+      "name": "words",
+      "label": "Words",
+      "type": "Item",
+      "system": "og"
+    },
+    {
+      "name": "character-classes",
+      "label": "Character classes",
+      "type": "Item",
+      "system": "og"
+    }
+  ],
   "languages": [
     {
       "lang": "en",
@@ -37,8 +50,8 @@
       "path": "lang/fr.json"
     }
   ],
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power",
+  "initiative": "1d6+@evade",
+  "primaryTokenAttribute": "unggghhPoints",
   "url": "https://github.com/DjLeChuck/foundryvtt-system-og",
   "manifest": "https://raw.githubusercontent.com/DjLeChuck/foundryvtt-system-og/main/system.json",
   "download": "https://github.com/DjLeChuck/foundryvtt-system-og/archive/0.0.1-dev.zip",

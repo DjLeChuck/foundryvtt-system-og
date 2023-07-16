@@ -1,3 +1,5 @@
+import { onManageActiveEffect } from '../helpers/effects.mjs';
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -7,16 +9,16 @@ export class OgItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["og", "sheet", "item"],
+      classes: ['og', 'sheet', 'item'],
       width: 520,
       height: 480,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
     });
   }
 
   /** @override */
   get template() {
-    const path = "systems/og/templates/item";
+    const path = 'systems/og/templates/item';
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html.hbs`;
 
@@ -28,7 +30,7 @@ export class OgItemSheet extends ItemSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData() {
+  async getData() {
     // Retrieve base data structure.
     const context = super.getData();
 
@@ -37,7 +39,7 @@ export class OgItemSheet extends ItemSheet {
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
-    let actor = this.object?.parent ?? null;
+    let actor = this.item?.parent ?? null;
     if (actor) {
       context.rollData = actor.getRollData();
     }
@@ -45,6 +47,8 @@ export class OgItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
     context.flags = itemData.flags;
+
+    context.enrichedDescription = await TextEditor.enrichHTML(itemData.system.description, { async: true });
 
     return context;
   }
@@ -55,9 +59,8 @@ export class OgItemSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
-    // Roll handlers, click handlers, etc. would go here.
+    html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.item));
   }
 }

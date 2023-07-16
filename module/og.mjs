@@ -57,6 +57,26 @@ Hooks.once('init', async function () {
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('og', OgItemSheet, { makeDefault: true });
 
+  // Load fonts
+  CONFIG.fontDefinitions['StoneyBilly'] = {
+    editor: true,
+    fonts: [
+      { urls: ['/systems/og/assets/fonts/stoney-billy.ttf'] },
+    ],
+  };
+  CONFIG.fontDefinitions['OutbackITC'] = {
+    editor: true,
+    fonts: [
+      { urls: ['/systems/og/assets/fonts/outback-itc.ttf'] },
+    ],
+  };
+  CONFIG.fontDefinitions['HoeflerText'] = {
+    editor: true,
+    fonts: [
+      { urls: ['/systems/og/assets/fonts/hoefler-text.ttf'] },
+    ],
+  };
+
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
 });
@@ -67,6 +87,10 @@ Hooks.once('init', async function () {
 
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
+});
+
+Handlebars.registerHelper('length', function (value) {
+  return value.length;
 });
 
 /* -------------------------------------------- */

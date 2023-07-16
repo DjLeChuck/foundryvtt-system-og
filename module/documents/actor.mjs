@@ -6,7 +6,7 @@ export class OgActor extends Actor {
   get characterClass() {
     if (!['character'].includes(this.type)) return null;
 
-    return this.items.find(item => item.type === 'characterClass');
+    return this.items.find(item => item.type === 'characterClass') ?? null;
   }
 
   /** @override */
