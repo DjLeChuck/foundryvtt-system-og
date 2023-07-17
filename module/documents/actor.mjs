@@ -3,10 +3,39 @@
  * @extends {Actor}
  */
 export class OgActor extends Actor {
+  /**
+   * Get the actor character class item.
+   *
+   * @returns {OgItem|null}
+   */
   get characterClass() {
     if (!['character'].includes(this.type)) return null;
 
-    return this.items.find(item => item.type === 'characterClass') ?? null;
+    return this.items.find((item) => 'characterClass' === item.type) ?? null;
+  }
+
+  /**
+   * Count knowns words. If it’s a common one, then it counts for 1, else for 2.
+   *
+   * @returns {number}
+   */
+  get countKnownWords() {
+    if (!['character'].includes(this.type)) return 0;
+
+    return this.items.reduce((accumulator, item) => 'word' === item.type
+      ? accumulator + (item.system.common ? 1 : 2)
+      : accumulator, 0);
+  }
+
+  /**
+   * Count knowns abilities.
+   *
+   * @returns {number}
+   */
+  get countKnownAbilities() {
+    if (!['character'].includes(this.type)) return 0;
+
+    return this.items.reduce((accumulator, item) => 'ability' === item.type ? accumulator + 1 : accumulator, 0);
   }
 
   /** @override */

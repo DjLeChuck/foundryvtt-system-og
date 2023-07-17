@@ -10,6 +10,11 @@ export class CharacterData extends BaseActorData {
         initial: 0,
         integer: true,
       }),
+      knownAbilities: new fields.NumberField({
+        required: true,
+        initial: 3,
+        integer: true,
+      }),
       attack: new fields.NumberField({
         required: true,
         initial: 5,
@@ -18,6 +23,11 @@ export class CharacterData extends BaseActorData {
       damage: new fields.NumberField({
         required: true,
         initial: 1,
+        integer: true,
+      }),
+      evade: new fields.NumberField({
+        required: true,
+        initial: 0,
         integer: true,
       }),
     });

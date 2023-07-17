@@ -196,20 +196,33 @@ export class OgActorSheet extends ActorSheet {
    */
   async _onDropSingleItem(itemData) {
     if ('characterClass' === itemData.type && null !== this.actor.characterClass) {
-      ui.notifications.error(game.i18n.localize('OG.Errors.AlreadyHasCharacterClass'));
-
-      return false;
+      this.actor.characterClass.delete();
     } else if ('word' === itemData.type) {
       const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
       if (alreadyKnown) {
-        ui.notifications.error(game.i18n.format('OG.Error.WordAlreadyKnown', { word: itemData.name }));
+        ui.notifications.error(game.i18n.format('OG.Error.WordAlreadyKnown', { name: itemData.name }));
 
         return false;
       }
 
-      if (this.actor.system.knownWords > 3) {
+      if (this.actor.countKnownWords === this.actor.system.knownWords) {
         ui.notifications.error(game.i18n.format('OG.Errors.MaxKnownWordsReached', {
           max: this.actor.system.knownWords,
+        }));
+
+        return false;
+      }
+    } else if ('ability' === itemData.type) {
+      const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
+      if (alreadyKnown) {
+        ui.notifications.error(game.i18n.format('OG.Error.AbilityAlreadyKnown', { name: itemData.name }));
+
+        return false;
+      }
+
+      if (this.actor.countKnownAbilities === this.actor.system.knownAbilities) {
+        ui.notifications.error(game.i18n.format('OG.Errors.MaxKnownAbilitiesReached', {
+          max: this.actor.system.knownAbilities,
         }));
 
         return false;
@@ -260,16 +273,11 @@ export class OgActorSheet extends ActorSheet {
         roll = new Roll('1d6+2');
         await roll.evaluate({ async: true });
 
-        ChatMessage.create({
-          user: game.user.id,
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          rolls: [roll],
-          content: game.i18n.format('OG.CharacterClass.Notifications.HasUnggghhPoints', {
+        await roll.toMessage({
+          flavor: game.i18n.format('OG.CharacterClass.Notifications.HasUnggghhPoints', {
             name: this.actor.name,
             total: roll.total,
           }),
-          sound: CONFIG.sounds.dice,
-          type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         });
 
         this.actor.update({
@@ -283,16 +291,11 @@ export class OgActorSheet extends ActorSheet {
         roll = new Roll('1d6+3');
         await roll.evaluate({ async: true });
 
-        ChatMessage.create({
-          user: game.user.id,
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          rolls: [roll],
-          content: game.i18n.format('OG.CharacterClass.Notifications.KnownWords', {
+        await roll.toMessage({
+          flavor: game.i18n.format('OG.CharacterClass.Notifications.KnownWords', {
             name: this.actor.name,
             total: roll.total,
           }),
-          sound: CONFIG.sounds.dice,
-          type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         });
 
         this.actor.update({

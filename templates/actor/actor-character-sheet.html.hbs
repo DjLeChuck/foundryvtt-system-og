@@ -60,7 +60,7 @@
   <section class="sheet-body">
     <div class="flexcol">
       <div>
-        {{localize "OG.Global.Words"}} ({{length words}} / {{system.knownWords}})
+        {{localize "OG.Global.Words"}} ({{actor.countKnownWords}} / {{system.knownWords}})
         {{#unless system.knownWords}}
           <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
                   data-configuration-roll data-type="knownWords">
@@ -73,23 +73,34 @@
           <i class="far fa-lightbulb"></i>
         </button>
       </div>
-      <div class="grid grid-5col">
-        {{#each words as |word key|}}
-          <div class="flexrow flex-group-center">
-            {{word.name}}
-          </div>
-        {{/each}}
-      </div>
+      {{> "systems/og/templates/actor/parts/actor-items.html.hbs" gear=words}}
+
+<!--      <div class="grid grid-5col">-->
+<!--        {{#each words as |word key|}}-->
+<!--          <div class="flexrow flex-group-center">-->
+<!--            {{word.name}}-->
+<!--          </div>-->
+<!--        {{/each}}-->
+<!--      </div>-->
     </div>
     <div class="flexcol">
-      <div>{{localize "OG.Global.Abilities"}}</div>
-      <div class="grid grid-4col">
-        {{#each abilities as |ability key|}}
-          <div class="flexrow flex-group-center">
-            {{ability.name}}
-          </div>
-        {{/each}}
+      <div>
+        {{localize "OG.Global.Abilities"}} ({{length abilities}} / {{system.knownAbilities}})
+
+        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseAbilities"}}"
+                data-open-compendium data-name="abilities">
+          <i class="far fa-lightbulb"></i>
+        </button>
       </div>
+      {{> "systems/og/templates/actor/parts/actor-items.html.hbs" gear=abilities}}
+
+<!--      <div class="grid grid-4col">-->
+<!--        {{#each abilities as |ability key|}}-->
+<!--          <div class="flexrow flex-group-center">-->
+<!--            {{ability.name}}-->
+<!--          </div>-->
+<!--        {{/each}}-->
+<!--      </div>-->
     </div>
   </section>
 </form>

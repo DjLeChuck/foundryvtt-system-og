@@ -18,6 +18,7 @@
   "OG.CharacterClass.Tooltips.ChooseCharacterClass": "Choose your character class",
   "OG.CharacterClass.Tooltips.RollUnggghhPoints": "Roll your initial Unggghh Points",
   "OG.CharacterClass.Tooltips.RollKnownWords": "Roll your initial known words",
+  "OG.CharacterClass.Tooltips.ChooseAbilities": "Choose your abilities",
   "OG.CharacterClass.Tooltips.ChooseWords": "Choose your words",
   "OG.CharacterClass.Notifications.HasUnggghhPoints": "{name} has {total} Unggghh Points.",
   "OG.CharacterClass.Notifications.KnownWords": "{name} knows {total} words.",
@@ -31,8 +32,9 @@
   "OG.Creature.FoodValue": "Food value",
   "OG.Word.IsCommon": "Common?",
   "OG.Attack.Accuracy": "Accuracy",
-  "OG.Errors.AlreadyHasCharacterClass": "This character already has a character class.",
   "OG.Errors.CompendiumNotFound": "The compendium {name} is not found!",
+  "OG.Errors.MaxKnownAbilitiesReached": "You know only {max} abilities.",
   "OG.Errors.MaxKnownWordsReached": "You know only {max} words.",
-  "OG.Errors.WordAlreadyKnown": "You already know the word {word}."
+  "OG.Error.AbilityAlreadyKnown": "You already know the ability {name}.",
+  "OG.Errors.WordAlreadyKnown": "You already know the word {name}."
 }

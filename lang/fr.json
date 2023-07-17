@@ -18,6 +18,7 @@
   "OG.CharacterClass.Tooltips.ChooseCharacterClass": "Choisissez votre classe de personnage",
   "OG.CharacterClass.Tooltips.RollUnggghhPoints": "Lancez vos points d’Unggghh initiaux",
   "OG.CharacterClass.Tooltips.RollKnownWords": "Lancez le nombre de mots connus",
+  "OG.CharacterClass.Tooltips.ChooseAbilities": "Choisissez vos capacités",
   "OG.CharacterClass.Tooltips.ChooseWords": "Choisissez vos mots",
   "OG.CharacterClass.Notifications.HasUnggghhPoints": "{name} possède {total} points d’Unggghh.",
   "OG.CharacterClass.Notifications.KnownWords": "{name} connaît {total} mots.",
@@ -31,8 +32,9 @@
   "OG.Creature.FoodValue": "Valeur alimentaire",
   "OG.Word.IsCommon": "Commun ?",
   "OG.Attack.Accuracy": "Précision",
-  "OG.Errors.AlreadyHasCharacterClass": "Ce personnage dispose déjà d’une classe de personnage.",
   "OG.Errors.CompendiumNotFound": "Le compendium {name} est introuvable !",
+  "OG.Errors.MaxKnownAbilitiesReached": "Vous ne connaissez que {max} capacités.",
   "OG.Errors.MaxKnownWordsReached": "Vous ne connaissez que {max} mots.",
-  "OG.Errors.WordAlreadyKnown": "Vous connaissez déjà le mot {word}."
+  "OG.Error.AbilityAlreadyKnown": "Vous connaissez déjà la capacité {name}.",
+  "OG.Errors.WordAlreadyKnown": "Vous connaissez déjà le mot {name}."
 }
