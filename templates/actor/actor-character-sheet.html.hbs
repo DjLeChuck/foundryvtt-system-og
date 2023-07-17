@@ -6,9 +6,15 @@
         <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
       </h1>
       <h1 class="charname">
-        <input name="system.class" type="text" value="{{characterClass.name}}"
+        <input type="text" value="{{characterClass.name}}" readonly disabled
                placeholder="{{localize "OG.Global.CharacterClass"}}" />
       </h1>
+      {{#unless characterClass}}
+        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseCharacterClass"}}"
+                data-open-compendium data-name="character-classes">
+          <i class="far fa-lightbulb"></i>
+        </button>
+      {{/unless}}
 
       <div class="resources grid grid-4col">
         <div class="resource flex-group-center">
@@ -26,7 +32,8 @@
             <span> / </span>
             <input type="number" value="{{system.unggghhPoints.max}}" disabled readonly />
             {{#unless system.unggghhPoints.max}}
-              <button type="button" title="Roll Unggghh Points!" data-configuration-roll data-type="unggghhPoints">
+              <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollUnggghhPoints"}}"
+                      data-configuration-roll data-type="unggghhPoints">
                 <i class="far fa-lightbulb"></i>
               </button>
             {{/unless}}
@@ -55,10 +62,16 @@
       <div>
         {{localize "OG.Global.Words"}} ({{length words}} / {{system.knownWords}})
         {{#unless system.knownWords}}
-          <button type="button" title="Roll known words!" data-configuration-roll data-type="knownWords">
+          <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
+                  data-configuration-roll data-type="knownWords">
             <i class="far fa-lightbulb"></i>
           </button>
         {{/unless}}
+
+        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseWords"}}"
+                data-open-compendium data-name="words">
+          <i class="far fa-lightbulb"></i>
+        </button>
       </div>
       <div class="grid grid-5col">
         {{#each words as |word key|}}

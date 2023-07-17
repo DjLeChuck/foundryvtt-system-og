@@ -156,6 +156,7 @@ export class OgActorSheet extends ActorSheet {
     html.find('.rollable').click(this._onRoll.bind(this));
 
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
+    html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -194,9 +195,25 @@ export class OgActorSheet extends ActorSheet {
    * @protected
    */
   async _onDropSingleItem(itemData) {
-    if (itemData.type === 'characterClass' && null !== this.actor.characterClass) {
+    if ('characterClass' === itemData.type && null !== this.actor.characterClass) {
       ui.notifications.error(game.i18n.localize('OG.Errors.AlreadyHasCharacterClass'));
+
       return false;
+    } else if ('word' === itemData.type) {
+      const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
+      if (alreadyKnown) {
+        ui.notifications.error(game.i18n.format('OG.Error.WordAlreadyKnown', { word: itemData.name }));
+
+        return false;
+      }
+
+      if (this.actor.system.knownWords > 3) {
+        ui.notifications.error(game.i18n.format('OG.Errors.MaxKnownWordsReached', {
+          max: this.actor.system.knownWords,
+        }));
+
+        return false;
+      }
     }
 
     return itemData;
@@ -247,7 +264,10 @@ export class OgActorSheet extends ActorSheet {
           user: game.user.id,
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
           rolls: [roll],
-          content: `${this.actor.name} possède ${roll.total} points d’Unggghh`,
+          content: game.i18n.format('OG.CharacterClass.Notifications.HasUnggghhPoints', {
+            name: this.actor.name,
+            total: roll.total,
+          }),
           sound: CONFIG.sounds.dice,
           type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         });
@@ -267,7 +287,10 @@ export class OgActorSheet extends ActorSheet {
           user: game.user.id,
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
           rolls: [roll],
-          content: `${this.actor.name} connaît ${roll.total} mots`,
+          content: game.i18n.format('OG.CharacterClass.Notifications.KnownWords', {
+            name: this.actor.name,
+            total: roll.total,
+          }),
           sound: CONFIG.sounds.dice,
           type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         });
@@ -278,6 +301,22 @@ export class OgActorSheet extends ActorSheet {
 
         break;
     }
+  }
+
+  async _onOpenCompendium(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const compendium = game.packs.find((pack) => `og.${dataset.name}` === pack.metadata.id);
+    if (!compendium) {
+      ui.notifications.error(game.i18n.format('OG.Errors.CompendiumNotFound', { name: dataset.name }));
+
+      return;
+    }
+
+    compendium.render(true);
   }
 
   /**
