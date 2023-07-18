@@ -37,6 +37,7 @@
   "OG.Ability.IsFree": "Gratuite ?",
   "OG.Ability.FreeExplanations": "Ne comptera pas dans le décompte des capacités apprises.",
   "OG.Attack.Accuracy": "Précision",
+  "OG.Attack.DamageNote": "Note sur les dagâts",
   "OG.Errors.CompendiumNotFound": "Le compendium {name} est introuvable !",
   "OG.Errors.MaxKnownAbilitiesReached": "Vous ne connaissez que {max} capacités.",
   "OG.Errors.MaxKnownWordsReached": "Vous ne connaissez que {max} mots.",

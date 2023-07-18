@@ -75,23 +75,26 @@
 
         <small>{{localize "OG.CharacterClass.Words.StarMarkExplanations"}}</small>
       </div>
-      <div class="grid grid-5col">
-        {{#each words as |word key|}}
-          <div class="flexrow flex-group-center">
-            <div class="grid grid-2col">
-              {{word.name}} {{ifThen word.system.common "" "*"}}
-              <button type="button" data-delete-item data-id="{{word._id}}"
-                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </div>
-        {{/each}}
-      </div>
+
+      {{> "systems/og/templates/actor/parts/actor-features.html.hbs" features=words}}
+
+<!--      <div class="grid grid-5col">-->
+<!--        {{#each words as |word key|}}-->
+<!--          <div class="flexrow flex-group-center">-->
+<!--            <div class="grid grid-2col">-->
+<!--              {{word.name}} {{ifThen word.system.common "" "*"}}-->
+<!--              <button type="button" data-delete-item data-id="{{word._id}}"-->
+<!--                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">-->
+<!--                <i class="fas fa-trash"></i>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        {{/each}}-->
+<!--      </div>-->
     </div>
     <div class="flexcol">
       <div>
-        {{localize "OG.Global.Abilities"}} ({{length abilities}} / {{system.knownAbilities}})
+        {{localize "OG.Global.Abilities"}} ({{actor.countKnownAbilities}} / {{system.knownAbilities}})
 
         <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseAbilities"}}"
                 data-open-compendium data-name="abilities">
@@ -99,19 +102,21 @@
         </button>
       </div>
 
-      <div class="grid grid-4col">
-        {{#each abilities as |ability key|}}
-          <div class="flexrow flex-group-center">
-            <div class="grid grid-2col">
-              {{ability.name}}
-              <button type="button" data-delete-item data-id="{{ability._id}}"
-                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </div>
-        {{/each}}
-      </div>
+      {{> "systems/og/templates/actor/parts/actor-features.html.hbs" features=abilities}}
+
+<!--      <div class="grid grid-4col">-->
+<!--        {{#each abilities as |ability key|}}-->
+<!--          <div class="flexrow flex-group-center">-->
+<!--            <div class="grid grid-2col">-->
+<!--              {{ability.name}}-->
+<!--              <button type="button" data-delete-item data-id="{{ability._id}}"-->
+<!--                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">-->
+<!--                <i class="fas fa-trash"></i>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        {{/each}}-->
+<!--      </div>-->
     </div>
   </section>
 </form>

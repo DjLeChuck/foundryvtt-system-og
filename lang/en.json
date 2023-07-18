@@ -37,6 +37,7 @@
   "OG.Ability.IsFree": "Free?",
   "OG.Ability.FreeExplanations": "Will not count towards learned abilities.",
   "OG.Attack.Accuracy": "Accuracy",
+  "OG.Attack.DamageNote": "Note about damages",
   "OG.Errors.CompendiumNotFound": "The compendium {name} is not found!",
   "OG.Errors.MaxKnownAbilitiesReached": "You know only {max} abilities.",
   "OG.Errors.MaxKnownWordsReached": "You know only {max} words.",

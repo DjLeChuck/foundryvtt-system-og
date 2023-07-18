@@ -15,11 +15,11 @@ export class OgActor extends Actor {
   }
 
   get isToughCaveman() {
-    return this.characterClass?.flags?.og.isTough ?? false;
+    return this.characterClass?.getFlag('og', 'isTough') ?? false;
   }
 
   get isEloquentCaveman() {
-    return this.characterClass?.flags.og.isEloquent ?? false;
+    return this.characterClass?.getFlag('og', 'isEloquent') ?? false;
   }
 
   /**
@@ -31,8 +31,9 @@ export class OgActor extends Actor {
     if (!['character'].includes(this.type)) return 0;
 
     return this.items.reduce((accumulator, item) => 'word' === item.type
-      ? accumulator + (item.system.common ? 1 : 2)
-      : accumulator, 0);
+        ? accumulator + (item.system.common ? 1 : 2)
+        : accumulator
+      , 0);
   }
 
   /**
@@ -43,7 +44,10 @@ export class OgActor extends Actor {
   get countKnownAbilities() {
     if (!['character'].includes(this.type)) return 0;
 
-    return this.items.reduce((accumulator, item) => 'ability' === item.type ? accumulator + 1 : accumulator, 0);
+    return this.items.reduce((accumulator, item) => 'ability' === item.type
+        ? accumulator + (item.system.free ? 0 : 1)
+        : accumulator
+      , 0);
   }
 
   /** @override */

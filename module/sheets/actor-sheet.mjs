@@ -199,7 +199,7 @@ export class OgActorSheet extends ActorSheet {
     if ('characterClass' === itemData.type && null !== this.actor.characterClass) {
       this.actor.characterClass.delete();
     } else if ('word' === itemData.type) {
-      const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
+      const alreadyKnown = this.actor.items.find((item) => item.getFlag('core', 'sourceId') === itemData.flags?.core?.sourceId);
       if (alreadyKnown) {
         ui.notifications.error(game.i18n.format('OG.Errors.WordAlreadyKnown', { name: itemData.name }));
 
@@ -214,7 +214,7 @@ export class OgActorSheet extends ActorSheet {
         return false;
       }
     } else if ('ability' === itemData.type) {
-      const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
+      const alreadyKnown = this.actor.items.find((item) => item.getFlag('core', 'sourceId') === itemData.flags?.core?.sourceId);
       if (alreadyKnown) {
         ui.notifications.error(game.i18n.format('OG.Errors.AbilityAlreadyKnown', { name: itemData.name }));
 

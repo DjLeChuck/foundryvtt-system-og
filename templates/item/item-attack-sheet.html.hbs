@@ -8,7 +8,7 @@
   </header>
 
   <section class="sheet-body">
-    <div class="grid grid-2col">
+    <div class="grid grid-3col">
       <div>
         <label for="item-accuracy-{{item._id}}">{{localize "OG.Attack.Accuracy"}}</label>
         <input name="system.accuracy" value="{{item.system.accuracy}}" type="number"
@@ -18,6 +18,11 @@
         <label for="item-damage-{{item._id}}">{{localize "OG.Global.Damage"}}</label>
         <input name="system.damage" value="{{item.system.damage}}" type="number"
                placeholder="{{localize "OG.Global.Damage"}}" id="item-damage-{{item._id}}" data-dtype="Number" />
+      </div>
+      <div>
+        <label for="item-damageNote-{{item._id}}">{{localize "OG.Attack.DamageNote"}}</label>
+        <input name="system.damageNote" value="{{item.system.damageNote}}" type="text"
+               placeholder="{{localize "OG.Attack.DamageNote"}}" id="item-damageNote-{{item._id}}" />
       </div>
     </div>
 
