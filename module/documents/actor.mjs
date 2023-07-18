@@ -14,6 +14,14 @@ export class OgActor extends Actor {
     return this.items.find((item) => 'characterClass' === item.type) ?? null;
   }
 
+  get isToughCaveman() {
+    return this.characterClass?.flags?.og.isTough ?? false;
+  }
+
+  get isEloquentCaveman() {
+    return this.characterClass?.flags.og.isEloquent ?? false;
+  }
+
   /**
    * Count knowns words. If it’s a common one, then it counts for 1, else for 2.
    *

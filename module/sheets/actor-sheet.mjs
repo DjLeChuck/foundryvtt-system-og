@@ -266,11 +266,13 @@ export class OgActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     let roll;
+    let bonus;
 
     switch (dataset.type) {
       case 'unggghhPoints':
-        // 1d6+2 (Eloquent: 1d6+4)
-        roll = new Roll('1d6+2');
+        // 1d6+3 (Thoug 1d6+6, or get X+3 from highest score)
+        bonus = this.actor.isToughCaveman ? 6 : 3;
+        roll = new Roll(`1d6+${bonus}`);
         await roll.evaluate({ async: true });
 
         await roll.toMessage({
@@ -287,8 +289,9 @@ export class OgActorSheet extends ActorSheet {
 
         break;
       case 'knownWords':
-        // 1d6+3 (Thoug 1d6+6, or to get X+3 from highest score)
-        roll = new Roll('1d6+3');
+        // 1d6+2 (Eloquent: 1d6+4, or 2 more words than any other non-Eloquent cave-man)
+        bonus = this.actor.isEloquentCaveman ? 4 : 2;
+        roll = new Roll(`1d6+${bonus}`);
         await roll.evaluate({ async: true });
 
         await roll.toMessage({
