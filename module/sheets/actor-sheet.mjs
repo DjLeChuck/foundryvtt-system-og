@@ -157,6 +157,7 @@ export class OgActorSheet extends ActorSheet {
 
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
     html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
+    html.find('[data-delete-item]').click(this._onDeleteItem.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -200,7 +201,7 @@ export class OgActorSheet extends ActorSheet {
     } else if ('word' === itemData.type) {
       const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
       if (alreadyKnown) {
-        ui.notifications.error(game.i18n.format('OG.Error.WordAlreadyKnown', { name: itemData.name }));
+        ui.notifications.error(game.i18n.format('OG.Errors.WordAlreadyKnown', { name: itemData.name }));
 
         return false;
       }
@@ -215,7 +216,7 @@ export class OgActorSheet extends ActorSheet {
     } else if ('ability' === itemData.type) {
       const alreadyKnown = this.actor.items.find((item) => item.flags?.core?.sourceId === itemData.flags?.core?.sourceId);
       if (alreadyKnown) {
-        ui.notifications.error(game.i18n.format('OG.Error.AbilityAlreadyKnown', { name: itemData.name }));
+        ui.notifications.error(game.i18n.format('OG.Errors.AbilityAlreadyKnown', { name: itemData.name }));
 
         return false;
       }
@@ -323,6 +324,18 @@ export class OgActorSheet extends ActorSheet {
     }
 
     compendium.render(true);
+  }
+
+  async _onDeleteItem(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const item = await this.actor.items.get(dataset.id);
+    if (item) {
+      await item.delete();
+    }
   }
 
   /**

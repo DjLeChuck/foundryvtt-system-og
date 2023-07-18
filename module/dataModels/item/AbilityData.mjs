@@ -4,6 +4,8 @@ export class AbilityData extends foundry.abstract.DataModel {
 
     return {
       description: new fields.HTMLField(),
+      exclusive: new fields.BooleanField(),
+      free: new fields.BooleanField(),
     };
   }
 }

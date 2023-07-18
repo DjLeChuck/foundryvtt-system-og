@@ -26,14 +26,20 @@
   "scripts": [ ],
   "packs": [
     {
-      "name": "words",
-      "label": "Words",
+      "name": "abilities",
+      "label": "Abilities",
       "type": "Item",
       "system": "og"
     },
     {
       "name": "character-classes",
       "label": "Character classes",
+      "type": "Item",
+      "system": "og"
+    },
+    {
+      "name": "words",
+      "label": "Words",
       "type": "Item",
       "system": "og"
     }
