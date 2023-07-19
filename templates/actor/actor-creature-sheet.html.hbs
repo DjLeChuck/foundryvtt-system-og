@@ -55,18 +55,18 @@
     </div>
   </header>
 
-  <section class="sheet-body">
-    <div class="flexcol">
-      {{editor system.description target="system.description" button=true editable=editable}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attacks">_Attaques</a>
+    <a class="item" data-tab="description">_Description</a>
+  </nav>
 
-      <div>{{localize "OG.Creature.Attacks"}}</div>
-      <div class="grid grid-5col">
-        {{#each attacks as |attack key|}}
-          <div class="flexrow flex-group-center">
-            {{attack.name}} ({{attack.system.accuracy}}, {{attack.system.damage}})
-          </div>
-        {{/each}}
-      </div>
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="attacks">
+      {{> "systems/og/templates/actor/parts/actor-attacks.html.hbs"}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor system.description target="system.description" button=true editable=editable}}
     </div>
   </section>
 </form>

@@ -13,7 +13,7 @@ export class OgActorSheet extends ActorSheet {
       template: 'systems/og/templates/actor/actor-sheet.html.hbs',
       width: 620,
       height: 600,
-      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'features' }],
+      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body' }],
     });
   }
 
