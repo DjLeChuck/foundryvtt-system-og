@@ -1,6 +1,7 @@
 import { OgActor } from './documents/actor.mjs';
 import { OgItem } from './documents/item.mjs';
-import { OgActorSheet } from './sheets/actor-sheet.mjs';
+import { OgCharacterSheet } from './sheets/character-sheet.mjs';
+import { OgCreatureSheet } from './sheets/creature-sheet.js';
 import { OgItemSheet } from './sheets/item-sheet.mjs';
 import { CharacterData } from './dataModels/actor/CharacterData.mjs';
 import { CreatureData } from './dataModels/actor/CreatureData.mjs';
@@ -53,7 +54,14 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('og', OgActorSheet, { makeDefault: true });
+  Actors.registerSheet('og', OgCharacterSheet, {
+    types: ['character'],
+    makeDefault: true,
+  });
+  Actors.registerSheet('og', OgCreatureSheet, {
+    types: ['creature'],
+    makeDefault: true,
+  });
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('og', OgItemSheet, { makeDefault: true });
 
