@@ -24,6 +24,7 @@ export class OgCharacterSheet extends OgActorSheet {
 
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
     html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
+    html.find('[data-learn-ability]').click(this._onLearnAbility.bind(this));
   }
 
   /**
@@ -157,5 +158,31 @@ export class OgCharacterSheet extends OgActorSheet {
     }
 
     compendium.render(true);
+  }
+
+  async _onLearnAbility(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const ability = this.actor.items.find((item) => item._id === dataset.id && 'ability' === item.type);
+    if (!ability) {
+      return;
+    }
+
+    if (
+      !ability.system.learned
+      && !ability.system.free
+      && this.actor.countKnownAbilities === this.actor.system.knownAbilities
+    ) {
+      ui.notifications.error(game.i18n.format('OG.Errors.MaxKnownAbilitiesReached', {
+        max: this.actor.system.knownAbilities,
+      }));
+
+      return;
+    }
+
+    await ability.update({ 'system.learned': !ability.system.learned });
   }
 }

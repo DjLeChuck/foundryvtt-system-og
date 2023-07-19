@@ -9,12 +9,21 @@
   <section class="sheet-body">
     {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
 
-    <label for="item-exclusive-{{item._id}}">{{localize "OG.Ability.IsExclusive"}}</label>
-    <input name="system.exclusive" type="checkbox" {{checked item.system.exclusive}}
-           placeholder="{{localize "OG.Ability.IsExclusive"}}" id="item-exclusive-{{item._id}}" />
-    <label for="item-free-{{item._id}}">{{localize "OG.Ability.IsFree"}}</label>
-    <input name="system.free" type="checkbox" {{checked item.system.free}}
-           placeholder="{{localize "OG.Ability.IsFree"}}" id="item-free-{{item._id}}" />
-    <small>{{localize "OG.Ability.FreeExplanations"}}</small>
+    <p>
+      <label for="item-exclusive-{{item._id}}">{{localize "OG.Ability.IsExclusive"}}</label>
+      <input name="system.exclusive" type="checkbox" {{checked item.system.exclusive}}
+             placeholder="{{localize "OG.Ability.IsExclusive"}}" id="item-exclusive-{{item._id}}" />
+    </p>
+    <p>
+      <label for="item-free-{{item._id}}">{{localize "OG.Ability.IsFree"}}</label>
+      <input name="system.free" type="checkbox" {{checked item.system.free}}
+             placeholder="{{localize "OG.Ability.IsFree"}}" id="item-free-{{item._id}}" />
+      <small>{{localize "OG.Ability.FreeExplanations"}}</small>
+    </p>
+    <p>
+      <label for="item-learned-{{item._id}}">{{localize "OG.Ability.IsLearned"}}</label>
+      <input name="system.learned" type="checkbox" {{checked item.system.learned}}
+             placeholder="{{localize "OG.Ability.IsLearned"}}" id="item-learned-{{item._id}}" />
+    </p>
   </section>
 </form>

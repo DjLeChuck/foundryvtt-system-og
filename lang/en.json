@@ -39,6 +39,7 @@
   "OG.Word.IsCommon": "Common?",
   "OG.Ability.IsExclusive": "Exclusive?",
   "OG.Ability.IsFree": "Free?",
+  "OG.Ability.IsLearned": "Learned?",
   "OG.Ability.FreeExplanations": "Will not count towards learned abilities.",
   "OG.Attack.Accuracy": "Accuracy",
   "OG.Attack.DamageNote": "Note about damages",

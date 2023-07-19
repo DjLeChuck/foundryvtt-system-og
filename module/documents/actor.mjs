@@ -45,7 +45,7 @@ export class OgActor extends Actor {
     if (!['character'].includes(this.type)) return 0;
 
     return this.items.reduce((accumulator, item) => 'ability' === item.type
-        ? accumulator + (item.system.free ? 0 : 1)
+        ? accumulator + (item.system.free || !item.system.learned ? 0 : 1)
         : accumulator
       , 0);
   }
