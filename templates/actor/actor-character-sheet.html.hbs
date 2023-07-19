@@ -57,66 +57,49 @@
     </div>
   </header>
 
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="words">{{localize "OG.Global.Words"}}</a>
+    <a class="item" data-tab="abilities">{{localize "OG.Global.Abilities"}}</a>
+  </nav>
+
   <section class="sheet-body">
-    <div class="flexcol">
-      <div>
-        {{localize "OG.Global.Words"}} ({{actor.countKnownWords}} / {{system.knownWords}})
-        {{#unless system.knownWords}}
-          <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
-                  data-configuration-roll data-type="knownWords">
+    <div class="tab" data-group="primary" data-tab="words">
+      <div class="flexcol">
+        <div>
+          {{localize "OG.Global.Words"}} ({{actor.countKnownWords}} / {{system.knownWords}})
+          {{#unless system.knownWords}}
+            <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
+                    data-configuration-roll data-type="knownWords">
+              <i class="far fa-lightbulb"></i>
+            </button>
+          {{/unless}}
+
+          <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseWords"}}"
+                  data-open-compendium data-name="words">
             <i class="far fa-lightbulb"></i>
           </button>
-        {{/unless}}
 
-        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseWords"}}"
-                data-open-compendium data-name="words">
-          <i class="far fa-lightbulb"></i>
-        </button>
+          <small>{{localize "OG.CharacterClass.Words.StarMarkExplanations"}}</small>
+        </div>
 
-        <small>{{localize "OG.CharacterClass.Words.StarMarkExplanations"}}</small>
+        {{> "systems/og/templates/actor/parts/actor-words.html.hbs"}}
       </div>
-
-      {{> "systems/og/templates/actor/parts/actor-features.html.hbs" features=words}}
-
-<!--      <div class="grid grid-5col">-->
-<!--        {{#each words as |word key|}}-->
-<!--          <div class="flexrow flex-group-center">-->
-<!--            <div class="grid grid-2col">-->
-<!--              {{word.name}} {{ifThen word.system.common "" "*"}}-->
-<!--              <button type="button" data-delete-item data-id="{{word._id}}"-->
-<!--                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">-->
-<!--                <i class="fas fa-trash"></i>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        {{/each}}-->
-<!--      </div>-->
     </div>
-    <div class="flexcol">
-      <div>
-        {{localize "OG.Global.Abilities"}} ({{actor.countKnownAbilities}} / {{system.knownAbilities}})
+    <div class="tab" data-group="primary" data-tab="abilities">
+      <div class="flexcol">
+        <div>
+          {{localize "OG.Global.Abilities"}} ({{actor.countKnownAbilities}} / {{system.knownAbilities}})
 
-        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseAbilities"}}"
-                data-open-compendium data-name="abilities">
-          <i class="far fa-lightbulb"></i>
-        </button>
+          <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseAbilities"}}"
+                  data-open-compendium data-name="abilities">
+            <i class="far fa-lightbulb"></i>
+          </button>
+
+          <small>{{localize "OG.CharacterClass.Abilities.StarMarkExplanations"}}</small>
+        </div>
+
+        {{> "systems/og/templates/actor/parts/actor-abilities.html.hbs"}}
       </div>
-
-      {{> "systems/og/templates/actor/parts/actor-features.html.hbs" features=abilities}}
-
-<!--      <div class="grid grid-4col">-->
-<!--        {{#each abilities as |ability key|}}-->
-<!--          <div class="flexrow flex-group-center">-->
-<!--            <div class="grid grid-2col">-->
-<!--              {{ability.name}}-->
-<!--              <button type="button" data-delete-item data-id="{{ability._id}}"-->
-<!--                      title="{{localize "OG.CharacterClass.Tooltips.DeleteItem"}}">-->
-<!--                <i class="fas fa-trash"></i>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        {{/each}}-->
-<!--      </div>-->
     </div>
   </section>
 </form>

@@ -85,6 +85,26 @@ export class OgActor extends Actor {
     this._prepareCreatureData(actorData);
   }
 
+  /** @override */
+  async _preCreate(data, options, userId) {
+    await super._preCreate(data, options, userId);
+
+    if (data.type !== 'character') return;
+
+    const abilities = await game.packs.get('og.abilities').getDocuments();
+    const items = [];
+
+    abilities.forEach((item) => items.push(foundry.utils.duplicate(item)));
+
+    items.sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+
+    this.updateSource({
+      items,
+    });
+  }
+
   /**
    * Prepare Character type specific data
    */

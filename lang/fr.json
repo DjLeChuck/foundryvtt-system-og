@@ -26,6 +26,7 @@
   "OG.CharacterClass.Tooltips.DeleteItem": "Supprimer cet objet",
   "OG.CharacterClass.Notifications.HasUnggghhPoints": "{name} possède {total} points d’Unggghh.",
   "OG.CharacterClass.Notifications.KnownWords": "{name} connaît {total} mots.",
+  "OG.CharacterClass.Abilities.StarMarkExplanations": "Les capacités marquées d'un \"*\" sont gratuites ; elles ne comptent pas.",
   "OG.CharacterClass.Words.StarMarkExplanations": "Les mots marqués d'un \"*\" sont rares ; ils comptent pour 2.",
   "OG.Creature.CavemanName": "Nom pour l’homme des cavernes",
   "OG.Creature.Armor": "Armure",

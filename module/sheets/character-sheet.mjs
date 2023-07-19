@@ -2,6 +2,13 @@ import { OgActorSheet } from './actor-sheet.mjs';
 
 export class OgCharacterSheet extends OgActorSheet {
   /** @override */
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'words' }],
+    });
+  }
+
+  /** @override */
   getData() {
     const context = super.getData();
 
