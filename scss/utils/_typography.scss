@@ -1,2 +1,7 @@
-$font-primary: 'Roboto', sans-serif;
-$font-secondary: 'Roboto', sans-serif;
+@font-face {
+  font-family: 'HoeflerText';
+  src: url('../fonts/hoefler-text.ttf') format('truetype');
+}
+
+$font-primary: 'HoeflerText', sans-serif;
+$font-secondary: 'HoeflerText', sans-serif;
