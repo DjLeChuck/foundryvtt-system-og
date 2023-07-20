@@ -208,17 +208,28 @@ export class OgCharacterSheet extends OgActorSheet {
       return;
     }
 
-    const roll = new Roll(`1d6 - (@target.evade + @target.armor)`, {
-      ...this.actor.getRollData(),
-      target: target.actor.getRollData(),
-    });
+    const { evade, armor } = target.actor.system;
+
+    const roll = new Roll(`1d6 - ${(evade + armor)}`, this.actor.getRollData());
+
+    await roll.evaluate({ async: true });
 
     await roll.toMessage({
+      flags: {
+        og: {
+          attack: true,
+          success: roll.total >= this.actor.system.attack,
+          target: target.id,
+          damage: this.actor.system.damage,
+        },
+      },
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: '_Jet d’attaque',
+      flavor: await renderTemplate('systems/og/templates/chat/attack/flavor.html.hbs', {
+        evade,
+        armor,
+        targetName: target.name,
+      }),
       rollMode: game.settings.get('core', 'rollMode'),
     });
-
-    return;
   }
 }

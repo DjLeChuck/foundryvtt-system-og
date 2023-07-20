@@ -1,4 +1,5 @@
 import { OgActor } from './documents/actor.mjs';
+import { OgChatMessage } from './documents/chat-message.mjs';
 import { OgItem } from './documents/item.mjs';
 import { OgCharacterSheet } from './sheets/character-sheet.mjs';
 import { OgCreatureSheet } from './sheets/creature-sheet.js';
@@ -39,6 +40,7 @@ Hooks.once('init', async function () {
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = OgActor;
+  CONFIG.ChatMessage.documentClass = OgChatMessage;
   CONFIG.Item.documentClass = OgItem;
 
   // Register custom Data Model

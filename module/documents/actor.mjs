@@ -50,6 +50,22 @@ export class OgActor extends Actor {
       , 0);
   }
 
+  async applyDamage(amount = 0, multiplier = 1) {
+    amount = Math.floor(parseInt(amount.toString()) * multiplier);
+    const hp = this.system.unggghhPoints;
+    if (!hp) {
+      return this;
+    }
+
+    // Remaining goes to health
+    const dh = Math.clamped(hp.value - amount, 0, Math.max(0, hp.max));
+
+    // Update the Actor
+    this.update({
+      'system.unggghhPoints.value': dh,
+    });
+  }
+
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes

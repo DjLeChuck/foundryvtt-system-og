@@ -50,5 +50,6 @@
   "OG.Errors.WordAlreadyKnown": "You already know the word {name}.",
   "OG.Errors.Attack.NoTargetSelected": "You must target the token to attack.",
   "OG.Errors.Attack.MaxOneTarget": "You cannot target more than one token.",
-  "OG.Errors.Attack.TargetOnlyCreature": "You can only target creatures."
+  "OG.Errors.Attack.TargetOnlyCreature": "You can only target creatures.",
+  "OG.Errors.Attack.TargetNotExists": "The target of the attack does not exists."
 }
