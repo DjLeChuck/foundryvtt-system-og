@@ -18,6 +18,15 @@ export class OgCreatureSheet extends OgActorSheet {
     return context;
   }
 
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    if (!this.isEditable) return;
+
+    html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
+  }
+
   _prepareData(context) {
     context.eatingHabitsChoices = {
       carnivorous: 'OG.Creature.EatingHabits.Carnivorous',
@@ -45,5 +54,30 @@ export class OgCreatureSheet extends OgActorSheet {
     }
 
     context.attacks = attacks;
+  }
+
+  async _onRollAttack(event) {
+    event.preventDefault();
+
+    const target = this._getTarget();
+    if (!target) {
+      return;
+    }
+
+    const attackItem = await this.actor.items.get(event.currentTarget.dataset.id);
+    if (!attackItem) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.AttackNotFound'));
+
+      return;
+    }
+
+    const { evade } = target.actor.system;
+
+    await this._doRollAttack(
+      evade,
+      attackItem.system.accuracy,
+      attackItem.system.damage,
+      { evade },
+    );
   }
 }

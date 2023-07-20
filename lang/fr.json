@@ -51,5 +51,6 @@
   "OG.Errors.Attack.NoTargetSelected": "Vous devez cibler le token à attaquer.",
   "OG.Errors.Attack.MaxOneTarget": "Vous ne pouvez pas cibler plus d’un token.",
   "OG.Errors.Attack.TargetOnlyCreature": "Vous ne pouvez cibler que des créatures.",
-  "OG.Errors.Attack.TargetNotExists": "La cible de l’attaque n’existe pas."
+  "OG.Errors.Attack.TargetNotExists": "La cible de l’attaque n’existe pas.",
+  "OG.Errors.Attack.AttackNotFound": "Attaque introuvable."
 }

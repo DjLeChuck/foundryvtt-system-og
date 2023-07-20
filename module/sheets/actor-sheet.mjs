@@ -1,4 +1,4 @@
-import { onManageActiveEffect, prepareActiveEffectCategories } from '../helpers/effects.mjs';
+import { onManageActiveEffect } from '../helpers/effects.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -191,5 +191,52 @@ export class OgActorSheet extends ActorSheet {
       });
       return roll;
     }
+  }
+
+  /**
+   * @returns {Token|null}
+   * @protected
+   */
+  _getTarget() {
+    const targets = game.user?.targets;
+    if (0 === targets.size) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.NoTargetSelected'));
+
+      return null;
+    } else if (1 !== targets.size) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.MaxOneTarget'));
+
+      return null;
+    }
+
+    return targets.first();
+  }
+
+  async _doRollAttack(malus, successValue, damageValue, flavorExtraData) {
+    const target = this._getTarget();
+    if (!target) {
+      return;
+    }
+
+    const roll = new Roll(`1d6 - ${malus}`);
+
+    await roll.evaluate({ async: true });
+
+    await roll.toMessage({
+      flags: {
+        og: {
+          attack: true,
+          success: roll.total >= successValue,
+          target: target.id,
+          damage: damageValue,
+        },
+      },
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      flavor: await renderTemplate('systems/og/templates/chat/attack/flavor.html.hbs', {
+        ...flavorExtraData,
+        targetName: target.name,
+      }),
+      rollMode: game.settings.get('core', 'rollMode'),
+    });
   }
 }

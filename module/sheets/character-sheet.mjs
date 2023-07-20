@@ -17,6 +17,7 @@ export class OgCharacterSheet extends OgActorSheet {
     return context;
   }
 
+  /** @override */
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -187,49 +188,37 @@ export class OgCharacterSheet extends OgActorSheet {
     await ability.update({ 'system.learned': !ability.system.learned });
   }
 
-  async _onRollAttack(event) {
-    event.preventDefault();
-
-    const targets = game.user?.targets;
-    if (0 === targets.size) {
-      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.NoTargetSelected'));
-
-      return;
-    } else if (1 !== targets.size) {
-      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.MaxOneTarget'));
-
-      return;
+  /** @override */
+  _getTarget() {
+    const target = super._getTarget();
+    if (!target) {
+      return null;
     }
 
-    const target = targets.first();
     if ('creature' !== target?.actor.type) {
       ui.notifications.error(game.i18n.localize('OG.Errors.Attack.TargetOnlyCreature'));
 
+      return false;
+    }
+
+    return target;
+  }
+
+  async _onRollAttack(event) {
+    event.preventDefault();
+
+    const target = this._getTarget();
+    if (!target) {
       return;
     }
 
     const { evade, armor } = target.actor.system;
 
-    const roll = new Roll(`1d6 - ${(evade + armor)}`, this.actor.getRollData());
-
-    await roll.evaluate({ async: true });
-
-    await roll.toMessage({
-      flags: {
-        og: {
-          attack: true,
-          success: roll.total >= this.actor.system.attack,
-          target: target.id,
-          damage: this.actor.system.damage,
-        },
-      },
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: await renderTemplate('systems/og/templates/chat/attack/flavor.html.hbs', {
-        evade,
-        armor,
-        targetName: target.name,
-      }),
-      rollMode: game.settings.get('core', 'rollMode'),
-    });
+    await this._doRollAttack(
+      evade + armor,
+      this.actor.system.attack,
+      this.actor.system.damage,
+      { evade, armor },
+    );
   }
 }
