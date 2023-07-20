@@ -47,5 +47,8 @@
   "OG.Errors.MaxKnownAbilitiesReached": "You know only {max} abilities.",
   "OG.Errors.MaxKnownWordsReached": "You know only {max} words.",
   "OG.Errors.AbilityAlreadyKnown": "You already know the ability {name}.",
-  "OG.Errors.WordAlreadyKnown": "You already know the word {name}."
+  "OG.Errors.WordAlreadyKnown": "You already know the word {name}.",
+  "OG.Errors.Attack.NoTargetSelected": "You must target the token to attack.",
+  "OG.Errors.Attack.MaxOneTarget": "You cannot target more than one token.",
+  "OG.Errors.Attack.TargetOnlyCreature": "You can only target creatures."
 }

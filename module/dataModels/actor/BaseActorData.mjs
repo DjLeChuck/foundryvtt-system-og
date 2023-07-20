@@ -21,6 +21,8 @@ export class BaseActorData extends foundry.abstract.DataModel {
         }),
       }),
       evade: new fields.NumberField({
+        required: true,
+        initial: 0,
         integer: true,
       }),
     };

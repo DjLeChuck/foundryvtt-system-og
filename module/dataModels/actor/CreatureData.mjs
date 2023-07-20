@@ -10,6 +10,8 @@ export class CreatureData extends BaseActorData {
         required: true,
       }),
       armor: new fields.NumberField({
+        required: true,
+        initial: 0,
         integer: true,
       }),
       eatingHabits: new fields.StringField({

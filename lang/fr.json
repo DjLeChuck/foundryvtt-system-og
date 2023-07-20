@@ -47,5 +47,8 @@
   "OG.Errors.MaxKnownAbilitiesReached": "Vous ne connaissez que {max} capacités.",
   "OG.Errors.MaxKnownWordsReached": "Vous ne connaissez que {max} mots.",
   "OG.Errors.AbilityAlreadyKnown": "Vous connaissez déjà la capacité {name}.",
-  "OG.Errors.WordAlreadyKnown": "Vous connaissez déjà le mot {name}."
+  "OG.Errors.WordAlreadyKnown": "Vous connaissez déjà le mot {name}.",
+  "OG.Errors.Attack.NoTargetSelected": "Vous devez cibler le token à attaquer.",
+  "OG.Errors.Attack.MaxOneTarget": "Vous ne pouvez pas cibler plus d’un token.",
+  "OG.Errors.Attack.TargetOnlyCreature": "Vous ne pouvez cibler que des créatures."
 }

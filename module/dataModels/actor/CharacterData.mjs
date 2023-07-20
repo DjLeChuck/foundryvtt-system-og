@@ -25,11 +25,6 @@ export class CharacterData extends BaseActorData {
         initial: 1,
         integer: true,
       }),
-      evade: new fields.NumberField({
-        required: true,
-        initial: 0,
-        integer: true,
-      }),
     });
   }
 }

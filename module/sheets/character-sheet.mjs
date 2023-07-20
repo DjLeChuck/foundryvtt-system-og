@@ -25,6 +25,7 @@ export class OgCharacterSheet extends OgActorSheet {
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
     html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
     html.find('[data-learn-ability]').click(this._onLearnAbility.bind(this));
+    html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
   }
 
   /**
@@ -184,5 +185,40 @@ export class OgCharacterSheet extends OgActorSheet {
     }
 
     await ability.update({ 'system.learned': !ability.system.learned });
+  }
+
+  async _onRollAttack(event) {
+    event.preventDefault();
+
+    const targets = game.user?.targets;
+    if (0 === targets.size) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.NoTargetSelected'));
+
+      return;
+    } else if (1 !== targets.size) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.MaxOneTarget'));
+
+      return;
+    }
+
+    const target = targets.first();
+    if ('creature' !== target?.actor.type) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Attack.TargetOnlyCreature'));
+
+      return;
+    }
+
+    const roll = new Roll(`1d6 - (@target.evade + @target.armor)`, {
+      ...this.actor.getRollData(),
+      target: target.actor.getRollData(),
+    });
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      flavor: '_Jet d’attaque',
+      rollMode: game.settings.get('core', 'rollMode'),
+    });
+
+    return;
   }
 }
