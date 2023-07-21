@@ -1,0 +1,29 @@
+{
+  "name": "Pteranodon",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 14,
+      "min": 14,
+      "max": 14
+    },
+    "cavemanName": "Big Shiny Go Thing",
+    "evade": 1,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "1/2"
+  },
+  "items": [
+    {
+      "name": "beak peck",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

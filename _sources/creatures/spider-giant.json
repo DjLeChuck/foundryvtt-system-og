@@ -1,0 +1,28 @@
+{
+  "name": "Giant Spider",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 14,
+      "min": 14,
+      "max": 14
+    },
+    "cavemanName": "Hairy Cave Thing",
+    "armor": 1,
+    "eatingHabits": "carnivorous",
+    "foodValue": null
+  },
+  "items": [
+    {
+      "name": "mandible",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "damageNote": "A successful bite injects a caveman with venom. Each round thereafter, the caveman gets a Resistance roll to see if he shrugs off the poison. On a success, he takes no damage this round and need not roll again against the bite of that particular giant spider. On a failure, he takes 1 damage. Effects of multiple spider bites are not cumulative."
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Brontotherium",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 28,
+      "min": 28,
+      "max": 28
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Hairy Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "8"
+  },
+  "items": [
+    {
+      "name": "horn",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 3,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

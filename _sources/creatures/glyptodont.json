@@ -1,0 +1,17 @@
+{
+  "name": "Glyptodont",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 8,
+      "min": 8,
+      "max": 8
+    },
+    "cavemanName": "Rock Thing",
+    "armor": 3,
+    "eatingHabits": "herbivorous",
+    "foodValue": "8"
+  },
+  "items": []
+}

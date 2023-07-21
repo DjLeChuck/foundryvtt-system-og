@@ -1,0 +1,53 @@
+{
+  "name": "Cave Bear",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 32,
+      "min": 32,
+      "max": 32
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Hairy Cave Smelly",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "9"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "right paw swipe",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "left paw swipe",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

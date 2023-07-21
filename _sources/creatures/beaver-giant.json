@@ -1,0 +1,42 @@
+{
+  "name": "Giant Beaver",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 6,
+      "min": 6,
+      "max": 6
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Hairy Water Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "3"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "tail slap",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

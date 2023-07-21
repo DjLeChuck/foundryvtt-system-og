@@ -1,0 +1,31 @@
+{
+  "name": "Dinohyus (Terrible Pig)",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 12,
+      "min": 12,
+      "max": 12
+    },
+    "evade": 1,
+    "description": "",
+    "cavemanName": "Big Smelly",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "4"
+  },
+  "items": [
+    {
+      "name": "tusk",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

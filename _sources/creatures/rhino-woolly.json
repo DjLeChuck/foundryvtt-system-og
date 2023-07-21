@@ -1,0 +1,28 @@
+{
+  "name": "Woolly Rhino",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 20,
+      "min": 20,
+      "max": 20
+    },
+    "cavemanName": "Hairy Bang Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "6"
+  },
+  "items": [
+    {
+      "name": "horn",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 2,
+        "damageNote": "Damage is 3 immediately following a charge, a maneuver it uses when entering a fight."
+      }
+    }
+  ]
+}

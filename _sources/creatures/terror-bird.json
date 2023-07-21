@@ -1,0 +1,39 @@
+{
+  "name": "Terror Bird",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 12,
+      "min": 12,
+      "max": 12
+    },
+    "cavemanName": "Shiny Rock Thing",
+    "evade": 1,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "2"
+  },
+  "items": [
+    {
+      "name": "peck",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "right talon slash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "damageNote": ""
+      }
+    }
+  ]
+}

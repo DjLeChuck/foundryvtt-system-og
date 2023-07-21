@@ -32,6 +32,12 @@
   "scripts": [ ],
   "packs": [
     {
+      "name": "creatures",
+      "label": "Creatures",
+      "type": "Actor",
+      "system": "og"
+    },
+    {
       "name": "abilities",
       "label": "Abilities",
       "type": "Item",

@@ -1,0 +1,29 @@
+{
+  "name": "Wolf, Dire",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 6,
+      "min": 6,
+      "max": 6
+    },
+    "cavemanName": "Hairy Thing",
+    "evade": null,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "1"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

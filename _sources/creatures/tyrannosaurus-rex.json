@@ -1,0 +1,29 @@
+{
+  "name": "Tyrannosaurus Rex",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 40,
+      "min": 40,
+      "max": 40
+    },
+    "cavemanName": "Big Big Smelly Bang Thing",
+    "evade": null,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "9"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 4,
+        "damageNote": ""
+      }
+    }
+  ]
+}

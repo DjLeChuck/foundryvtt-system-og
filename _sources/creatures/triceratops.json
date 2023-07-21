@@ -1,0 +1,48 @@
+{
+  "name": "Triceratops",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 36,
+      "min": 36,
+      "max": 36
+    },
+    "cavemanName": "Big Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "14"
+  },
+  "items": [
+    {
+      "name": "all three horns",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 4,
+        "damageNote": "Counts as one attack."
+      }
+    },
+    {
+      "name": "right forward stomp",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 2,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "left forward stomp",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 6,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

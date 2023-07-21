@@ -1,0 +1,29 @@
+{
+  "name": "Monkey-Man",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 0,
+      "min": 0,
+      "max": 0
+    },
+    "cavemanName": "Hairy Smelly",
+    "evade": null,
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "1"
+  },
+  "items": [
+    {
+      "name": "fight like cavemen",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": null,
+        "damage": null,
+        "damageNote": ""
+      }
+    }
+  ]
+}

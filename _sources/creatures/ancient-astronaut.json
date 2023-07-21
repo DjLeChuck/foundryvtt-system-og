@@ -1,0 +1,31 @@
+{
+  "name": "Ancient Astronaut",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 6,
+      "min": 6,
+      "max": 6
+    },
+    "evade": 1,
+    "description": "",
+    "cavemanName": "Shiny Sleep Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": ""
+  },
+  "items": [
+    {
+      "name": "Ray gun",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 6,
+        "description": "Ray gun can be used from up to 50 feet away.",
+        "damageNote": "or puts caveman to sleep."
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Giant Leech",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 6,
+      "min": 6,
+      "max": 6
+    },
+    "cavemanName": "Smelly Water Thing",
+    "evade": null,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": null
+  },
+  "items": [
+    {
+      "name": "blood-draining bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "damageNote": "After hitting once, it has attached its sucker to the victim and continues to do 1 point of damage per round until it is killed, it is somehow dislodged, or the victim dies."
+      }
+    }
+  ]
+}

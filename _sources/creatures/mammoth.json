@@ -1,0 +1,48 @@
+{
+  "name": "Mammoth",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 28,
+      "min": 28,
+      "max": 28
+    },
+    "cavemanName": "Big Hairy",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "14"
+  },
+  "items": [
+    {
+      "name": "tusk",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 3,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "right forward stomp",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 2,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "left forward stomp",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

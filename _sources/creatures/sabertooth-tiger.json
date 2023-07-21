@@ -1,0 +1,39 @@
+{
+  "name": "Sabertooth Tiger",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 16,
+      "min": 16,
+      "max": 16
+    },
+    "cavemanName": "Hairy Thing",
+    "evade": 1,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "3"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 3,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "claw slash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

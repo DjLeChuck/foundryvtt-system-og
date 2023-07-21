@@ -1,0 +1,31 @@
+{
+  "name": "Allosaurus",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 24,
+      "min": 24,
+      "max": 24
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Smelly Bang Thing",
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "7"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 4,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

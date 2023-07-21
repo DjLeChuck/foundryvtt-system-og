@@ -1,0 +1,42 @@
+{
+  "name": "Big Cat",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 16,
+      "min": 16,
+      "max": 16
+    },
+    "evade": 1,
+    "description": "",
+    "cavemanName": "Hairy Thing",
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "3"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "claw slash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

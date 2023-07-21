@@ -1,0 +1,29 @@
+{
+  "name": "Giant Carnivorous Kangaroo (Ekaltadeta)",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 9,
+      "min": 9,
+      "max": 9
+    },
+    "evade": 1,
+    "cavemanName": "Hairy Go Go Thing",
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "1"
+  },
+  "items": [
+    {
+      "name": "tooth stab",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

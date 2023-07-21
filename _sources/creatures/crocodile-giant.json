@@ -1,0 +1,42 @@
+{
+  "name": "Giant Crocodile",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 24,
+      "min": 24,
+      "max": 24
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Big Water Smelly",
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "4"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 3,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "tail lash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

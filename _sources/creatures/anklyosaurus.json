@@ -1,0 +1,31 @@
+{
+  "name": "Anklyosaurus",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 36,
+      "min": 36,
+      "max": 36
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Thing",
+    "armor": 3,
+    "eatingHabits": "herbivorous",
+    "foodValue": "7"
+  },
+  "items": [
+    {
+      "name": "clubbed tail",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 3,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

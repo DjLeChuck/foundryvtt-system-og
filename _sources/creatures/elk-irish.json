@@ -1,0 +1,28 @@
+{
+  "name": "Irish Elk",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 12,
+      "min": 12,
+      "max": 12
+    },
+    "cavemanName": "Hairy Food Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "8"
+  },
+  "items": [
+    {
+      "name": "antler swipe",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

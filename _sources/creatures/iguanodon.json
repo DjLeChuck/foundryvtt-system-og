@@ -1,0 +1,28 @@
+{
+  "name": "Iguanodon",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 20,
+      "min": 20,
+      "max": 20
+    },
+    "cavemanName": "Big Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "28"
+  },
+  "items": [
+    {
+      "name": "tail lash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "damageNote": ""
+      }
+    }
+  ]
+}

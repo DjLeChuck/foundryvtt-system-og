@@ -1,0 +1,31 @@
+{
+  "name": "Baluchitherium",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 32,
+      "min": 32,
+      "max": 32
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Big Food Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "14"
+  },
+  "items": [
+    {
+      "name": "stomp",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

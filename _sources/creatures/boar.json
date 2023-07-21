@@ -1,0 +1,31 @@
+{
+  "name": "Boar",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 4,
+      "min": 4,
+      "max": 4
+    },
+    "evade": 2,
+    "description": "",
+    "cavemanName": "Small Smelly",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "2"
+  },
+  "items": [
+    {
+      "name": "tusk",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

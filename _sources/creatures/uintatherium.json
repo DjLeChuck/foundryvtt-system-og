@@ -1,0 +1,28 @@
+{
+  "name": "Uintatherium",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 24,
+      "min": 24,
+      "max": 24
+    },
+    "cavemanName": "Big Bang Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "8"
+  },
+  "items": [
+    {
+      "name": "head bash",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "damageNote": ""
+      }
+    }
+  ]
+}

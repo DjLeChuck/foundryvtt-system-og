@@ -1,0 +1,39 @@
+{
+  "name": "Velociraptor",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 4,
+      "min": 4,
+      "max": 4
+    },
+    "cavemanName": "Go Go Thing",
+    "evade": 2,
+    "armor": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": "meal"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 2,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "foreclaw",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 4,
+        "damageNote": ""
+      }
+    }
+  ]
+}

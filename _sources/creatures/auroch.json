@@ -1,0 +1,42 @@
+{
+  "name": "Auroch",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 8,
+      "min": 8,
+      "max": 8
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Big Food Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "4"
+  },
+  "items": [
+    {
+      "name": "horns",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "trample",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 1,
+        "description": "Cows get only the trample attack.",
+        "damageNote": ""
+      }
+    }
+  ]
+}

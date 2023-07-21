@@ -1,0 +1,53 @@
+{
+  "name": "Black Bear",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 8,
+      "min": 8,
+      "max": 8
+    },
+    "evade": null,
+    "description": "",
+    "cavemanName": "Hairy Cave Smelly",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "2"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "right paw swipe",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "left paw swipe",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

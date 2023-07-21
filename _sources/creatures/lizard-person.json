@@ -1,0 +1,29 @@
+{
+  "name": "Lizard Person",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 9,
+      "min": 9,
+      "max": 9
+    },
+    "armor": 1,
+    "cavemanName": "Smelly Cave Thing",
+    "evade": null,
+    "eatingHabits": "carnivorous",
+    "foodValue": null
+  },
+  "items": [
+    {
+      "name": "treat as Banging caveman",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": null,
+        "damage": null,
+        "damageNote": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Ape",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 5,
+      "min": 5,
+      "max": 5
+    },
+    "evade": 1,
+    "description": "",
+    "cavemanName": "Hairy Big Stick Thing",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "meal"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Gorilla",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 9,
+      "min": 9,
+      "max": 9
+    },
+    "evade": 1,
+    "cavemanName": "Hairy Big Stick Thing",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "1"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 2,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "right fist pummel",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 5,
+        "damage": 1,
+        "damageNote": ""
+      }
+    }
+  ]
+}

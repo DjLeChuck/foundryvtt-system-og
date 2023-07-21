@@ -1,0 +1,39 @@
+{
+  "name": "Gigantopithecus",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 15,
+      "min": 15,
+      "max": 15
+    },
+    "evade": 1,
+    "cavemanName": "Big Hairy",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "5"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "damageNote": ""
+      }
+    },
+    {
+      "name": "arm pull",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 2,
+        "damage": 2,
+        "damageNote": "The gigantopithecus grabs your arm and attempts to tear it out of its socket. If it reduces you to 0 Unggghh Points, he does indeed tear your arm off, and you die of shock and blood loss."
+      }
+    }
+  ]
+}

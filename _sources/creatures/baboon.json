@@ -1,0 +1,31 @@
+{
+  "name": "Baboon",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 4,
+      "min": 4,
+      "max": 4
+    },
+    "evade": 1,
+    "description": "",
+    "cavemanName": "Hairy Thing",
+    "armor": null,
+    "eatingHabits": "omnivorous",
+    "foodValue": "meal"
+  },
+  "items": [
+    {
+      "name": "bite",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 4,
+        "damage": 1,
+        "description": "",
+        "damageNote": ""
+      }
+    }
+  ]
+}

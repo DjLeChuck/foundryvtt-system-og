@@ -1,0 +1,28 @@
+{
+  "name": "Stegosaurus",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "unggghhPoints": {
+      "value": 32,
+      "min": 32,
+      "max": 32
+    },
+    "cavemanName": "Big Rock Thing",
+    "armor": null,
+    "eatingHabits": "herbivorous",
+    "foodValue": "12"
+  },
+  "items": [
+    {
+      "name": "thagomizer",
+      "type": "attack",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "accuracy": 3,
+        "damage": 6,
+        "damageNote": ""
+      }
+    }
+  ]
+}
