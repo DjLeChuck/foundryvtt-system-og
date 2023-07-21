@@ -207,21 +207,16 @@ export class OgCharacterSheet extends OgActorSheet {
     }
 
     const aim = ability.system.learned ? 3 : 5;
-    const roll = new Roll('1d6');
+    const roll = new Roll(`1d6xo6cs>=${aim}`);
 
     await roll.evaluate({ async: true });
 
-    const success = roll.total >= aim;
-
     await roll.toMessage({
-      flags: {
-        og: {
-          success,
-        },
-      },
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       flavor: await renderTemplate('systems/og/templates/chat/ability/flavor.html.hbs', {
-        success,
+        wildySuccess: 2 === roll.total,
+        success: 1 === roll.total,
+        failure: 0 === roll.total,
         ability,
       }),
       rollMode: game.settings.get('core', 'rollMode'),

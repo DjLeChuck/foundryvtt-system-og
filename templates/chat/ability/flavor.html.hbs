@@ -1,8 +1,11 @@
 <div><strong>{{ability.name}}</strong></div>
 
+{{#if wildySuccess}}
+  <div>{{localize "OG.Ability.Roll.WildlySuccess"}}</div>
+{{/if}}
 {{#if success}}
   <div>{{localize "OG.Global.Success"}}</div>
 {{/if}}
-{{#unless success}}
+{{#if failure}}
   <div>{{localize "OG.Global.Failure"}}</div>
-{{/unless}}
+{{/if}}

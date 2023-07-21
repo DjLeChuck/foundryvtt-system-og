@@ -43,6 +43,7 @@
   "OG.Ability.IsFree": "Free?",
   "OG.Ability.IsLearned": "Learned?",
   "OG.Ability.FreeExplanations": "Will not count towards learned abilities.",
+  "OG.Ability.Roll.WildlySuccess": "Wildly Success!",
   "OG.Attack.Accuracy": "Accuracy",
   "OG.Attack.DamageNote": "Note about damages",
   "OG.Errors.CompendiumNotFound": "The compendium {name} is not found!",
