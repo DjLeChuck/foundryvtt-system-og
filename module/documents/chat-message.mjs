@@ -9,10 +9,13 @@ export class OgChatMessage extends ChatMessage {
 
     $html.html($html.html() + await renderTemplate('systems/og/templates/chat/attack/damage-button.html.hbs', {}));
 
+    this._displayChatActionButtons($html[0]);
+    this._listeners($html[0]);
+
     return $html;
   }
 
-  static listeners(html) {
+  _listeners(html) {
     html.querySelector('[data-damage]').addEventListener('click', (event) => {
       event.preventDefault();
       event.currentTarget.blur();
@@ -28,15 +31,11 @@ export class OgChatMessage extends ChatMessage {
     });
   }
 
-  static onRenderMessage(app, html, data) {
-    OgChatMessage._displayChatActionButtons(html[0]);
-  }
-
-  static _displayChatActionButtons(html) {
+  _displayChatActionButtons(html) {
     if (!game.user.isGM) {
       return;
     }
 
-    html.querySelectorAll('[data-action-buttons]').forEach((el) => el.classList.remove('hidden'));
+    html.querySelector('[data-action-buttons]')?.classList.remove('hidden');
   }
 }

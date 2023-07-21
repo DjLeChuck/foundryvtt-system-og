@@ -110,10 +110,6 @@ Hooks.once('ready', async function () {
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
 });
 
-Hooks.on('renderChatMessage', OgChatMessage.onRenderMessage);
-Hooks.on("getChatLogEntryContext", (html, options) => console.warn(options));
-Hooks.on('renderChatLog', (app, html) => OgChatMessage.listeners(html[0]));
-
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
 
