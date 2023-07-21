@@ -77,9 +77,6 @@ export class OgActorSheet extends ActorSheet {
     // Active Effect management
     html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.actor));
 
-    // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
-
     html.find('[data-delete-item]').click(this._onDeleteItem.bind(this));
 
     // Drag events for macros.
@@ -158,38 +155,6 @@ export class OgActorSheet extends ActorSheet {
     const item = await this.actor.items.get(dataset.id);
     if (item) {
       await item.delete();
-    }
-  }
-
-  /**
-   * Handle clickable rolls.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onRoll(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-
-    // Handle item rolls.
-    if (dataset.rollType) {
-      if (dataset.rollType === 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
-      }
-    }
-
-    // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
-      });
-      return roll;
     }
   }
 

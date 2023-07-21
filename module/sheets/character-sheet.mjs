@@ -26,6 +26,7 @@ export class OgCharacterSheet extends OgActorSheet {
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
     html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
     html.find('[data-learn-ability]').click(this._onLearnAbility.bind(this));
+    html.find('[data-roll-ability]').click(this._onRollAbility.bind(this));
     html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
   }
 
@@ -186,6 +187,45 @@ export class OgCharacterSheet extends OgActorSheet {
     }
 
     await ability.update({ 'system.learned': !ability.system.learned });
+  }
+
+  async _onRollAbility(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const ability = this.actor.items.find((item) => item._id === dataset.id && 'ability' === item.type);
+    if (!ability) {
+      return;
+    }
+
+    if (ability.system.exclusive && !ability.system.learned) {
+      ui.notifications.error(game.i18n.localize('OG.Errors.Ability.ExclusiveNotLearned'));
+
+      return;
+    }
+
+    const aim = ability.system.learned ? 3 : 5;
+    const roll = new Roll('1d6');
+
+    await roll.evaluate({ async: true });
+
+    const success = roll.total >= aim;
+
+    await roll.toMessage({
+      flags: {
+        og: {
+          success,
+        },
+      },
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      flavor: await renderTemplate('systems/og/templates/chat/ability/flavor.html.hbs', {
+        success,
+        ability,
+      }),
+      rollMode: game.settings.get('core', 'rollMode'),
+    });
   }
 
   /** @override */

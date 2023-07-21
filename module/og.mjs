@@ -101,6 +101,10 @@ Handlebars.registerHelper('length', function (value) {
   return value.length;
 });
 
+Handlebars.registerHelper('abilityUsable', function (ability) {
+  return ability.system.learned || !ability.system.exclusive;
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
