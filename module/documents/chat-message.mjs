@@ -9,7 +9,11 @@ export class OgChatMessage extends ChatMessage {
 
     $html.html($html.html() + await renderTemplate('systems/og/templates/chat/attack/damage-button.html.hbs', {}));
 
-    $html[0].querySelector('[data-damage]').addEventListener('click', (event) => {
+    return $html;
+  }
+
+  static listeners(html) {
+    html.querySelector('[data-damage]').addEventListener('click', (event) => {
       event.preventDefault();
       event.currentTarget.blur();
 
@@ -22,7 +26,17 @@ export class OgChatMessage extends ChatMessage {
 
       target.actor.applyDamage(this.getFlag('og', 'damage'));
     });
+  }
 
-    return $html;
+  static onRenderMessage(app, html, data) {
+    OgChatMessage._displayChatActionButtons(html[0]);
+  }
+
+  static _displayChatActionButtons(html) {
+    if (!game.user.isGM) {
+      return;
+    }
+
+    html.querySelectorAll('[data-action-buttons]').forEach((el) => el.classList.remove('hidden'));
   }
 }
