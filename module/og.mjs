@@ -2,7 +2,8 @@ import { OgActor } from './documents/actor.mjs';
 import { OgChatMessage } from './documents/chat-message.mjs';
 import { OgItem } from './documents/item.mjs';
 import { OgCharacterSheet } from './sheets/character-sheet.mjs';
-import { OgCreatureSheet } from './sheets/creature-sheet.js';
+import { OgCreatureSheet } from './sheets/creature-sheet.mjs';
+import { OgAbilitySheet } from './sheets/ability-sheet.mjs';
 import { OgItemSheet } from './sheets/item-sheet.mjs';
 import { CharacterData } from './dataModels/actor/CharacterData.mjs';
 import { CreatureData } from './dataModels/actor/CreatureData.mjs';
@@ -63,7 +64,14 @@ Hooks.once('init', async function () {
     makeDefault: true,
   });
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('og', OgItemSheet, { makeDefault: true });
+  Items.registerSheet('og', OgAbilitySheet, {
+    types: ['ability'],
+    makeDefault: true,
+  });
+  Items.registerSheet('og', OgItemSheet, {
+    types: ['attack', 'characterClass', 'skill', 'word'],
+    makeDefault: true,
+  });
 
   // Load fonts
   CONFIG.fontDefinitions['StoneyBilly'] = {
@@ -128,10 +136,14 @@ Hooks.once('ready', async function () {
  */
 async function createItemMacro(data, slot) {
   // First, determine if this is a valid owned item.
-  if (data.type !== 'Item') return;
+  if (data.type !== 'Item') {
+    return;
+  }
+
   if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
     return ui.notifications.warn('You can only create macro buttons for owned Items');
   }
+
   // If it is, retrieve it based on the uuid.
   const item = await Item.fromDropData(data);
 

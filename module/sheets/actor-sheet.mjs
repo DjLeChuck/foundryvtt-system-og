@@ -11,7 +11,7 @@ export class OgActorSheet extends ActorSheet {
       classes: ['og', 'sheet', 'actor'],
       template: 'systems/og/templates/actor/actor-sheet.html.hbs',
       width: 750,
-      height: 600,
+      height: 690,
     });
   }
 
@@ -61,7 +61,9 @@ export class OgActorSheet extends ActorSheet {
 
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
-    if (!this.isEditable) return;
+    if (!this.isEditable) {
+      return;
+    }
 
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -79,11 +81,16 @@ export class OgActorSheet extends ActorSheet {
 
     html.find('[data-delete-item]').click(this._onDeleteItem.bind(this));
 
+    new ContextMenu(html, '.item.card', [], { onOpen: this._onItemContext.bind(this) });
+
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
       html.find('li.item').each((i, li) => {
-        if (li.classList.contains('inventory-header')) return;
+        if (li.classList.contains('inventory-header')) {
+          return;
+        }
+
         li.setAttribute('draggable', true);
         li.addEventListener('dragstart', handler, false);
       });
@@ -156,6 +163,23 @@ export class OgActorSheet extends ActorSheet {
     if (item) {
       await item.delete();
     }
+  }
+
+  _onItemContext(element) {
+    const item = this.actor.items.get(element.dataset.itemId);
+    if (!item) {
+      return;
+    }
+
+    ui.context.menuItems = [{
+      icon: '<i class="fas fa-edit"></i>',
+      name: 'OG.Global.Edit',
+      callback: () => item.sheet.render(true),
+    }, {
+      icon: '<i class="fas fa-trash"></i>',
+      name: 'OG.Global.Delete',
+      callback: () => item.deleteDialog(),
+    }];
   }
 
   /**

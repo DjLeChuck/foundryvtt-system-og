@@ -1,8 +1,22 @@
-.word-card {
-  .name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.item {
+  &.card {
+    &.ability {
+      .learned {
+        font-weight: bold;
+      }
+
+      .roll-btn {
+        margin-top: -0.5rem;
+      }
+    }
+
+    .name {
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      padding-left: 4px;
+      padding-top: 2px;
+    }
   }
 }
 

@@ -22,7 +22,9 @@ export class OgCreatureSheet extends OgActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    if (!this.isEditable) return;
+    if (!this.isEditable) {
+      return;
+    }
 
     html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
   }

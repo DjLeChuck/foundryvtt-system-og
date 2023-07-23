@@ -9,7 +9,9 @@ export class OgActor extends Actor {
    * @returns {OgItem|null}
    */
   get characterClass() {
-    if (!['character'].includes(this.type)) return null;
+    if (!['character'].includes(this.type)) {
+      return null;
+    }
 
     return this.items.find((item) => 'characterClass' === item.type) ?? null;
   }
@@ -28,7 +30,9 @@ export class OgActor extends Actor {
    * @returns {number}
    */
   get countKnownWords() {
-    if (!['character'].includes(this.type)) return 0;
+    if (!['character'].includes(this.type)) {
+      return 0;
+    }
 
     return this.items.reduce((accumulator, item) => 'word' === item.type
         ? accumulator + (item.system.common ? 1 : 2)
@@ -42,7 +46,9 @@ export class OgActor extends Actor {
    * @returns {number}
    */
   get countKnownAbilities() {
-    if (!['character'].includes(this.type)) return 0;
+    if (!['character'].includes(this.type)) {
+      return 0;
+    }
 
     return this.items.reduce((accumulator, item) => 'ability' === item.type
         ? accumulator + (item.system.free || !item.system.learned ? 0 : 1)
@@ -105,7 +111,9 @@ export class OgActor extends Actor {
   async _preCreate(data, options, userId) {
     await super._preCreate(data, options, userId);
 
-    if (data.type !== 'character') return;
+    if (data.type !== 'character') {
+      return;
+    }
 
     const abilities = await game.packs.get('og.abilities').getDocuments();
     const items = [];
@@ -125,14 +133,18 @@ export class OgActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+    if (actorData.type !== 'character') {
+      return;
+    }
   }
 
   /**
    * Prepare Creature type specific data.
    */
   _prepareCreatureData(actorData) {
-    if (actorData.type !== 'creature') return;
+    if (actorData.type !== 'creature') {
+      return;
+    }
   }
 
   /**
@@ -152,13 +164,17 @@ export class OgActor extends Actor {
    * Prepare character roll data.
    */
   _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+    if (this.type !== 'character') {
+      return;
+    }
   }
 
   /**
    * Prepare creature roll data.
    */
   _getCreatureRollData(data) {
-    if (this.type !== 'creature') return;
+    if (this.type !== 'creature') {
+      return;
+    }
   }
 }

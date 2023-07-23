@@ -59,7 +59,9 @@ export class OgItemSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    if (!this.isEditable) return;
+    if (!this.isEditable) {
+      return;
+    }
 
     html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.item));
   }

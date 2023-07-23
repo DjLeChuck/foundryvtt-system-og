@@ -46,6 +46,8 @@
   "OG.Ability.IsLearned": "Apprise ?",
   "OG.Ability.FreeExplanations": "Ne comptera pas dans le décompte des capacités apprises.",
   "OG.Ability.Roll.WildlySuccess": "Réussite sauvage !",
+  "OG.Ability.ContextItem.Learn": "Apprendre",
+  "OG.Ability.ContextItem.Forget": "Oublier",
   "OG.Attack.Accuracy": "Précision",
   "OG.Attack.DamageNote": "Note sur les dégâts",
   "OG.Errors.CompendiumNotFound": "Le compendium {name} est introuvable !",

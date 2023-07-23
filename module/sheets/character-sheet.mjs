@@ -21,7 +21,9 @@ export class OgCharacterSheet extends OgActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    if (!this.isEditable) return;
+    if (!this.isEditable) {
+      return;
+    }
 
     html.find('[data-configuration-roll]').click(this._onConfigurationRoll.bind(this));
     html.find('[data-open-compendium]').click(this._onOpenCompendium.bind(this));
@@ -57,6 +59,28 @@ export class OgCharacterSheet extends OgActorSheet {
     context.words = words;
     context.abilities = abilities;
     context.characterClass = characterClass;
+  }
+
+  /** @override */
+  _onItemContext(element) {
+    const item = this.actor.items.get(element.dataset.itemId);
+    if (!item) {
+      return;
+    }
+
+    super._onItemContext(element);
+
+    ui.context.menuItems.unshift({
+      icon: '<i class="fas fa-check"></i>',
+      name: 'OG.Ability.ContextItem.Learn',
+      condition: () => 'ability' === item.type && !item.system.learned,
+      callback: () => item.sheet.toggleLearn(),
+    }, {
+      icon: '<i class="fas fa-xmark"></i>',
+      name: 'OG.Ability.ContextItem.Forget',
+      condition: () => 'ability' === item.type && item.system.learned,
+      callback: () => item.sheet.toggleLearn(),
+    });
   }
 
   async _onDropSingleItem(itemData) {
