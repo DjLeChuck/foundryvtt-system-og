@@ -10,7 +10,7 @@ export class OgActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ['og', 'sheet', 'actor'],
       template: 'systems/og/templates/actor/actor-sheet.html.hbs',
-      width: 620,
+      width: 750,
       height: 600,
     });
   }

@@ -1,0 +1,8 @@
+.u-ml-20 {
+  margin-left: $padding-lg;
+}
+
+.not-accessible {
+  filter: blur(2px);
+  pointer-events: none;
+}

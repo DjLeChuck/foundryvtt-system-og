@@ -111,39 +111,43 @@ export class OgCharacterSheet extends OgActorSheet {
         // 1d6+3 (Thoug 1d6+6, or get X+3 from highest score)
         bonus = this.actor.isToughCaveman ? 6 : 3;
         roll = new Roll(`1d6+${bonus}`);
-        await roll.evaluate({ async: true });
 
-        await roll.toMessage({
-          flavor: game.i18n.format('OG.CharacterClass.Notifications.HasUnggghhPoints', {
-            name: this.actor.name,
-            total: roll.total,
-          }),
-        });
-
-        this.actor.update({
-          'system.unggghhPoints.value': roll.total,
-          'system.unggghhPoints.max': roll.total,
-        });
+        await this._configureSheet(roll, 'OG.CharacterClass.Notifications.HasUnggghhPoints', [
+          'system.unggghhPoints.value',
+          'system.unggghhPoints.max',
+        ]);
 
         break;
       case 'knownWords':
         // 1d6+2 (Eloquent: 1d6+4, or 2 more words than any other non-Eloquent cave-man)
         bonus = this.actor.isEloquentCaveman ? 4 : 2;
         roll = new Roll(`1d6+${bonus}`);
-        await roll.evaluate({ async: true });
 
-        await roll.toMessage({
-          flavor: game.i18n.format('OG.CharacterClass.Notifications.KnownWords', {
-            name: this.actor.name,
-            total: roll.total,
-          }),
-        });
-
-        this.actor.update({
-          'system.knownWords': roll.total,
-        });
+        await this._configureSheet(roll, 'OG.CharacterClass.Notifications.KnownWords', [
+          'system.knownWords',
+        ]);
 
         break;
+    }
+  }
+
+  async _configureSheet(roll, flavorMsg, actorUpdate) {
+    await roll.evaluate({ async: true });
+
+    const msg = await roll.toMessage({
+      flavor: game.i18n.format(flavorMsg, {
+        name: this.actor.name,
+        total: roll.total,
+      }),
+    });
+
+    const update = {};
+    actorUpdate.forEach((key) => update[key] = roll.total);
+
+    if (game.dice3d) {
+      game.dice3d.waitFor3DAnimationByMessageID(msg.id).then(() => this.actor.update(update));
+    } else {
+      await this.actor.update(update);
     }
   }
 

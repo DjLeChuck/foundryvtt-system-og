@@ -1,0 +1,11 @@
+<div class="flexcol">
+  <div class="grid grid-3col flex-group-center">
+    <span class="resource-label">
+      {{localize "OG.Global.LimitXY" x=actor.countKnownAbilities y=system.knownAbilities}}
+    </span>
+
+    <p class="grid-span-2">{{localize "OG.CharacterClass.Abilities.StarMarkExplanations"}}</p>
+  </div>
+
+  {{> "systems/og/templates/actor/parts/actor-abilities.html.hbs"}}
+</div>

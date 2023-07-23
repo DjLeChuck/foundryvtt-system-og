@@ -7,9 +7,41 @@
 @import 'global/window';
 @import 'global/grid';
 @import 'global/flex';
+@import 'global/utils';
 
 /* Styles limited to og sheets */
 .og {
+  .pulse {
+    animation: pulse 2s infinite;
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 177, 66, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 177, 66, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 177, 66, 0);
+      }
+    }
+  }
+
+  .square {
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
+    text-align: center;
+
+    &.little {
+      width: 35px;
+      height: 35px;
+      font-size: 20px;
+    }
+  }
+
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/items';

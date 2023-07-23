@@ -3,5 +3,27 @@
   src: url('../fonts/hoefler-text.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'StoneyBilly';
+  src: url('../fonts/stoney-billy.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OutbackITC';
+  src: url('../fonts/outback-itc.ttf') format('truetype');
+}
+
 $font-primary: 'HoeflerText', sans-serif;
 $font-secondary: 'HoeflerText', sans-serif;
+
+.f-hoefler-text {
+  font-family: 'HoeflerText', sans-serif;
+}
+
+.f-stoney-billy {
+  font-family: 'StoneyBilly', sans-serif;
+}
+
+.f-outback-itc {
+  font-family: 'OutbackITC', sans-serif;
+}

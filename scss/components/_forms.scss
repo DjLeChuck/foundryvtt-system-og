@@ -2,6 +2,10 @@
   font-family: $font-primary;
 }
 
+.input-separator {
+  font-size: 30px;
+}
+
 .sheet-header {
   flex: 0 auto;
   overflow: hidden;
@@ -36,6 +40,10 @@
 
 .sheet-tabs {
   flex: 0;
+
+  .item {
+    font-size: $font-big;
+  }
 }
 
 .sheet-body,

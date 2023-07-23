@@ -1,0 +1,22 @@
+<div class="flexcol">
+  <div class="grid grid-3col flex-group-center">
+    <div class="flex flexrow flex-group-center">
+      <span class="resource-label">{{localize "OG.Global.LimitXY" x=actor.countKnownWords y=system.knownWords}}</span>
+
+      <div class="flexshrink">
+        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseWords"}}"
+                data-open-compendium data-name="words" class="little square">
+          <i class="far fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="flexshrink">
+        <button type="button" class="little square item-create" title="{{localize "OG.Global.Add"}}" data-type="word">
+          <i class="far fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <p class="grid-span-2">{{localize "OG.CharacterClass.Words.StarMarkExplanations"}}</p>
+  </div>
+
+  {{> "systems/og/templates/actor/parts/actor-words.html.hbs"}}
+</div>

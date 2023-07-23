@@ -1,104 +1,105 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
-    <div class="header-fields">
-      <h1 class="charname">
-        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
-      </h1>
-      <h1 class="charname">
-        <input type="text" value="{{characterClass.name}}" readonly disabled
-               placeholder="{{localize "OG.Global.CharacterClass"}}" />
-      </h1>
-      {{#unless characterClass}}
-        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseCharacterClass"}}"
-                data-open-compendium data-name="character-classes">
-          <i class="far fa-lightbulb"></i>
-        </button>
-      {{/unless}}
-
-      <div class="resources grid grid-4col">
-        <div class="resource flex-group-center">
+    <div class="flex flexcol">
+      <div class="flexrow flex-group-center">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+        <div class="header-fields">
+          <h1 class="charname">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
+          </h1>
+          <div class="flex flexrow flex-group-center">
+            <h1 class="charname">
+              <input type="text" value="{{characterClass.name}}" readonly disabled
+                     placeholder="{{localize "OG.Global.CharacterClass"}}" />
+            </h1>
+            {{#unless characterClass}}
+              <div class="flexshrink u-ml-20">
+                <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseCharacterClass"}}"
+                        data-open-compendium data-name="character-classes" class="square pulse">
+                  <i class="far fa-lightbulb"></i>
+                </button>
+              </div>
+            {{/unless}}
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-3col{{#unless characterClass}} not-accessible{{/unless}}">
+        <div class="flex-group-center">
           <label for="system.attack" class="resource-label">{{localize "OG.Global.Attack"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.attack" value="{{system.attack}}" data-dtype="Number" />
-
-            <button type="button" data-roll-attack>
-              <i class="far fa-dice-d6"></i>
-            </button>
+          <div class="flexrow flex-center flex-between flex-group-center">
+            <div>
+              <input type="text" value="{{system.attack}}" class="square" disabled readonly />
+            </div>
+            <div>
+              <button type="button" title="{{localize "OG.CharacterClass.Tooltips.DoAttackRoll"}}"
+                      data-roll-attack class="square">
+                <i class="far fa-dice-d6"></i>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="flex-group-center">
           <label for="system.unggghhPoints.value" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
-                   data-dtype="Number" />
-            <span> / </span>
-            <input type="number" value="{{system.unggghhPoints.max}}" disabled readonly />
+          <div class="flexrow flex-center flex-between flex-group-center">
+            <div>
+              <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
+                     data-dtype="Number" class="square" />
+            </div>
+            <span class="input-separator"> / </span>
+            <div>
+              <input type="number" value="{{system.unggghhPoints.max}}" class="square" disabled readonly />
+            </div>
+
             {{#unless system.unggghhPoints.max}}
               <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollUnggghhPoints"}}"
-                      data-configuration-roll data-type="unggghhPoints">
+                      data-configuration-roll data-type="unggghhPoints" class="square pulse u-ml-20">
                 <i class="far fa-lightbulb"></i>
               </button>
             {{/unless}}
           </div>
         </div>
 
-        <div class="resource flex-group-center">
-          <label for="system.damage" class="resource-label">{{localize "OG.Global.Damage"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.damage" value="{{system.damage}}" data-dtype="Number" />
+        <div class="flex-group-center flexrow">
+          <div>
+            <label for="system.damage" class="resource-label">{{localize "OG.Global.Damage"}}</label>
+            <div>
+              <input type="text" value="{{system.damage}}" class="square" disabled readonly />
+            </div>
           </div>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.Global.Evade"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.evade" value="{{system.evade}}" data-dtype="Number" />
+          <div>
+            <label for="system.evade" class="resource-label">{{localize "OG.Global.Evade"}}</label>
+            <div>
+              <input type="text" value="{{system.evade}}" class="square" disabled readonly />
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="words">{{localize "OG.Global.Words"}}</a>
-    <a class="item" data-tab="abilities">{{localize "OG.Global.Abilities"}}</a>
+  <nav class="sheet-tabs tabs{{#unless characterClass}} not-accessible{{/unless}}" data-group="primary">
+    <a class="item flex flex-group-center flexrow" data-tab="words">
+      <span>{{localize "OG.Global.Words"}}</span>
+
+      {{#unless system.knownWords}}
+        <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
+                data-configuration-roll data-type="knownWords" class="pulse u-ml-20">
+          <i class="far fa-lightbulb"></i>
+        </button>
+      {{/unless}}
+    </a>
+    <a class="item flex flex-group-center flexrow" data-tab="abilities">
+      {{localize "OG.Global.Abilities"}}
+    </a>
   </nav>
 
-  <section class="sheet-body">
+  <section class="sheet-body{{#unless characterClass}} not-accessible{{/unless}}">
     <div class="tab" data-group="primary" data-tab="words">
-      <div class="flexcol">
-        <div>
-          {{localize "OG.Global.Words"}} ({{actor.countKnownWords}} / {{system.knownWords}})
-          {{#unless system.knownWords}}
-            <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollKnownWords"}}"
-                    data-configuration-roll data-type="knownWords">
-              <i class="far fa-lightbulb"></i>
-            </button>
-          {{/unless}}
-
-          <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseWords"}}"
-                  data-open-compendium data-name="words">
-            <i class="far fa-lightbulb"></i>
-          </button>
-
-          <small>{{localize "OG.CharacterClass.Words.StarMarkExplanations"}}</small>
-        </div>
-
-        {{> "systems/og/templates/actor/parts/actor-words.html.hbs"}}
-      </div>
+      {{> "systems/og/templates/actor/parts/actor-tab-words.html.hbs"}}
     </div>
     <div class="tab" data-group="primary" data-tab="abilities">
-      <div class="flexcol">
-        <div>
-          {{localize "OG.Global.Abilities"}} ({{actor.countKnownAbilities}} / {{system.knownAbilities}})
-
-          <small>{{localize "OG.CharacterClass.Abilities.StarMarkExplanations"}}</small>
-        </div>
-
-        {{> "systems/og/templates/actor/parts/actor-abilities.html.hbs"}}
-      </div>
+      {{> "systems/og/templates/actor/parts/actor-tab-abilities.html.hbs"}}
     </div>
   </section>
 </form>
