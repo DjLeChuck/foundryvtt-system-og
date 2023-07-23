@@ -1,54 +1,53 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
-    <div class="header-fields">
-      <h1 class="charname">
-        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
-      </h1>
-      <h1 class="charname">
-        <input name="system.cavemanName" type="text" value="{{system.cavemanName}}"
-               placeholder="{{localize "OG.Creature.CavemanName"}}" />
-      </h1>
-
-      <div class="resources grid grid-3col">
-        <div class="resource flex-group-center">
-          <label for="system.unggghhPoints.value" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
-                   data-dtype="Number" />
-            <span> / </span>
-            <input type="number" name="system.unggghhPoints.max" value="{{system.unggghhPoints.max}}"
-                   data-dtype="Number" />
-          </div>
+    <div class="flex flexcol">
+      <div class="flexrow flex-group-center">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+        <div class="header-fields">
+          <h1 class="charname">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "OG.Global.Name"}}" />
+          </h1>
+          <h1 class="charname">
+            <input name="system.cavemanName" type="text" value="{{system.cavemanName}}"
+                   placeholder="{{localize "OG.Creature.CavemanName"}}" />
+          </h1>
         </div>
+      </div>
+      <div>
+        <div class="resources grid grid-2col">
+          {{> "systems/og/templates/actor/parts/actor-unggghh-points.html.hbs" isCharacter=false}}
 
-        <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.Global.Evade"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            {{numberInput system.evade name="system.evade"}}
+          <div class="flex-group-center flexrow">
+            <div>
+              <label for="system.damage" class="resource-label">{{localize "OG.Global.Evade"}}</label>
+              <div>
+                <input type="number" name="system.evade" value="{{system.evade}}" class="square" />
+              </div>
+            </div>
+            <div>
+              <label for="system.evade" class="resource-label">{{localize "OG.Creature.Armor"}}</label>
+              <div>
+                <input type="number" name="system.armor" value="{{system.armor}}" class="square" />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.Creature.Armor"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            {{numberInput system.armor name="system.armor"}}
+          <div class="resource flex-group-center">
+            <label for="system.eatingHabits" class="resource-label">
+              {{localize "OG.Creature.EatingHabits.Label"}}
+            </label>
+            <div class="resource-content flexrow flex-center flex-between">
+              <select name="system.eatingHabits" class="big">
+                {{selectOptions eatingHabitsChoices selected=system.eatingHabits localize=true}}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="resource flex-group-center">
-          <label for="system.eatingHabits" class="resource-label">{{localize "OG.Creature.EatingHabits.Label"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <select name="system.eatingHabits">
-              {{selectOptions eatingHabitsChoices selected=system.eatingHabits localize=true}}
-            </select>
-          </div>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="system.evade" class="resource-label">{{localize "OG.Creature.FoodValue"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.foodValue" value="{{system.foodValue}}" />
+          <div class="resource flex-group-center">
+            <label for="system.evade" class="resource-label">{{localize "OG.Creature.FoodValue"}}</label>
+            <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="system.foodValue" value="{{system.foodValue}}" class="big" />
+            </div>
           </div>
         </div>
       </div>

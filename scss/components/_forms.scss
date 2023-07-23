@@ -6,6 +6,11 @@
   font-size: 30px;
 }
 
+.big {
+  height: 48px;
+  font-size: 30px;
+}
+
 .sheet-header {
   flex: 0 auto;
   overflow: hidden;
@@ -30,6 +35,7 @@
     padding: 0px;
     margin: 5px 0;
     border-bottom: 0;
+
     input {
       width: 100%;
       height: 100%;

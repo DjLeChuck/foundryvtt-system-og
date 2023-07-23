@@ -3,7 +3,8 @@
     <div class="item card ability" data-item-id="{{item._id}}">
       <div class="grid grid-3col">
         <h2 class="grid-span-2 flexrow" title="{{item.name}}">
-          <div class="name{{ifThen item.system.learned " learned" ""}}">{{item.name}}</div> {{ifThen item.system.free "*" ""}}
+          <div class="name{{ifThen item.system.learned " learned" ""}}">{{item.name}}</div>
+          {{ifThen item.system.free "*" ""}}
         </h2>
 
         <div>

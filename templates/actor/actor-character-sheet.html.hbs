@@ -39,26 +39,7 @@
           </div>
         </div>
 
-        <div class="flex-group-center">
-          <label for="system.unggghhPoints.value" class="resource-label">{{localize "OG.Global.UnggghhPoints"}}</label>
-          <div class="flexrow flex-center flex-between flex-group-center">
-            <div>
-              <input type="number" name="system.unggghhPoints.value" value="{{system.unggghhPoints.value}}"
-                     data-dtype="Number" class="square" />
-            </div>
-            <span class="input-separator"> / </span>
-            <div>
-              <input type="number" value="{{system.unggghhPoints.max}}" class="square" disabled readonly />
-            </div>
-
-            {{#unless system.unggghhPoints.max}}
-              <button type="button" title="{{localize "OG.CharacterClass.Tooltips.RollUnggghhPoints"}}"
-                      data-configuration-roll data-type="unggghhPoints" class="square pulse u-ml-20">
-                <i class="far fa-lightbulb"></i>
-              </button>
-            {{/unless}}
-          </div>
-        </div>
+        {{> "systems/og/templates/actor/parts/actor-unggghh-points.html.hbs" isCharacter=true}}
 
         <div class="flex-group-center flexrow">
           <div>
