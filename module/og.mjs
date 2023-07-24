@@ -4,6 +4,7 @@ import { OgItem } from './documents/item.mjs';
 import { OgCharacterSheet } from './sheets/character-sheet.mjs';
 import { OgCreatureSheet } from './sheets/creature-sheet.mjs';
 import { OgAbilitySheet } from './sheets/ability-sheet.mjs';
+import { OgWordSheet } from './sheets/word-sheet.mjs';
 import { OgItemSheet } from './sheets/item-sheet.mjs';
 import { CharacterData } from './dataModels/actor/CharacterData.mjs';
 import { CreatureData } from './dataModels/actor/CreatureData.mjs';
@@ -68,8 +69,12 @@ Hooks.once('init', async function () {
     types: ['ability'],
     makeDefault: true,
   });
+  Items.registerSheet('og', OgWordSheet, {
+    types: ['word'],
+    makeDefault: true,
+  });
   Items.registerSheet('og', OgItemSheet, {
-    types: ['attack', 'characterClass', 'skill', 'word'],
+    types: ['attack', 'characterClass', 'skill'],
     makeDefault: true,
   });
 

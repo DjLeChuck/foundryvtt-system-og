@@ -9,11 +9,11 @@ export class OgCreatureSheet extends OgActorSheet {
   }
 
   /** @override */
-  getData() {
+  async getData() {
     const context = super.getData();
 
-    this._prepareData(context);
-    this._prepareItems(context);
+    await this._prepareData(context);
+    await this._prepareItems(context);
 
     return context;
   }
@@ -29,12 +29,14 @@ export class OgCreatureSheet extends OgActorSheet {
     html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
   }
 
-  _prepareData(context) {
+  async _prepareData(context) {
     context.eatingHabitsChoices = {
       carnivorous: 'OG.Creature.EatingHabits.Carnivorous',
       herbivorous: 'OG.Creature.EatingHabits.Herbivorous',
       omnivorous: 'OG.Creature.EatingHabits.Omnivorous',
     };
+
+    context.enrichedDescription = await TextEditor.enrichHTML(context.system.description, { async: true });
   }
 
   /**
@@ -44,7 +46,7 @@ export class OgCreatureSheet extends OgActorSheet {
    *
    * @return {undefined}
    */
-  _prepareItems(context) {
+  async _prepareItems(context) {
     const attacks = [];
 
     // Iterate through items, allocating to containers

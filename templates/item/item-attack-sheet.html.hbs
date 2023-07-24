@@ -27,6 +27,6 @@
     </div>
 
     <label for="item-description-{{item._id}}">{{localize "OG.Global.Description"}}</label>
-    {{editor item.system.description target="system.description" button=true editable=editable}}
+    {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
   </section>
 </form>

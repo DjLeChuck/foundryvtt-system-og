@@ -7,9 +7,18 @@
     </div>
   </header>
 
-  <section class="sheet-body">
-    {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">{{localize "OG.Global.Description"}}</a>
+    <a class="item" data-tab="effects">{{localize "OG.Effects.Label"}}</a>
+  </nav>
 
-    {{> "systems/og/templates/item/parts/item-effects.html.hbs"}}
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="effects">
+      {{> "systems/og/templates/item/parts/item-effects.html.hbs"}}
+    </div>
   </section>
 </form>

@@ -7,24 +7,41 @@
     </div>
   </header>
 
-  <section class="sheet-body">
-    {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">{{localize "OG.Global.Description"}}</a>
+    <a class="item" data-tab="configuration">{{localize "OG.Global.Configuration"}}</a>
+  </nav>
 
-    <p>
-      <label for="item-exclusive-{{item._id}}">{{localize "OG.Ability.IsExclusive"}}</label>
-      <input name="system.exclusive" type="checkbox" {{checked item.system.exclusive}}
-             placeholder="{{localize "OG.Ability.IsExclusive"}}" id="item-exclusive-{{item._id}}" />
-    </p>
-    <p>
-      <label for="item-free-{{item._id}}">{{localize "OG.Ability.IsFree"}}</label>
-      <input name="system.free" type="checkbox" {{checked item.system.free}}
-             placeholder="{{localize "OG.Ability.IsFree"}}" id="item-free-{{item._id}}" />
-      <small>{{localize "OG.Ability.FreeExplanations"}}</small>
-    </p>
-    <p>
-      <label for="item-learned-{{item._id}}">{{localize "OG.Ability.IsLearned"}}</label>
-      <input name="system.learned" type="checkbox" {{checked item.system.learned}}
-             placeholder="{{localize "OG.Ability.IsLearned"}}" id="item-learned-{{item._id}}" />
-    </p>
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
+    </div>
+    <div class="tab" data-group="primary" data-tab="configuration">
+      <div>
+        <p class="flex flex-items-center">
+          <label for="item-exclusive-{{item._id}}">{{localize "OG.Ability.IsExclusive"}}</label>
+          <input name="system.exclusive" type="checkbox" {{checked item.system.exclusive}}
+                 placeholder="{{localize "OG.Ability.IsExclusive"}}" id="item-exclusive-{{item._id}}" />
+        </p>
+        <p><small>{{localize "OG.Ability.ExclusiveExplanations"}}</small></p>
+      </div>
+      <div>
+        <p class="flex flex-items-center">
+          <label for="item-free-{{item._id}}">{{localize "OG.Ability.IsFree"}}</label>
+          <input name="system.free" type="checkbox" {{checked item.system.free}}
+                 placeholder="{{localize "OG.Ability.IsFree"}}" id="item-free-{{item._id}}" />
+        </p>
+        <p>
+          <small>{{localize "OG.Ability.FreeExplanations"}}</small>
+        </p>
+      </div>
+      <div>
+        <p class="flex flex-items-center">
+          <label for="item-learned-{{item._id}}">{{localize "OG.Ability.IsLearned"}}</label>
+          <input name="system.learned" type="checkbox" {{checked item.system.learned}}
+                 placeholder="{{localize "OG.Ability.IsLearned"}}" id="item-learned-{{item._id}}" />
+        </p>
+      </div>
+    </div>
   </section>
 </form>

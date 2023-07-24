@@ -1,10 +1,10 @@
 <ul class="items-list effects-list">
   <li class="items-header flexrow" data-effect-type="{{section.type}}">
-    <h3 class="item-name effect-name flexrow">Effets</h3>
-    <div class="effect-source">Source</div>
+    <h3 class="item-name effect-name flexrow">{{localize "OG.Effects.Label"}}</h3>
+    <div class="effect-source">{{localize "OG.Effects.Source"}}</div>
     <div class="item-controls effect-controls flexrow">
-      <a class="effect-control" data-action="create" title="{{localize 'OG.EffectCreate'}}">
-        <i class="fas fa-plus"></i> {{localize "OG.Add"}}
+      <a class="effect-control" data-action="create" title="{{localize 'OG.Global.Add'}}">
+        <i class="fas fa-plus"></i> {{localize "OG.Global.Add"}}
       </a>
     </div>
   </li>
@@ -20,10 +20,10 @@
         <a class="effect-control" data-action="toggle" title="{{localize 'OG.EffectToggle'}}">
           <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
         </a>
-        <a class="effect-control" data-action="edit" title="{{localize 'OG.EffectEdit'}}">
+        <a class="effect-control" data-action="edit" title="{{localize 'OG.Global.Edit'}}">
           <i class="fas fa-edit"></i>
         </a>
-        <a class="effect-control" data-action="delete" title="{{localize 'OG.EffectDelete'}}">
+        <a class="effect-control" data-action="delete" title="{{localize 'OG.Global.Delete'}}">
           <i class="fas fa-trash"></i>
         </a>
       </div>

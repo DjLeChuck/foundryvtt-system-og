@@ -1,10 +1,18 @@
 // Flexbox.
+.flex {
+  display: flex;
+}
+
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.flex-items-center {
+  align-items: center;
 }
 
 .flex-group-left {
