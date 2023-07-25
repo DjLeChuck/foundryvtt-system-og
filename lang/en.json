@@ -24,6 +24,7 @@
   "OG.Global.Configuration": "Configuration",
   "OG.Effects.Label": "Effects",
   "OG.Effects.Source": "Source",
+  "OG.Effects.Toggle": "Toggle effect",
   "OG.CharacterClass.Tooltips.ChooseCharacterClass": "Choose your character class",
   "OG.CharacterClass.Tooltips.RollUnggghhPoints": "Roll your initial Unggghh Points",
   "OG.CharacterClass.Tooltips.RollKnownWords": "Roll your initial known words",

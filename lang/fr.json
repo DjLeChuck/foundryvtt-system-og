@@ -24,6 +24,7 @@
   "OG.Global.Configuration": "Configuration",
   "OG.Effects.Label": "Effets",
   "OG.Effects.Source": "Source",
+  "OG.Effects.Toggle": "Inverser l’effet",
   "OG.CharacterClass.Tooltips.ChooseCharacterClass": "Choisissez votre classe de personnage",
   "OG.CharacterClass.Tooltips.RollUnggghhPoints": "Lancez vos points d’Unggghh initiaux",
   "OG.CharacterClass.Tooltips.RollKnownWords": "Lancez le nombre de mots connus",

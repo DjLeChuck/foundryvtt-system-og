@@ -63,7 +63,7 @@ export class OgCharacterSheet extends OgActorSheet {
 
   /** @override */
   _onItemContext(element) {
-    const item = this.actor.items.get(element.dataset.itemId);
+    const item = this.actor.items.get(element.dataset.id);
     if (!item) {
       return;
     }

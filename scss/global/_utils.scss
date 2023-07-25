@@ -6,3 +6,11 @@
   filter: blur(2px);
   pointer-events: none;
 }
+
+.hidden {
+  display: none;
+}
+
+.toggleable, .chattable {
+  cursor: pointer;
+}

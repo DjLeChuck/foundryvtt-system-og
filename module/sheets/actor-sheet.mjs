@@ -1,5 +1,3 @@
-import { onManageActiveEffect } from '../helpers/effects.mjs';
-
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -52,12 +50,7 @@ export class OgActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(li.data('itemId'));
-      item.sheet.render(true);
-    });
+    html.find('[data-toggle]').click(this._onToggle.bind(this));
 
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
@@ -65,21 +58,8 @@ export class OgActorSheet extends ActorSheet {
       return;
     }
 
-    // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
-
-    // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
-      const li = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(li.data('itemId'));
-      item.delete();
-      li.slideUp(200, () => this.render(false));
-    });
-
-    // Active Effect management
-    html.find('.effect-control').click(ev => onManageActiveEffect(ev, this.actor));
-
-    html.find('[data-delete-item]').click(this._onDeleteItem.bind(this));
+    html.find('.chattable').click(this._onChat.bind(this));
 
     new ContextMenu(html, '.item.card', [], { onOpen: this._onItemContext.bind(this) });
 
@@ -94,6 +74,29 @@ export class OgActorSheet extends ActorSheet {
         li.setAttribute('draggable', true);
         li.addEventListener('dragstart', handler, false);
       });
+    }
+  }
+
+  _onToggle(event) {
+    event.preventDefault();
+
+    const target = event.currentTarget;
+    const toggleTarget = target.closest('[data-toggle-container]')?.querySelector(`[data-toggle-target="${target.dataset.toggle}"]`);
+    if (!toggleTarget) {
+      return;
+    }
+
+    $(toggleTarget).slideToggle();
+  }
+
+  _onChat(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const item = this.actor.items.get(dataset.id);
+    if (item) {
+      return item.roll();
     }
   }
 
@@ -153,20 +156,8 @@ export class OgActorSheet extends ActorSheet {
     return await Item.create(itemData, { parent: this.actor });
   }
 
-  async _onDeleteItem(event) {
-    event.preventDefault();
-
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-
-    const item = await this.actor.items.get(dataset.id);
-    if (item) {
-      await item.delete();
-    }
-  }
-
   _onItemContext(element) {
-    const item = this.actor.items.get(element.dataset.itemId);
+    const item = this.actor.items.get(element.dataset.id);
     if (!item) {
       return;
     }

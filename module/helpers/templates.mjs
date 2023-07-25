@@ -15,5 +15,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/og/templates/actor/parts/actor-unggghh-points.html.hbs',
     // Item partials.
     'systems/og/templates/item/parts/item-effects.html.hbs',
+    // Chat partials.
+    'systems/og/templates/chat/chat-card.html.hbs',
   ]);
 };

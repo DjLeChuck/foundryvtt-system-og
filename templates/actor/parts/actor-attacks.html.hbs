@@ -1,7 +1,8 @@
 <div class="grid grid-2col">
   {{#each attacks as |item id|}}
-    <div class="item card" data-item-id="{{item._id}}">
-      <div class="grid grid-3col">
+    <div class="item card" data-id="{{item._id}}">
+      <div class="grid grid-4col flex-items-center">
+        <img class="profile-img chattable" src="{{item.img}}" title="{{item.name}}" data-id="{{item._id}}" />
         <h2 class="grid-span-2 flexrow" title="{{item.name}}">
           <div class="name{{ifThen item.system.learned " learned" ""}}">{{item.name}}</div>
           {{ifThen item.system.accuracy (concat "(" item.system.accuracy ", " item.system.damage ")") ""}}
@@ -9,7 +10,7 @@
 
         <div>
           {{#if item.system.accuracy}}
-            <button type="button" class="little square roll-btn" data-roll-attack data-id="{{item._id}}">
+            <button type="button" class="little square" data-roll-attack data-id="{{item._id}}">
               <i class="far fa-dice-d6"></i>
             </button>
           {{/if}}

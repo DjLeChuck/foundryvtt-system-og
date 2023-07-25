@@ -7,26 +7,34 @@
     </div>
   </header>
 
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">{{localize "OG.Global.Description"}}</a>
+    <a class="item" data-tab="configuration">{{localize "OG.Global.Configuration"}}</a>
+  </nav>
+
   <section class="sheet-body">
-    <div class="grid grid-3col">
-      <div>
-        <label for="item-accuracy-{{item._id}}">{{localize "OG.Attack.Accuracy"}}</label>
-        <input name="system.accuracy" value="{{item.system.accuracy}}" type="number"
-               placeholder="{{localize "OG.Attack.Accuracy"}}" id="item-accuracy-{{item._id}}" data-dtype="Number" />
-      </div>
-      <div>
-        <label for="item-damage-{{item._id}}">{{localize "OG.Global.Damage"}}</label>
-        <input name="system.damage" value="{{item.system.damage}}" type="number"
-               placeholder="{{localize "OG.Global.Damage"}}" id="item-damage-{{item._id}}" data-dtype="Number" />
-      </div>
-      <div>
-        <label for="item-damageNote-{{item._id}}">{{localize "OG.Attack.DamageNote"}}</label>
-        <input name="system.damageNote" value="{{item.system.damageNote}}" type="text"
-               placeholder="{{localize "OG.Attack.DamageNote"}}" id="item-damageNote-{{item._id}}" />
-      </div>
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
     </div>
 
-    <label for="item-description-{{item._id}}">{{localize "OG.Global.Description"}}</label>
-    {{editor enrichedDescription target="system.description" button=true editable=editable engine="prosemirror"}}
+    <div class="tab" data-group="primary" data-tab="configuration">
+      <div class="grid grid-2col">
+        <div>
+          <label for="item-accuracy-{{item._id}}">{{localize "OG.Attack.Accuracy"}}</label>
+          <input name="system.accuracy" value="{{item.system.accuracy}}" type="number"
+                 placeholder="{{localize "OG.Attack.Accuracy"}}" id="item-accuracy-{{item._id}}" data-dtype="Number" />
+        </div>
+        <div>
+          <label for="item-damage-{{item._id}}">{{localize "OG.Global.Damage"}}</label>
+          <input name="system.damage" value="{{item.system.damage}}" type="number"
+                 placeholder="{{localize "OG.Global.Damage"}}" id="item-damage-{{item._id}}" data-dtype="Number" />
+        </div>
+        <div class="grid-span-2">
+          <label for="item-damageNote-{{item._id}}">{{localize "OG.Attack.DamageNote"}}</label>
+          <textarea name="system.damageNote" placeholder="{{localize "OG.Attack.DamageNote"}}"
+                    id="item-damageNote-{{item._id}}" rows="10">{{item.system.damageNote}}</textarea>
+        </div>
+      </div>
+    </div>
   </section>
 </form>

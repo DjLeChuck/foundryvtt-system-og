@@ -1,0 +1,8 @@
+<div class="grid grid-4col flex-items-center">
+  <img class="profile-img" src="{{item.img}}" title="{{item.name}}" />
+  <h2 class="grid-span-2 flexrow" title="{{item.name}}"
+      data-toggle="description">
+    <div class="name">{{item.name}}</div>
+    {{ifThen item.system.free "*" ""}}
+  </h2>
+</div>

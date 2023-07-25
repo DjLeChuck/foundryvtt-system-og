@@ -30,41 +30,24 @@ export class OgItem extends Item {
 
   /**
    * Handle clickable rolls.
-   * @param {Event} event   The originating click event
-   * @private
    */
   async roll() {
     const item = this;
 
+    if (!['ability', 'attack'].includes(item.type)) {
+      return;
+    }
+
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
 
-    // If there's no roll data, send a chat message.
-    if (!this.system.formula) {
-      ChatMessage.create({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-        content: item.system.description ?? '',
-      });
-    }
-    // Otherwise, create a roll and send a chat message from it.
-    else {
-      // Retrieve roll data.
-      const rollData = this.getRollData();
-
-      // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.item.formula, rollData);
-      // If you need to store the value first, uncomment the next line.
-      // let result = await roll.roll({async: true});
-      roll.toMessage({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-      });
-      return roll;
-    }
+    ChatMessage.create({
+      speaker: speaker,
+      rollMode: rollMode,
+      content: await renderTemplate(`systems/og/templates/chat/${item.type}/chat-card.html.hbs`, {
+        item,
+      }),
+    });
   }
 }
