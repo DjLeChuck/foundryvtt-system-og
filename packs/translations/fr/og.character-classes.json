@@ -1,0 +1,26 @@
+{
+  "label": "Classes de personnage",
+  "entries": {
+    "Banging": {
+      "name": "Cogneur"
+    },
+    "Eloquent": {
+      "name": "Éloquent"
+    },
+    "Fast": {
+      "name": "Rapide"
+    },
+    "Grunting": {
+      "name": "Grogneur"
+    },
+    "Learned": {
+      "name": "Érudit"
+    },
+    "Strong": {
+      "name": "Fort"
+    },
+    "Tough": {
+      "name": "Robuste"
+    }
+  }
+}

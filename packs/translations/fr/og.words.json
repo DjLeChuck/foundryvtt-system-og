@@ -1,0 +1,59 @@
+{
+	"label": "Mots",
+	"entries": {
+		"Bang": {
+			"name": "Cogner"
+		},
+		"Big": {
+			"name": "Grand"
+		},
+		"Cave": {
+			"name": "Grotte"
+		},
+		"Fire": {
+			"name": "Feu"
+		},
+		"Food": {
+			"name": "Nourriture"
+		},
+		"Go": {
+			"name": "Aller"
+		},
+		"Hairy": {
+			"name": "Poilu"
+		},
+		"Me": {
+			"name": "Moi"
+		},
+		"Rock": {
+			"name": "Pierre"
+		},
+		"Shiny": {
+			"name": "Brillant"
+		},
+		"Sleep": {
+			"name": "Dormir"
+		},
+		"Small": {
+			"name": "Petit"
+		},
+		"Smelly": {
+			"name": "Puant"
+		},
+		"Stick": {
+			"name": "Bâton"
+		},
+		"Thing": {
+			"name": "Truc"
+		},
+		"Verisimilitude": {
+			"name": "Vraisemblance"
+		},
+		"Water": {
+			"name": "Eau"
+		},
+		"You": {
+			"name": "Toi"
+		}
+	}
+}

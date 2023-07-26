@@ -1,0 +1,134 @@
+{
+	"label": "Créatures",
+	"entries": {
+		"Allosaurus": {
+			"name": "Allosaure"
+		},
+		"Ancient Astronaut": {
+			"name": "Ancient astronaute"
+		},
+		"Anklyosaurus": {
+			"name": "Ankylosaure"
+		},
+		"Ape": {
+			"name": "Singe"
+		},
+		"Auroch": {
+			"name": "Auroch"
+		},
+		"Baboon": {
+			"name": "Babouin"
+		},
+		"Baluchitherium": {
+			"name": "Baluchithérium"
+		},
+		"Bear, Black": {
+			"name": "Ours noir"
+		},
+		"Bear, Cave": {
+			"name": "Ours des cavernes"
+		},
+		"Beaver, Giant": {
+			"name": "Castor géant"
+		},
+		"Big Cat": {
+			"name": "Grand chat"
+		},
+		"Boar": {
+			"name": "Sanglier"
+		},
+		"Bobcat": {
+			"name": "Lynx"
+		},
+		"Brachiosaurus": {
+			"name": "Brachiosaure"
+		},
+		"Brontosaurus": {
+			"name": "Brontosaure"
+		},
+		"Brontotherium": {
+			"name": "Brontothérium"
+		},
+		"Crocodile, Giant": {
+			"name": "Crocodile géant"
+		},
+		"Crocodile, Regular": {
+			"name": "Crocodile"
+		},
+		"Dinohyus (Terrible Pig)": {
+			"name": "Dinohyus « porc terrifiant »"
+		},
+		"Diprotodon": {
+			"name": "Diprotodon"
+		},
+		"Elk, Irish": {
+			"name": "Élan irlandais"
+		},
+		"Gigantopithecus": {
+			"name": "Gigantopithèque"
+		},
+		"Glyptodont": {
+			"name": "Glyptodonte"
+		},
+		"Gorilla": {
+			"name": "Gorille"
+		},
+		"Iguanodon": {
+			"name": "Iguanodon"
+		},
+		"Kangaroo, Giant Carnivorous (Ekaltadeta)": {
+			"name": "Kangourou carnivore géant (Ekaltadeta)"
+		},
+		"Leech, Giant": {
+			"name": "Sangsue géante"
+		},
+		"Lizard Person": {
+			"name": "Hommé-lzard"
+		},
+		"Mammoth": {
+			"name": "Mammouth"
+		},
+		"Mastodon": {
+			"name": "Mastodone"
+		},
+		"Megatherium (Giant Sloth)": {
+			"name": "Mégathérium (Paresseux géant)"
+		},
+		"Monkey-Man": {
+			"name": "Homme-singe"
+		},
+		"Pteranodon": {
+			"name": "Ptéranodon"
+		},
+		"Rhino, Woolly": {
+			"name": "Rhinocéros laineux"
+		},
+		"Sabertooth Tiger": {
+			"name": "Tigre à dents de sabre"
+		},
+		"Spider, Giant": {
+			"name": "Araignée géante"
+		},
+		"Stegosaurus": {
+			"name": "Stégosaure"
+		},
+		"Terror Bird": {
+			"name": "Oiseau-terreur"
+		},
+		"Triceratops": {
+			"name": "Tricératops"
+		},
+		"Tyrannosaurus Rex": {
+			"name": "Tyrannosaurus Rex"
+		},
+		"Uintatherium": {
+			"name": "Uintathérium"
+		},
+		"Velociraptor": {
+			"name": "Vélociraptor"
+		},
+		"Wolf, Dire": {
+			"name": "Loup terrible"
+		}
+	}
+}

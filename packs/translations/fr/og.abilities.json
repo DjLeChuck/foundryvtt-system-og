@@ -1,0 +1,65 @@
+{
+  "label": "Capacités",
+  "entries": {
+    "Climb": {
+      "name": "Escalader"
+    },
+    "Build": {
+      "name": "Construire"
+    },
+    "Cook": {
+      "name": "Cuisiner"
+    },
+    "Draw": {
+      "name": "Dessiner"
+    },
+    "Explore": {
+      "name": "Explorer"
+    },
+    "Fire": {
+      "name": "Feu"
+    },
+    "Fish": {
+      "name": "Pêcher"
+    },
+    "Forage": {
+      "name": "Cueillette"
+    },
+    "Hide": {
+      "name": "Se cacher"
+    },
+    "Hunt": {
+      "name": "Chasser"
+    },
+    "Intimidate": {
+      "name": "Intimider"
+    },
+    "Jump": {
+      "name": "Sauter"
+    },
+    "Lift": {
+      "name": "Soulever"
+    },
+    "Resistance": {
+      "name": "Résistance"
+    },
+    "Romance": {
+      "name": "Romance"
+    },
+    "Run Away": {
+      "name": "Fuir"
+    },
+    "Swim": {
+      "name": "Nager"
+    },
+    "Throw": {
+      "name": "Lancer"
+    },
+    "Tiptoe": {
+      "name": "Discrétion"
+    },
+    "Weather": {
+      "name": "Météo"
+    }
+  }
+}

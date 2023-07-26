@@ -98,6 +98,10 @@ Hooks.once('init', async function () {
     ],
   };
 
+  if (typeof Babele !== 'undefined') {
+    Babele.get().setSystemTranslationsDir('packs/translations');
+  }
+
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
 });
