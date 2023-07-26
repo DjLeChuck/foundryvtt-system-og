@@ -72,6 +72,14 @@ export class OgActor extends Actor {
     });
   }
 
+  getChatSpeaker() {
+    if (!['creature'].includes(this.type)) {
+      return ChatMessage.getSpeaker({ actor: this });
+    }
+
+    return { alias: this.system.cavemanName };
+  }
+
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
