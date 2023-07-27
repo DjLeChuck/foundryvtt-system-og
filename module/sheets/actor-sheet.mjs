@@ -198,7 +198,7 @@ export class OgActorSheet extends ActorSheet {
       return;
     }
 
-    const roll = new Roll(`1d6 - ${malus}`);
+    const roll = new Roll(malus ? `1d6 - ${malus}` : '1d6');
 
     await roll.evaluate({ async: true });
 
