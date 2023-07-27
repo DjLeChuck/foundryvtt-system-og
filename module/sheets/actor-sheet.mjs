@@ -211,7 +211,7 @@ export class OgActorSheet extends ActorSheet {
           damage: damageValue,
         },
       },
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      speaker: this.actor.getChatSpeaker(),
       flavor: await renderTemplate('systems/og/templates/chat/attack/flavor.html.hbs', {
         ...flavorExtraData,
         targetName: target.name,

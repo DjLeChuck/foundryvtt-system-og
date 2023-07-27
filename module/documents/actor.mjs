@@ -77,7 +77,7 @@ export class OgActor extends Actor {
       return ChatMessage.getSpeaker({ actor: this });
     }
 
-    return { alias: this.system.cavemanName };
+    return { actor: this, alias: this.system.cavemanName };
   }
 
   /** @override */
