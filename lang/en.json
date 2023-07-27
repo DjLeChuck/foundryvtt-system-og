@@ -36,6 +36,8 @@
   "OG.CharacterClass.Notifications.KnownWords": "{name} knows {total} words.",
   "OG.CharacterClass.Abilities.StarMarkExplanations": "Abilities marked with a \"*\" are free; they does not count.",
   "OG.CharacterClass.Words.StarMarkExplanations": "Words marked with a \"*\" are uncommon; they count as 2.",
+  "OG.CharacterClass.ToughBonusUsed": "His class bonus gives him {total} Unggghh Points instead of {rollTotal}!",
+  "OG.CharacterClass.EloquentBonusUsed": "His class bonus allows him to know {total} words instead of {rollTotal}!",
   "OG.Creature.CavemanName": "Caveman name",
   "OG.Creature.Armor": "Armor",
   "OG.Creature.Attacks": "Attacks",

@@ -127,46 +127,75 @@ export class OgCharacterSheet extends OgActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    let roll;
-    let bonus;
-
     switch (dataset.type) {
-      case 'unggghhPoints':
-        // 1d6+3 (Thoug 1d6+6, or get X+3 from highest score)
-        bonus = this.actor.isToughCaveman ? 6 : 3;
-        roll = new Roll(`1d6+${bonus}`);
+      case 'unggghhPoints': {
+        let currentMaxPoints = null;
 
-        await this._configureSheet(roll, 'OG.CharacterClass.Notifications.HasUnggghhPoints', [
+        if (this.actor.isToughCaveman) {
+          const nonThougCavemansUnggghhPoints = game.actors
+            .filter((actor) => 'character' === actor.type && !actor.isToughCaveman)
+            .map((actor) => actor.system.unggghhPoints.max);
+
+          currentMaxPoints = nonThougCavemansUnggghhPoints ? Math.max(...nonThougCavemansUnggghhPoints) + 3 : 0;
+        }
+
+        // 1d6+3 (Thoug 1d6+6, or get X+3 from highest score)
+        const bonus = this.actor.isToughCaveman ? 6 : 3;
+        const roll = new Roll(`1d6+${bonus}`);
+
+        await this._configureSheet(roll, 'initial-ungggh-points', [
           'system.unggghhPoints.value',
           'system.unggghhPoints.max',
-        ]);
+        ], currentMaxPoints);
 
+      }
         break;
-      case 'knownWords':
+      case 'knownWords': {
+        let currentMaxKnownWords = null;
+
+        if (this.actor.isEloquentCaveman) {
+          const nonEloquentCavemansKnownWords = game.actors
+            .filter((actor) => 'character' === actor.type && !actor.isEloquentCaveman)
+            .map((actor) => actor.system.knownWords);
+
+          currentMaxKnownWords = nonEloquentCavemansKnownWords ? Math.max(...nonEloquentCavemansKnownWords) + 2 : 0;
+        }
+
         // 1d6+2 (Eloquent: 1d6+4, or 2 more words than any other non-Eloquent cave-man)
-        bonus = this.actor.isEloquentCaveman ? 4 : 2;
-        roll = new Roll(`1d6+${bonus}`);
+        const bonus = this.actor.isEloquentCaveman ? 4 : 2;
+        const roll = new Roll(`1d6+${bonus}`);
 
-        await this._configureSheet(roll, 'OG.CharacterClass.Notifications.KnownWords', [
+        await this._configureSheet(roll, 'initial-known-words', [
           'system.knownWords',
-        ]);
+        ], currentMaxKnownWords);
 
+      }
         break;
     }
   }
 
-  async _configureSheet(roll, flavorMsg, actorUpdate) {
+  async _configureSheet(roll, flavorTemplate, actorUpdate, currentMaxBonus) {
     await roll.evaluate({ async: true });
 
+    let value = roll.total;
+    let bonusUsed = false;
+
+    if (currentMaxBonus > roll.total) {
+      value = currentMaxBonus;
+      bonusUsed = true;
+    }
+
     const msg = await roll.toMessage({
-      flavor: game.i18n.format(flavorMsg, {
+      flavor: await renderTemplate(`systems/og/templates/chat/character/flavor/${flavorTemplate}.html.hbs`, {
+        bonusUsed,
         name: this.actor.name,
-        total: roll.total,
+        total: value,
+        rollTotal: roll.total,
       }),
     });
 
     const update = {};
-    actorUpdate.forEach((key) => update[key] = roll.total);
+    actorUpdate.forEach((key) => update[key] = value);
 
     if (game.dice3d) {
       game.dice3d.waitFor3DAnimationByMessageID(msg.id).then(() => this.actor.update(update));

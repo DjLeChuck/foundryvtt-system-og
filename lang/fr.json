@@ -36,6 +36,8 @@
   "OG.CharacterClass.Notifications.KnownWords": "{name} connaît {total} mots.",
   "OG.CharacterClass.Abilities.StarMarkExplanations": "Les capacités marquées d'un \"*\" sont gratuites ; elles ne comptent pas.",
   "OG.CharacterClass.Words.StarMarkExplanations": "Les mots marqués d'un \"*\" sont rares ; ils comptent pour 2.",
+  "OG.CharacterClass.ToughBonusUsed": "Son bonus de classe lui permet d’obtenir {total} points d’Unggghh au lieu de {rollTotal} !",
+  "OG.CharacterClass.EloquentBonusUsed": "Son bonus de classe lui permet de connaître {total} mots au lieu de {rollTotal} !",
   "OG.Creature.CavemanName": "Nom pour l’homme des cavernes",
   "OG.Creature.Armor": "Armure",
   "OG.Creature.Attacks": "Attaques",
