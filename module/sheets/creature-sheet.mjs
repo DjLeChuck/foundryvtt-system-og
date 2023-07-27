@@ -53,6 +53,8 @@ export class OgCreatureSheet extends OgActorSheet {
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
       if (i.type === 'attack') {
+        i.enrichedDamageNote = await TextEditor.enrichHTML(i.system.damageNote, { async: true });
+
         attacks.push(i);
       }
     }

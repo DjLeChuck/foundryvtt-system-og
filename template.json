@@ -19,7 +19,8 @@
       "word"
     ],
     "htmlFields": [
-      "description"
+      "description",
+      "damageNote"
     ],
     "ability": {},
     "attack": {},

@@ -29,12 +29,12 @@
           <input name="system.damage" value="{{item.system.damage}}" type="number"
                  placeholder="{{localize "OG.Global.Damage"}}" id="item-damage-{{item._id}}" data-dtype="Number" />
         </div>
-        <div class="grid-span-2">
-          <label for="item-damageNote-{{item._id}}">{{localize "OG.Attack.DamageNote"}}</label>
-          <textarea name="system.damageNote" placeholder="{{localize "OG.Attack.DamageNote"}}"
-                    id="item-damageNote-{{item._id}}" rows="10">{{item.system.damageNote}}</textarea>
-        </div>
       </div>
+
+      <p>
+        <label for="item-damageNote-{{item._id}}">{{localize "OG.Attack.DamageNote"}}</label>
+        {{editor enrichedDamageNote target="system.damageNote" button=true editable=editable engine="prosemirror"}}
+      </p>
     </div>
   </section>
 </form>

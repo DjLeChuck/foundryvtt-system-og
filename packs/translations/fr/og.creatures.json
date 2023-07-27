@@ -150,7 +150,13 @@
 		},
 		"Spider, Giant": {
 			"name": "Araignée géante",
-			"cavemanName": "Truc grotte poilu"
+			"cavemanName": "Truc grotte poilu",
+			"attacks": {
+				"mandible": {
+					"name": "mandibule",
+					"damageNote": "<p>Une morsure réussie injecte du venin à l’homme des cavernes. Chaque round suivant, l’homme des cavernes effectue un jet de @UUID[Compendium.og.abilities.Item.IOo5igemXC5LS2eI]{Résistance} pour voir s’il se débarrasse du poison. En cas de succès, il ne subit aucun dégât ce round-ci et n’a pas besoin de refaire un jet contre la morsure de cette araignée géante en particulier. En cas d’échec, il subit 1 dégât. Les effets de plusieurs morsures d’araignée ne sont pas cumulatifs.</p>"
+				}
+			}
 		},
 		"Stegosaurus": {
 			"name": "Stégosaure",

@@ -13,7 +13,7 @@ export class AttackData extends foundry.abstract.DataModel {
         initial: 1,
         integer: true,
       }),
-      damageNote: new fields.StringField(),
+      damageNote: new fields.HTMLField(),
       description: new fields.HTMLField(),
     };
   }
