@@ -100,6 +100,34 @@ Hooks.once('init', async function () {
 
   if (typeof Babele !== 'undefined') {
     Babele.get().setSystemTranslationsDir('packs/translations');
+
+    Babele.get().registerConverters({
+      'creatureAttack': (items, translations) => {
+        if (!translations) {
+          return items;
+        }
+
+        return items.map((item) => {
+          if ('attack' !== item.type || !translations[item.name]) {
+            return item;
+          }
+
+          const translation = translations[item.name];
+
+          item.name = translation.name;
+
+          if (item.description && translation.description) {
+            item.description = translation.description;
+          }
+
+          if (item.system.damageNote && translation.damageNote) {
+            item.system.damageNote = translation.damageNote;
+          }
+
+          return item;
+        });
+      },
+    });
   }
 
   // Preload Handlebars templates.

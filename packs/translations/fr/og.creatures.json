@@ -1,134 +1,184 @@
 {
 	"label": "Créatures",
+	"mapping": {
+		"cavemanName": "system.cavemanName",
+		"attacks": {
+			"converter": "creatureAttack",
+			"path": "items"
+		}
+	},
 	"entries": {
 		"Allosaurus": {
-			"name": "Allosaure"
+			"name": "Allosaure",
+			"cavemanName": "Grand truc puant cogner"
 		},
 		"Ancient Astronaut": {
-			"name": "Ancient astronaute"
+			"name": "Ancient astronaute",
+			"cavemanName": "Truc brillant dormir"
 		},
 		"Anklyosaurus": {
-			"name": "Ankylosaure"
+			"name": "Ankylosaure",
+			"cavemanName": "Grand truc"
 		},
 		"Ape": {
-			"name": "Singe"
+			"name": "Singe",
+			"cavemanName": "Grand truc poilu bâton"
 		},
 		"Auroch": {
-			"name": "Auroch"
+			"name": "Auroch",
+			"cavemanName": "Grand truc nourriture"
 		},
 		"Baboon": {
-			"name": "Babouin"
+			"name": "Babouin",
+			"cavemanName": "Truc poilu"
 		},
 		"Baluchitherium": {
-			"name": "Baluchithérium"
+			"name": "Baluchithérium",
+			"cavemanName": "Grand grand truc nourriture"
 		},
 		"Bear, Black": {
-			"name": "Ours noir"
+			"name": "Ours noir",
+			"cavemanName": "Grotte poilu puant"
 		},
 		"Bear, Cave": {
-			"name": "Ours des cavernes"
+			"name": "Ours des cavernes",
+			"cavemanName": "Grand grotte poilu puant"
 		},
 		"Beaver, Giant": {
-			"name": "Castor géant"
+			"name": "Castor géant",
+			"cavemanName": "Truc poilu eau"
 		},
 		"Big Cat": {
-			"name": "Grand chat"
+			"name": "Grand chat",
+			"cavemanName": "Truc poilu"
 		},
 		"Boar": {
-			"name": "Sanglier"
+			"name": "Sanglier",
+			"cavemanName": "Petit puant"
 		},
 		"Bobcat": {
-			"name": "Lynx"
+			"name": "Lynx",
+			"cavemanName": "Truc poilu"
 		},
 		"Brachiosaurus": {
-			"name": "Brachiosaure"
+			"name": "Brachiosaure",
+			"cavemanName": "Grand grand truc"
 		},
 		"Brontosaurus": {
-			"name": "Brontosaure"
+			"name": "Brontosaure",
+			"cavemanName": "Grand grand truc"
 		},
 		"Brontotherium": {
-			"name": "Brontothérium"
+			"name": "Brontothérium",
+			"cavemanName": "Grand truc poilu"
 		},
 		"Crocodile, Giant": {
-			"name": "Crocodile géant"
+			"name": "Crocodile géant",
+			"cavemanName": "Grand grand eau puant"
 		},
 		"Crocodile, Regular": {
-			"name": "Crocodile"
+			"name": "Crocodile",
+			"cavemanName": "Grand eau puant"
 		},
 		"Dinohyus (Terrible Pig)": {
-			"name": "Dinohyus « porc terrifiant »"
+			"name": "Dinohyus « porc terrifiant »",
+			"cavemanName": "Grand puant"
 		},
 		"Diprotodon": {
-			"name": "Diprotodon"
+			"name": "Diprotodon",
+			"cavemanName": "Truc nourriture poilu"
 		},
 		"Elk, Irish": {
-			"name": "Élan irlandais"
+			"name": "Élan irlandais",
+			"cavemanName": "Truc nourriture poilu"
 		},
 		"Gigantopithecus": {
-			"name": "Gigantopithèque"
+			"name": "Gigantopithèque",
+			"cavemanName": "Grand poilu"
 		},
 		"Glyptodont": {
-			"name": "Glyptodonte"
+			"name": "Glyptodonte",
+			"cavemanName": "Truc pierre"
 		},
 		"Gorilla": {
-			"name": "Gorille"
+			"name": "Gorille",
+			"cavemanName": "Truc poilu grand bâton"
 		},
 		"Iguanodon": {
-			"name": "Iguanodon"
+			"name": "Iguanodon",
+			"cavemanName": "Grand truc"
 		},
 		"Kangaroo, Giant Carnivorous (Ekaltadeta)": {
-			"name": "Kangourou carnivore géant (Ekaltadeta)"
+			"name": "Kangourou carnivore géant (Ekaltadeta)",
+			"cavemanName": "Truc poilu aller aller"
 		},
 		"Leech, Giant": {
-			"name": "Sangsue géante"
+			"name": "Sangsue géante",
+			"cavemanName": "Truc eau puant"
 		},
 		"Lizard Person": {
-			"name": "Hommé-lzard"
+			"name": "Hommé-lézard",
+			"cavemanName": "Truc grotte puant"
 		},
 		"Mammoth": {
-			"name": "Mammouth"
+			"name": "Mammouth",
+			"cavemanName": "Grand poilu"
 		},
 		"Mastodon": {
-			"name": "Mastodone"
+			"name": "Mastodone",
+			"cavemanName": "Grand poilu"
 		},
 		"Megatherium (Giant Sloth)": {
-			"name": "Mégathérium (Paresseux géant)"
+			"name": "Mégathérium (Paresseux géant)",
+			"cavemanName": "Grand poilu puant"
 		},
 		"Monkey-Man": {
-			"name": "Homme-singe"
+			"name": "Homme-singe",
+			"cavemanName": "Poilu puant"
 		},
 		"Pteranodon": {
-			"name": "Ptéranodon"
+			"name": "Ptéranodon",
+			"cavemanName": "Grand truc brillant aller"
 		},
 		"Rhino, Woolly": {
-			"name": "Rhinocéros laineux"
+			"name": "Rhinocéros laineux",
+			"cavemanName": "Truc poilu cogner"
 		},
 		"Sabertooth Tiger": {
-			"name": "Tigre à dents de sabre"
+			"name": "Tigre à dents de sabre",
+			"cavemanName": "Truc poilu"
 		},
 		"Spider, Giant": {
-			"name": "Araignée géante"
+			"name": "Araignée géante",
+			"cavemanName": "Truc grotte poilu"
 		},
 		"Stegosaurus": {
-			"name": "Stégosaure"
+			"name": "Stégosaure",
+			"cavemanName": "Grand truc pierre"
 		},
 		"Terror Bird": {
-			"name": "Oiseau-terreur"
+			"name": "Oiseau-terreur",
+			"cavemanName": "Truc brillant pierre"
 		},
 		"Triceratops": {
-			"name": "Tricératops"
+			"name": "Tricératops",
+			"cavemanName": "Grand truc"
 		},
 		"Tyrannosaurus Rex": {
-			"name": "Tyrannosaurus Rex"
+			"name": "Tyrannosaurus Rex",
+			"cavemanName": "Grand grand puant cogner"
 		},
 		"Uintatherium": {
-			"name": "Uintathérium"
+			"name": "Uintathérium",
+			"cavemanName": "Grand truc cogner"
 		},
 		"Velociraptor": {
-			"name": "Vélociraptor"
+			"name": "Vélociraptor",
+			"cavemanName": "Truc aller aller"
 		},
 		"Wolf, Dire": {
-			"name": "Loup terrible"
+			"name": "Loup terrible",
+			"cavemanName": "Truc poilu"
 		}
 	}
 }
