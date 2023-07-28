@@ -8,6 +8,14 @@ export class OgCreatureSheet extends OgActorSheet {
     });
   }
 
+  /**
+   * A convenience reference to the Actor document
+   * @type {OgCreatureActor}
+   */
+  get actor() {
+    return this.object;
+  }
+
   /** @override */
   async getData() {
     const context = super.getData();

@@ -1,6 +1,13 @@
-import { OgActor } from './documents/actor.mjs';
+import { OgBaseActor } from './documents/actor/base-actor.mjs';
+import { OgCharacterActor } from './documents/actor/character-actor.mjs';
+import { OgCreatureActor } from './documents/actor/creature-actor.mjs';
 import { OgChatMessage } from './documents/chat-message.mjs';
-import { OgItem } from './documents/item.mjs';
+import { OgBaseItem } from './documents/item/base-item.mjs';
+import { OgAbilityItem } from './documents/item/ability-item.mjs';
+import { OgAttackItem } from './documents/item/attack-item.mjs';
+import { OgCharacterClassItem } from './documents/item/character-class-item.mjs';
+import { OgSkillItem } from './documents/item/skill-item.mjs';
+import { OgWordItem } from './documents/item/word-item.mjs';
 import { OgCharacterSheet } from './sheets/character-sheet.mjs';
 import { OgCreatureSheet } from './sheets/creature-sheet.mjs';
 import { OgAbilitySheet } from './sheets/ability-sheet.mjs';
@@ -42,9 +49,25 @@ Hooks.once('init', async function () {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = OgActor;
+  CONFIG.Actor.documentClass = OgBaseActor;
   CONFIG.ChatMessage.documentClass = OgChatMessage;
-  CONFIG.Item.documentClass = OgItem;
+  CONFIG.Item.documentClass = OgBaseItem;
+
+  game.system = Object.assign({}, {
+    og: {
+      actorClasses: {
+        character: OgCharacterActor,
+        creature: OgCreatureActor,
+      },
+      itemClasses: {
+        ability: OgAbilityItem,
+        attack: OgAttackItem,
+        characterClass: OgCharacterClassItem,
+        skill: OgSkillItem,
+        word: OgWordItem,
+      },
+    },
+  }, game.system);
 
   // Register custom Data Model
   CONFIG.Actor.dataModels.character = CharacterData;

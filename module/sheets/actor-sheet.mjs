@@ -20,7 +20,7 @@ export class OgActorSheet extends ActorSheet {
 
   /**
    * A convenience reference to the Actor document
-   * @type {OgActor}
+   * @type {OgBaseActor}
    */
   get actor() {
     return this.object;

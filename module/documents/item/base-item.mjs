@@ -2,7 +2,20 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class OgItem extends Item {
+export class OgBaseItem extends Item {
+  constructor(docData, context = {}) {
+    if (!context.og?.ready) {
+      mergeObject(context, { og: { ready: true } });
+
+      const actorConstructor = game.system.og.itemClasses[docData.type];
+      if (actorConstructor) {
+        return new actorConstructor(docData, context);
+      }
+    }
+
+    super(docData, context);
+  }
+
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
@@ -26,24 +39,5 @@ export class OgItem extends Item {
     rollData.item = foundry.utils.deepClone(this.system);
 
     return rollData;
-  }
-
-  /**
-   * Handle clickable rolls.
-   */
-  async roll() {
-    const item = this;
-
-    if (!['ability', 'attack'].includes(item.type)) {
-      return;
-    }
-
-    ChatMessage.create({
-      speaker: this.actor.getChatSpeaker(),
-      rollMode: game.settings.get('core', 'rollMode'),
-      content: await renderTemplate(`systems/og/templates/chat/${item.type}/chat-card.html.hbs`, {
-        item,
-      }),
-    });
   }
 }

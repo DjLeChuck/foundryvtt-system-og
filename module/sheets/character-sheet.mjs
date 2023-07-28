@@ -8,6 +8,14 @@ export class OgCharacterSheet extends OgActorSheet {
     });
   }
 
+  /**
+   * A convenience reference to the Actor document
+   * @type {OgCharacterActor}
+   */
+  get actor() {
+    return this.object;
+  }
+
   /** @override */
   getData() {
     const context = super.getData();
