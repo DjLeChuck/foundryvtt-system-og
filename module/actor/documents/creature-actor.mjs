@@ -1,6 +1,6 @@
-import { OgBaseActor } from './base-document.mjs';
+import { BaseActor } from './base-actor.mjs';
 
-export class OgCreatureActor extends OgBaseActor {
+export class CreatureActor extends BaseActor {
   getChatSpeaker() {
     return { actor: this, alias: this.system.cavemanName };
   }

@@ -1,11 +1,10 @@
-import { onManageActiveEffect } from '../helpers/effects.mjs';
+import { onManageActiveEffect } from '../../helpers/effects.mjs';
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class OgItemSheet extends ItemSheet {
-
+export class BaseItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {

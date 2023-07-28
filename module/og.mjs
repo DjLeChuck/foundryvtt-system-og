@@ -1,20 +1,6 @@
 import { OgChatMessage } from './documents/chat-message.mjs';
-import { OgBaseItem } from './documents/item/base-item.mjs';
-import { OgAbilityItem } from './documents/item/ability-item.mjs';
-import { OgAttackItem } from './documents/item/attack-item.mjs';
-import { OgCharacterClassItem } from './documents/item/character-class-item.mjs';
-import { OgSkillItem } from './documents/item/skill-item.mjs';
-import { OgWordItem } from './documents/item/word-item.mjs';
-import { OgAbilitySheet } from './sheets/ability-sheet.mjs';
-import { OgAttackSheet } from './sheets/attack-sheet.mjs';
-import { OgWordSheet } from './sheets/word-sheet.mjs';
-import { OgItemSheet } from './sheets/item-sheet.mjs';
 import * as actor from './actor/_module.mjs';
-import { AbilityData } from './dataModels/item/AbilityData.mjs';
-import { AttackData } from './dataModels/item/AttackData.mjs';
-import { CharacterClassData } from './dataModels/item/CharacterClassData.mjs';
-import { SkillData } from './dataModels/item/SkillData.mjs';
-import { WordData } from './dataModels/item/WordData.mjs';
+import * as item from './item/_module.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 
 /* -------------------------------------------- */
@@ -39,58 +25,62 @@ Hooks.once('init', async function () {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = actor.documents.OgBaseActor;
+  CONFIG.Actor.documentClass = actor.documents.BaseActor;
   CONFIG.ChatMessage.documentClass = OgChatMessage;
-  CONFIG.Item.documentClass = OgBaseItem;
+  CONFIG.Item.documentClass = item.documents.BaseItem;
 
   game.system.og = {
     actorClasses: {
-      character: actor.documents.OgCharacterActor,
-      creature: actor.documents.OgCreatureActor,
+      character: actor.documents.CharacterActor,
+      creature: actor.documents.CreatureActor,
     },
     itemClasses: {
-      ability: OgAbilityItem,
-      attack: OgAttackItem,
-      characterClass: OgCharacterClassItem,
-      skill: OgSkillItem,
-      word: OgWordItem,
+      ability: item.documents.AbilityItem,
+      attack: item.documents.AttackItem,
+      characterClass: item.documents.CharacterClassItem,
+      skill: item.documents.SkillItem,
+      word: item.documents.WordItem,
     },
   };
 
   // Register custom Data Model
-  CONFIG.Actor.dataModels.character = actor.models.OgCharacterData;
-  CONFIG.Actor.dataModels.creature = actor.models.OgCreatureData;
-  CONFIG.Item.dataModels.ability = AbilityData;
-  CONFIG.Item.dataModels.attack = AttackData;
-  CONFIG.Item.dataModels.characterClass = CharacterClassData;
-  CONFIG.Item.dataModels.skill = SkillData;
-  CONFIG.Item.dataModels.word = WordData;
+  CONFIG.Actor.dataModels.character = actor.models.CharacterDataModel;
+  CONFIG.Actor.dataModels.creature = actor.models.CreatureDataModel;
+  CONFIG.Item.dataModels.ability = item.models.AbilityDataModel;
+  CONFIG.Item.dataModels.attack = item.models.AttackDataModel;
+  CONFIG.Item.dataModels.characterClass = item.models.CharacterClassDataModel;
+  CONFIG.Item.dataModels.skill = item.models.SkillDataModel;
+  CONFIG.Item.dataModels.word = item.models.WordDataModel;
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('og', actor.sheets.OgCharacterSheet, {
+  Actors.registerSheet('og', actor.sheets.CharacterActorSheet, {
     types: ['character'],
     makeDefault: true,
   });
-  Actors.registerSheet('og', actor.sheets.OgCreatureSheet, {
+  Actors.registerSheet('og', actor.sheets.CreatureActorSheet, {
     types: ['creature'],
     makeDefault: true,
   });
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('og', OgAbilitySheet, {
+  Items.registerSheet('og', item.sheets.AbilityItemSheet, {
     types: ['ability'],
     makeDefault: true,
   });
-  Items.registerSheet('og', OgAttackSheet, {
+  Items.registerSheet('og', item.sheets.AttackItemSheet, {
     types: ['attack'],
     makeDefault: true,
   });
-  Items.registerSheet('og', OgWordSheet, {
-    types: ['word'],
+  Items.registerSheet('og', item.sheets.CharacterClassItemSheet, {
+    types: ['characterClass'],
     makeDefault: true,
   });
-  Items.registerSheet('og', OgItemSheet, {
-    types: ['characterClass', 'skill'],
+  Items.registerSheet('og', item.sheets.SkillItemSheet, {
+    types: ['skill'],
+    makeDefault: true,
+  });
+  Items.registerSheet('og', item.sheets.WordItemSheet, {
+    types: ['word'],
     makeDefault: true,
   });
 

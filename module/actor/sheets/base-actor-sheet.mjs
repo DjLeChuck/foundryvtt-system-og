@@ -2,7 +2,7 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class OgActorSheet extends ActorSheet {
+export class BaseActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -20,7 +20,7 @@ export class OgActorSheet extends ActorSheet {
 
   /**
    * A convenience reference to the Actor document
-   * @type {OgBaseActor}
+   * @type {BaseActor}
    */
   get actor() {
     return this.object;

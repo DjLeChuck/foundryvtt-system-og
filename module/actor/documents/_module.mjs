@@ -1,3 +1,3 @@
-export { OgBaseActor } from './base-document.mjs';
-export { OgCharacterActor } from './character-document.mjs'
-export { OgCreatureActor } from './creature-document.mjs';
+export { BaseActor } from './base-actor.mjs';
+export { CharacterActor } from './character-actor.mjs';
+export { CreatureActor } from './creature-actor.mjs';

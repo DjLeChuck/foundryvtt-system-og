@@ -1,6 +1,6 @@
-import { OgBaseItem } from './base-item.mjs';
+import { BaseItem } from './base-item.mjs';
 
-export class OgAttackItem extends OgBaseItem {
+export class AbilityItem extends BaseItem {
   async roll() {
     ChatMessage.create({
       speaker: this.actor.getChatSpeaker(),

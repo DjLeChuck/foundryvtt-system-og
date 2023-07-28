@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class OgBaseItem extends Item {
+export class BaseItem extends Item {
   constructor(docData, context = {}) {
     if (!context.og?.ready) {
       mergeObject(context, { og: { ready: true } });

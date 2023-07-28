@@ -1,10 +1,10 @@
-import { OgBaseActor } from './base-document.mjs';
+import { BaseActor } from './base-actor.mjs';
 
-export class OgCharacterActor extends OgBaseActor {
+export class CharacterActor extends BaseActor {
   /**
    * Get the actor character class item.
    *
-   * @returns {OgCharacterClassItem|null}
+   * @returns {CharacterClassItem|null}
    */
   get characterClass() {
     return this.items.find((item) => 'characterClass' === item.type) ?? null;
@@ -16,6 +16,10 @@ export class OgCharacterActor extends OgBaseActor {
 
   get isEloquentCaveman() {
     return this.characterClass?.getFlag('og', 'isEloquent') ?? false;
+  }
+
+  get isGruntingCaveman() {
+    return this.characterClass?.getFlag('og', 'isGrunting') ?? false;
   }
 
   /**

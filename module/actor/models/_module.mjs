@@ -1,2 +1,2 @@
-export { OgCharacterData } from './character-data.mjs'
-export { OgCreatureData } from './creature-data.mjs';
+export { CharacterDataModel } from './character-data-model.mjs';
+export { CreatureDataModel } from './creature-data-model.mjs';

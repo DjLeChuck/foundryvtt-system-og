@@ -1,6 +1,6 @@
-import { OgItemSheet } from './item-sheet.mjs';
+import { BaseItemSheet } from './base-item-sheet.mjs';
 
-export class OgAttackSheet extends OgItemSheet {
+export class AttackItemSheet extends BaseItemSheet {
   /** @override */
   async getData() {
     // Retrieve base data structure.

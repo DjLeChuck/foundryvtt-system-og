@@ -1,4 +1,4 @@
-export class CharacterClassData extends foundry.abstract.DataModel {
+export class SkillDataModel extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 

@@ -1,6 +1,6 @@
-import { OgItemSheet } from './item-sheet.mjs';
+import { BaseItemSheet } from './base-item-sheet.mjs';
 
-export class OgAbilitySheet extends OgItemSheet {
+export class AbilityItemSheet extends BaseItemSheet {
   async toggleLearn() {
     if (
       !this.item.system.learned

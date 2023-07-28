@@ -1,2 +1,2 @@
-export { OgCharacterSheet } from './character-sheet.mjs'
-export { OgCreatureSheet } from './creature-sheet.mjs';
+export { CharacterActorSheet } from './character-actor-sheet.mjs'
+export { CreatureActorSheet } from './creature-actor-sheet.mjs';

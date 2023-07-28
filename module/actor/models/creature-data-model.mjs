@@ -1,6 +1,6 @@
-import { OgBaseActorData } from './base-data.mjs';
+import { BaseDataModel } from './base-data-model.mjs';
 
-export class OgCreatureData extends OgBaseActorData {
+export class CreatureDataModel extends BaseDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 

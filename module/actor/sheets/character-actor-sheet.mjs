@@ -1,6 +1,6 @@
-import { OgActorSheet } from './base-sheet.mjs';
+import { BaseActorSheet } from './base-actor-sheet.mjs';
 
-export class OgCharacterSheet extends OgActorSheet {
+export class CharacterActorSheet extends BaseActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -10,7 +10,7 @@ export class OgCharacterSheet extends OgActorSheet {
 
   /**
    * A convenience reference to the Actor document
-   * @type {OgCharacterActor}
+   * @type {CharacterActor}
    */
   get actor() {
     return this.object;

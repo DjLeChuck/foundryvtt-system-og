@@ -1,4 +1,4 @@
-export class WordData extends foundry.abstract.DataModel {
+export class WordDataModel extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 

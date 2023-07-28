@@ -1,4 +1,4 @@
-export class AttackData extends foundry.abstract.DataModel {
+export class AttackDataModel extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 
