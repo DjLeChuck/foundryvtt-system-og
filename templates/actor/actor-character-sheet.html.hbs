@@ -12,6 +12,7 @@
               <input type="text" value="{{characterClass.name}}" readonly disabled
                      placeholder="{{localize "OG.Global.CharacterClass"}}" />
             </h1>
+
             {{#unless characterClass}}
               <div class="flexshrink u-ml-20">
                 <button type="button" title="{{localize "OG.CharacterClass.Tooltips.ChooseCharacterClass"}}"
@@ -20,6 +21,15 @@
                 </button>
               </div>
             {{/unless}}
+
+            {{#if actor.isGruntingCaveman}}
+              <p class="flexshrink u-ml-20">
+                <button type="button" title="{{localize "OG.CharacterClass.Tooltips.Grunt"}}" class="square"
+                        data-roll-grunt>
+                  <i class="far fa-dice-d6"></i>
+                </button>
+              </p>
+            {{/if}}
           </div>
         </div>
       </div>

@@ -38,6 +38,10 @@ export class CharacterActorSheet extends BaseActorSheet {
     html.find('[data-learn-ability]').click(this._onLearnAbility.bind(this));
     html.find('[data-roll-ability]').click(this._onRollAbility.bind(this));
     html.find('[data-roll-attack]').click(this._onRollAttack.bind(this));
+
+    if (this.actor.isGruntingCaveman) {
+      html.find('[data-roll-grunt]').click(this._onRollGrunt.bind(this));
+    }
   }
 
   /**
@@ -320,5 +324,40 @@ export class CharacterActorSheet extends BaseActorSheet {
       this.actor.system.damage,
       { evade, armor },
     );
+  }
+
+  async _onRollGrunt(event) {
+    event.preventDefault();
+
+    const roll = new Roll('2d6');
+
+    await roll.evaluate({ async: true });
+
+    const terms = roll.terms[0];
+    const results = terms.results.map((data) => data.result);
+    let success = false;
+    let fumble = false;
+    let failure = false;
+
+    if (results[0] === results[1]) {
+      if (1 === results[0]) {
+        fumble = true;
+      } else {
+        success = true;
+
+        terms.results.map((data) => data.success = true);
+      }
+    } else {
+      failure = true;
+    }
+
+    await roll.toMessage({
+      flavor: await renderTemplate('systems/og/templates/chat/character/flavor/grunt-roll.html.hbs', {
+        success,
+        failure,
+        fumble,
+        name: this.actor.name,
+      }),
+    });
   }
 }
