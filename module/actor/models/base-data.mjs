@@ -1,4 +1,4 @@
-export class BaseActorData extends foundry.abstract.DataModel {
+export class OgBaseActorData extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
 

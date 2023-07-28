@@ -1,4 +1,4 @@
-import { OgBaseActor } from './base-actor.mjs';
+import { OgBaseActor } from './base-document.mjs';
 
 export class OgCharacterActor extends OgBaseActor {
   /**

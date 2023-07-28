@@ -1,4 +1,4 @@
-import { OgActorSheet } from './actor-sheet.mjs';
+import { OgActorSheet } from './base-sheet.mjs';
 
 export class OgCharacterSheet extends OgActorSheet {
   /** @override */

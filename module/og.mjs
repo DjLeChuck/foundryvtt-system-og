@@ -1,6 +1,3 @@
-import { OgBaseActor } from './documents/actor/base-actor.mjs';
-import { OgCharacterActor } from './documents/actor/character-actor.mjs';
-import { OgCreatureActor } from './documents/actor/creature-actor.mjs';
 import { OgChatMessage } from './documents/chat-message.mjs';
 import { OgBaseItem } from './documents/item/base-item.mjs';
 import { OgAbilityItem } from './documents/item/ability-item.mjs';
@@ -8,14 +5,11 @@ import { OgAttackItem } from './documents/item/attack-item.mjs';
 import { OgCharacterClassItem } from './documents/item/character-class-item.mjs';
 import { OgSkillItem } from './documents/item/skill-item.mjs';
 import { OgWordItem } from './documents/item/word-item.mjs';
-import { OgCharacterSheet } from './sheets/character-sheet.mjs';
-import { OgCreatureSheet } from './sheets/creature-sheet.mjs';
 import { OgAbilitySheet } from './sheets/ability-sheet.mjs';
 import { OgAttackSheet } from './sheets/attack-sheet.mjs';
 import { OgWordSheet } from './sheets/word-sheet.mjs';
 import { OgItemSheet } from './sheets/item-sheet.mjs';
-import { CharacterData } from './dataModels/actor/CharacterData.mjs';
-import { CreatureData } from './dataModels/actor/CreatureData.mjs';
+import * as actor from './actor/_module.mjs';
 import { AbilityData } from './dataModels/item/AbilityData.mjs';
 import { AttackData } from './dataModels/item/AttackData.mjs';
 import { CharacterClassData } from './dataModels/item/CharacterClassData.mjs';
@@ -49,15 +43,15 @@ Hooks.once('init', async function () {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = OgBaseActor;
+  CONFIG.Actor.documentClass = actor.documents.OgBaseActor;
   CONFIG.ChatMessage.documentClass = OgChatMessage;
   CONFIG.Item.documentClass = OgBaseItem;
 
   game.system = Object.assign({}, {
     og: {
       actorClasses: {
-        character: OgCharacterActor,
-        creature: OgCreatureActor,
+        character: actor.documents.OgCharacterActor,
+        creature: actor.documents.OgCreatureActor,
       },
       itemClasses: {
         ability: OgAbilityItem,
@@ -70,8 +64,8 @@ Hooks.once('init', async function () {
   }, game.system);
 
   // Register custom Data Model
-  CONFIG.Actor.dataModels.character = CharacterData;
-  CONFIG.Actor.dataModels.creature = CreatureData;
+  CONFIG.Actor.dataModels.character = actor.models.OgCharacterData;
+  CONFIG.Actor.dataModels.creature = actor.models.OgCreatureData;
   CONFIG.Item.dataModels.ability = AbilityData;
   CONFIG.Item.dataModels.attack = AttackData;
   CONFIG.Item.dataModels.characterClass = CharacterClassData;
@@ -80,11 +74,11 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('og', OgCharacterSheet, {
+  Actors.registerSheet('og', actor.sheets.OgCharacterSheet, {
     types: ['character'],
     makeDefault: true,
   });
-  Actors.registerSheet('og', OgCreatureSheet, {
+  Actors.registerSheet('og', actor.sheets.OgCreatureSheet, {
     types: ['creature'],
     makeDefault: true,
   });
