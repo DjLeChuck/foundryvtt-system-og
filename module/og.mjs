@@ -16,7 +16,6 @@ import { CharacterClassData } from './dataModels/item/CharacterClassData.mjs';
 import { SkillData } from './dataModels/item/SkillData.mjs';
 import { WordData } from './dataModels/item/WordData.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
-import { OG } from './helpers/config.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -29,9 +28,6 @@ Hooks.once('init', async function () {
   game.og = {
     rollItemMacro,
   };
-
-  // Add custom constants for configuration.
-  CONFIG.OG = OG;
 
   /**
    * Set an initiative formula for the system
@@ -47,21 +43,19 @@ Hooks.once('init', async function () {
   CONFIG.ChatMessage.documentClass = OgChatMessage;
   CONFIG.Item.documentClass = OgBaseItem;
 
-  game.system = Object.assign({}, {
-    og: {
-      actorClasses: {
-        character: actor.documents.OgCharacterActor,
-        creature: actor.documents.OgCreatureActor,
-      },
-      itemClasses: {
-        ability: OgAbilityItem,
-        attack: OgAttackItem,
-        characterClass: OgCharacterClassItem,
-        skill: OgSkillItem,
-        word: OgWordItem,
-      },
+  game.system.og = {
+    actorClasses: {
+      character: actor.documents.OgCharacterActor,
+      creature: actor.documents.OgCreatureActor,
     },
-  }, game.system);
+    itemClasses: {
+      ability: OgAbilityItem,
+      attack: OgAttackItem,
+      characterClass: OgCharacterClassItem,
+      skill: OgSkillItem,
+      word: OgWordItem,
+    },
+  };
 
   // Register custom Data Model
   CONFIG.Actor.dataModels.character = actor.models.OgCharacterData;
