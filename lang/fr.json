@@ -72,5 +72,6 @@
   "OG.Errors.Attack.TargetOnlyCreature": "Vous ne pouvez cibler que des créatures.",
   "OG.Errors.Attack.TargetNotExists": "La cible de l’attaque n’existe pas.",
   "OG.Errors.Attack.AttackNotFound": "Attaque introuvable.",
-  "OG.Errors.Ability.ExclusiveNotLearned": "Vous ne pouvez pas utiliser une capacité exclusive non apprise."
+  "OG.Errors.Ability.ExclusiveNotLearned": "Vous ne pouvez pas utiliser une capacité exclusive non apprise.",
+  "OG.Manager.Title": "Og - Manager"
 }

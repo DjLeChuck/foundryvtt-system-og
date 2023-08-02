@@ -72,5 +72,6 @@
   "OG.Errors.Attack.TargetOnlyCreature": "You can only target creatures.",
   "OG.Errors.Attack.TargetNotExists": "The target of the attack does not exists.",
   "OG.Errors.Attack.AttackNotFound": "Attack not found.",
-  "OG.Errors.Ability.ExclusiveNotLearned": "You cannot use an exclusive ability not learned."
+  "OG.Errors.Ability.ExclusiveNotLearned": "You cannot use an exclusive ability not learned.",
+  "OG.Manager.Title": "Og - Manager"
 }

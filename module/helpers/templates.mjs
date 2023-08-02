@@ -17,5 +17,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/og/templates/item/parts/item-effects.html.hbs',
     // Chat partials.
     'systems/og/templates/chat/chat-card.html.hbs',
+    // App partials.
+    'systems/og/templates/app/og-manager.html.hbs',
   ]);
 };

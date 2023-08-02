@@ -6,11 +6,19 @@
   &:hover,
   &:focus {
     color: #000;
-    text-shadow: 0 0 10px red;
     cursor: pointer;
+    text-shadow: 0 0 10px red;
   }
 }
 
 .hidden {
   display: none;
+}
+
+.scene-control, .control-tool {
+  .og-tool {
+    background-image: url('../images/caveman.svg');
+    width: 30px;
+    height: 30px;
+  }
 }

@@ -2,17 +2,41 @@ import { OgChatMessage } from './documents/chat-message.mjs';
 import * as actor from './actor/_module.mjs';
 import * as item from './item/_module.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
+import { OgManager } from './app/OgManager.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
+CONFIG.Canvas.layers.og = { layerClass: ControlsLayer, group: 'primary' };
+
+Hooks.on('getSceneControlButtons', (controls) => {
+  if (game.user.isGM) {
+    controls.push({
+      name: 'og',
+      title: 'Og',
+      layer: 'og',
+      icon: 'og-tool',
+      tools: [{
+        icon: 'og-tool',
+        name: 'ogtool',
+        title: 'Og tool',
+        button: true,
+        onClick: () => game.og.ogManager.render(true),
+      }],
+    });
+  }
+});
+
 Hooks.once('init', async function () {
+
+  CONFIG.debug.hooks = true;
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.og = {
     rollItemMacro,
+    ogManager: new OgManager()
   };
 
   /**
