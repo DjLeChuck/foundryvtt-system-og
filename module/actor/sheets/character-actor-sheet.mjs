@@ -264,6 +264,7 @@ export class CharacterActorSheet extends BaseActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
 
+    /** @var AbilityItem ability */
     const ability = this.actor.items.find((item) => item._id === dataset.id && 'ability' === item.type);
     if (!ability) {
       return;
@@ -275,8 +276,7 @@ export class CharacterActorSheet extends BaseActorSheet {
       return;
     }
 
-    const aim = ability.system.learned ? 3 : 5;
-    const roll = new Roll(`1d6xo6cs>=${aim}`);
+    const roll = new Roll(`1d6xo6cs>=${ability.rollAim}`);
 
     await roll.evaluate({ async: true });
 

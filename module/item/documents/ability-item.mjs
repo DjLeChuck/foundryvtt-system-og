@@ -10,4 +10,20 @@ export class AbilityItem extends BaseItem {
       }),
     });
   }
+
+  get rollAim() {
+    if (!this.system.learned) {
+      return 5;
+    }
+
+    if (this.getFlag('og', 'isLift') && this.actor.isStrongCaveman) {
+      return 1;
+    }
+
+    if (this.getFlag('og', 'isResistance') && this.actor.isToughCaveman) {
+      return 1;
+    }
+
+    return 3;
+  }
 }

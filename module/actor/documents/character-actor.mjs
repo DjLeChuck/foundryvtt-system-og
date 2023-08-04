@@ -22,6 +22,10 @@ export class CharacterActor extends BaseActor {
     return this.characterClass?.getFlag('og', 'isGrunting') ?? false;
   }
 
+  get isStrongCaveman() {
+    return this.characterClass?.getFlag('og', 'isStrong') ?? false;
+  }
+
   /**
    * Count knowns words. If it’s a common one, then it counts for 1, else for 2.
    *
