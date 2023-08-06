@@ -121,26 +121,6 @@ Hooks.once('init', async function () {
     makeDefault: true,
   });
 
-  // Load fonts
-  CONFIG.fontDefinitions['StoneyBilly'] = {
-    editor: true,
-    fonts: [
-      { urls: ['/systems/og/assets/fonts/stoney-billy.ttf'] },
-    ],
-  };
-  CONFIG.fontDefinitions['OutbackITC'] = {
-    editor: true,
-    fonts: [
-      { urls: ['/systems/og/assets/fonts/outback-itc.ttf'] },
-    ],
-  };
-  CONFIG.fontDefinitions['HoeflerText'] = {
-    editor: true,
-    fonts: [
-      { urls: ['/systems/og/assets/fonts/hoefler-text.ttf'] },
-    ],
-  };
-
   if (typeof Babele !== 'undefined') {
     Babele.get().registerConverters({
       'creatureAttack': (items, translations) => {
