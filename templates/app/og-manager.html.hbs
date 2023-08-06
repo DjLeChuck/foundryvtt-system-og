@@ -1,4 +1,25 @@
-{{#each characters as |character id|}}
-  <p>{{character.name}}</p>
-  {{log character}}
-{{/each}}
+<div class="grid grid-3col">
+  {{#each characters as |actor id|}}
+    <div>
+      <div class="flex flex-items-center">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="80" width="80" />
+        <h2 class="flexlarge u-ml-20">{{actor.name}}</h2>
+      </div>
+      <div>
+        <p>
+          <strong>{{localize "OG.Manager.CharacterClass"}}</strong>
+          {{{ifThen actor.characterClass actor.characterClass.name (concat "<em>" (localize "OG.Manager.NoCharacterClass") "</em>")}}}
+        </p>
+        <p><strong>{{localize "OG.Manager.KnownWords"}}</strong></p>
+        <ul>
+          {{#each actor.knownWords as |word id|}}
+            <li>{{word.name}}</li>
+          {{/each}}
+          {{#unless actor.knownWords}}
+            <li><em>{{localize "OG.Manager.NoWord"}}</em></li>
+          {{/unless}}
+        </ul>
+      </div>
+    </div>
+  {{/each}}
+</div>

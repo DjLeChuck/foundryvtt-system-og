@@ -6,6 +6,8 @@
   "TYPES.Item.characterClass": "Character class",
   "TYPES.Item.skill": "Skill",
   "TYPES.Item.word": "Word",
+  "OG.Settings.AutoRegisterBabele.Title": "Automatically activate translation via Babele",
+  "OG.Settings.AutoRegisterBabele.Hint": "Automatically sets up translations within Babele without needing to point to the directory containing the translations.",
   "OG.Global.Add": "Add",
   "OG.Global.Edit": "Edit",
   "OG.Global.Delete": "Delete",
@@ -73,5 +75,9 @@
   "OG.Errors.Attack.TargetNotExists": "The target of the attack does not exists.",
   "OG.Errors.Attack.AttackNotFound": "Attack not found.",
   "OG.Errors.Ability.ExclusiveNotLearned": "You cannot use an exclusive ability not learned.",
-  "OG.Manager.Title": "Og - Manager"
+  "OG.Manager.Title": "Og - Manager",
+  "OG.Manager.CharacterClass": "Character class:",
+  "OG.Manager.NoCharacterClass": "Not yet chosen",
+  "OG.Manager.KnownWords": "Known words:",
+  "OG.Manager.NoWord": "None"
 }

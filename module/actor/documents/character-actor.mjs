@@ -27,6 +27,15 @@ export class CharacterActor extends BaseActor {
   }
 
   /**
+   * @returns {number}
+   */
+  get knownWords() {
+    return this.items
+      .search({ filters: [{ field: 'type', value: 'word' }] })
+      .sort((a, b) => a.name.localeCompare(b.name, 'fr', { ignorePunctuation: true }));
+  }
+
+  /**
    * Count knowns words. If it’s a common one, then it counts for 1, else for 2.
    *
    * @returns {number}
