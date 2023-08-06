@@ -17,10 +17,10 @@ export class CharacterActorSheet extends BaseActorSheet {
   }
 
   /** @override */
-  getData() {
+  async getData() {
     const context = super.getData();
 
-    this._prepareItems(context);
+    await this._prepareItems(context);
 
     return context;
   }
@@ -51,7 +51,7 @@ export class CharacterActorSheet extends BaseActorSheet {
    *
    * @return {undefined}
    */
-  _prepareItems(context) {
+  async _prepareItems(context) {
     let characterClass = null;
     const words = [];
     const abilities = [];
@@ -62,6 +62,8 @@ export class CharacterActorSheet extends BaseActorSheet {
       if (i.type === 'word') {
         words.push(i);
       } else if (i.type === 'ability') {
+        i.enrichedDescription = await TextEditor.enrichHTML(i.system.description, { async: true });
+
         abilities.push(i);
       } else if (i.type === 'characterClass') {
         characterClass = i;
