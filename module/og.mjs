@@ -29,14 +29,27 @@ Hooks.on('getSceneControlButtons', (controls) => {
 });
 
 Hooks.once('init', async function () {
+  game.settings.register('og', 'autoRegisterBabel', {
+    name: 'OG.Settings.AutoRegisterBabele.Title',
+    hint: 'OG.Settings.AutoRegisterBabele.Hint',
+    scope: 'world',
+    config: true,
+    default: true,
+    type: Boolean,
+    onChange: value => {
+      if (value) {
+        autoRegisterBabel();
+      }
 
-  CONFIG.debug.hooks = true;
+      window.location.reload();
+    },
+  });
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.og = {
     rollItemMacro,
-    ogManager: new OgManager()
+    ogManager: new OgManager(),
   };
 
   /**
@@ -129,8 +142,6 @@ Hooks.once('init', async function () {
   };
 
   if (typeof Babele !== 'undefined') {
-    Babele.get().setSystemTranslationsDir('packs/translations');
-
     Babele.get().registerConverters({
       'creatureAttack': (items, translations) => {
         if (!translations) {
@@ -158,11 +169,21 @@ Hooks.once('init', async function () {
         });
       },
     });
+
+    if (game.settings.get('og', 'autoRegisterBabel')) {
+      autoRegisterBabel();
+    }
   }
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
 });
+
+function autoRegisterBabel() {
+  if (typeof Babele !== 'undefined') {
+    Babele.get().setSystemTranslationsDir('packs/translations');
+  }
+}
 
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */

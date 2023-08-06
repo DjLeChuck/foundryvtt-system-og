@@ -6,6 +6,8 @@
   "TYPES.Item.characterClass": "Classe de personnage",
   "TYPES.Item.skill": "Compétence",
   "TYPES.Item.word": "Mot",
+  "OG.Settings.AutoRegisterBabele.Title": "Activer automatiquement la traduction via Babele",
+  "OG.Settings.AutoRegisterBabele.Hint": "Met automatiquement en place les traductions au sein de Babele sans avoir besoin de pointer vers le répertoire contenant les traductions.",
   "OG.Global.Add": "Ajouter",
   "OG.Global.Edit": "Éditer",
   "OG.Global.Delete": "Supprimer",
