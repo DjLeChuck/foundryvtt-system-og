@@ -36,7 +36,7 @@ export class OgManager extends Application {
   getData(options = {}) {
     const context = super.getData(options);
 
-    context.characters = game.actors.search({ filters: [{ field: 'type', value: 'character' }] });
+    context.characters = game.actors.filter((actor) => 'character' === actor.type);
 
     return context;
   }

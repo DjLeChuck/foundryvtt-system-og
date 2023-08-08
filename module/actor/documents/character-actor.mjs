@@ -31,7 +31,7 @@ export class CharacterActor extends BaseActor {
    */
   get knownWords() {
     return this.items
-      .search({ filters: [{ field: 'type', value: 'word' }] })
+      .filter((item) => 'word' === item.type)
       .sort((a, b) => a.name.localeCompare(b.name, 'fr', { ignorePunctuation: true }));
   }
 
