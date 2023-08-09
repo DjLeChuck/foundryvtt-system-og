@@ -1,0 +1,22 @@
+{
+  "label": "Règles",
+  "entries": {
+    "Abridged rules": {
+      "name": "Règles abrégées",
+      "pages": {
+        "Character Creation": {
+          "name": "Création de personnage"
+        },
+        "Classes": {
+          "name": "Classes"
+        },
+        "Abilities": {
+          "name": "Capacités"
+        },
+        "Fighting": {
+          "name": "Combattre"
+        }
+      }
+    }
+  }
+}
