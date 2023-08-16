@@ -89,6 +89,14 @@ Hooks.once('init', async function () {
   CONFIG.Item.dataModels.skill = item.models.SkillDataModel;
   CONFIG.Item.dataModels.word = item.models.WordDataModel;
 
+  // Disable default effects
+  CONFIG.statusEffects = [];
+  CONFIG.statusEffects.push({
+    id: 'dead',
+    icon: 'icons/svg/skull.svg',
+    name: 'EFFECT.StatusDead',
+  });
+
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('og', actor.sheets.CharacterActorSheet, {
